@@ -3,7 +3,7 @@ use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use kartik\widgets\SideNav;
 use yii\widgets\Breadcrumbs;
 
 /* @var $this \yii\web\View */
@@ -26,7 +26,17 @@ AppAsset::register($this);
     
     <div class='sapient_wrap'>
     	<div class='sapient_leftMenu'>
-    		Menu Bar
+    		<?php echo SideNav::widget([
+				'type' => SideNav::TYPE_DEFAULT,
+				'heading' => "test Heading",
+				'items' => [
+					['label' => 'Dashboard', 'icon' => 'home'],
+					['label' => 'Settings', 'icon' => 'settings']
+				
+				
+				]
+				]);        
+				?>
     	</div>
     	<div class='sapient_titleBar'>
     		Title
