@@ -195,7 +195,7 @@ hr.article-devider {
 .sapient_wrap
 {
 	width: 100%;
-	background-color: red;
+
 	height: 100%;
 }
 
@@ -204,7 +204,8 @@ hr.article-devider {
 	width: 400px;
 	float: left;
 	height: 100%;
-	background-color: grey;
+	
+	padding-right: 10px;
 }
 
 .sapient_titleBar
@@ -215,6 +216,8 @@ hr.article-devider {
 
 .sapient_content
 {
-	background-color: white;
-	height: 100%;
+	float: left;
+
+	width: 1200px;
+	padding-left : 10px;
 }

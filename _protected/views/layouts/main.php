@@ -28,7 +28,7 @@ AppAsset::register($this);
     	<div class='sapient_leftMenu'>
     		<?php echo SideNav::widget([
 				'type' => SideNav::TYPE_DEFAULT,
-				'heading' => "test Heading",
+				'heading' => "IMP 2.0.0 Menu",
 				'items' => [
 					['label' => 'Dashboard', 'icon' => 'home'],
 					['label' => 'Settings', 'icon' => 'settings']
@@ -38,22 +38,17 @@ AppAsset::register($this);
 				]);        
 				?>
     	</div>
-    	<div class='sapient_titleBar'>
-    		Title
-    	</div>
     	<div class='sapient_content'>
-    		This is the content
-    	</div>
-    	
-    </div>
-    
-        <div class="container">
-        <?= Breadcrumbs::widget([
+    		 <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-        </div>
+    	</div>
+    	
+    </div>
+    
+       
     </div>
 
     <footer class="footer">
