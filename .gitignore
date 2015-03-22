@@ -29,7 +29,6 @@ phpunit.phar
 /phpunit.xml
 
 # debug files
-/_protected/runtime/debug/
-/_protected/runtime/session/
+/_protected/runtime/
 
 *.data
