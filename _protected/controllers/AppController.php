@@ -38,11 +38,6 @@ class AppController extends Controller
                         'roles' => ['editor'],
                     ],
                     [
-                        'controllers' => ['article'],
-                        'actions' => ['index', 'view'],
-                        'allow' => true
-                    ],
-                    [
                         // other rules
                     ],
 
