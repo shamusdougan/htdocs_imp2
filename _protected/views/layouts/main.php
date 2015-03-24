@@ -26,13 +26,16 @@ AppAsset::register($this);
     
     <div class='sapient_wrap'>
     	<div class='sapient_leftMenu'>
-    		<?php echo SideNav::widget([
+    		<?php 
+    		
+    		$username = Yii::$app->user->identity->username;
+    		echo SideNav::widget([
 				'type' => SideNav::TYPE_DEFAULT,
-				'heading' => "IMP 2.0.0 Menu",
+				'heading' => "IMP 2.0.0 Menu (".$username.")",
 				'items' => [
 					['label' => 'Dashboard', 'icon' => 'home'],
-					['label' => 'Settings', 'icon' => 'settings']
-				
+					['label' => 'Settings', 'icon' => 'cog'],
+					['label' => 'Logout', 'icon' => 'off', 'url' => 'site/logout']
 				
 				]
 				]);        

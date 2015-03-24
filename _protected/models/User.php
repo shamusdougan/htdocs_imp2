@@ -288,4 +288,12 @@ class User extends UserIdentity
     {
         $this->account_activation_token = null;
     }
+    
+    /**
+	* Returns the username
+	*/
+	public function getUsername()
+	{
+		return $this->username;
+	}
 }
