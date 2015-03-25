@@ -140,4 +140,70 @@ class RbacController extends Controller
             $this->stdout("\nRbac authorization data are installed successfully.\n", Console::FG_GREEN);
         }
     }
+    
+    
+    public function actionSapient()
+    {
+		$auth = Yii::$app->authManager;
+		
+		
+		$useTicketContent = $auth->createPermission('useTickets');
+		$useTicketContent->description = 'Allows Users to interact with the Ticket Subsystem';
+        $auth->add($useTicketContent);
+        
+        
+        $useAccountContent = $auth->createPermission('useAccounts');
+		$useAccountContent->description = 'Allows Users to interact with the Accounts Subsystem';
+        $auth->add($useAccountContent);
+        
+        $useAdminContent = $auth->createPermission('useAdmin');
+		$useAdminContent->description = 'Allows Users to interact with the Admin Subsystem';
+        $auth->add($useAdminContent);
+        
+        
+    	$technician = $auth->createRole('Technician');
+    	$technician->description = 'Technician can look at and modify tickets, add purchases and other items to a ticket';
+        $auth->add($technician);
+    	$auth->addChild($technician, $useTicketContent);
+    	 
+    	$accounts = $auth->createRole('Accounts');
+    	$accounts->description = 'Accounts can create invoices and billiongs from tickets';
+        $auth->add($accounts);
+    	$auth->addChild($accounts, $useAccountContent);
+    	
+    	$impAdmin = $auth->createRole("IMP Admin");
+    	$impAdmin->description = "IMP Admin can modify settings in the Application";
+    	$auth->add($impAdmin);
+    	$auth->addChild($impAdmin, $useAdminContent);
+    	
+		$this->stdout("Initial Setup for the Sapient RBAC\n", Console::FG_GREEN);
+	}
+	
+	
+	public function actionSapient2()
+    {
+		$auth = Yii::$app->authManager;
+		
+		
+		$useTicketContent = $auth->getPermission('useTickets');
+        $useAccountContent = $auth->getPermission('useAccounts');
+        $useAdminContent = $auth->getPermission('useAdmin');
+            	 
+    	$accounts = $auth->getRole('Accounts');
+    	$auth->addChild($accounts, $useTicketContent);
+    	
+    	$impAdmin = $auth->getRole("IMP Admin");
+    	$auth->addChild($impAdmin, $useTicketContent);
+    	$auth->addChild($impAdmin, $useAccountContent);
+    	
+    	$impAdmin = $auth->getRole("theCreator");
+    	$auth->addChild($impAdmin, $useAdminContent);
+    	$auth->addChild($impAdmin, $useTicketContent);
+    	$auth->addChild($impAdmin, $useAccountContent);
+    	
+    	
+		$this->stdout("Initial Setup for the Sapient RBAC\n", Console::FG_GREEN);
+	}
+	
+	
 }

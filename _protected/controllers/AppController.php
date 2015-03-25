@@ -26,19 +26,16 @@ class AppController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'controllers' => ['user', 'article'],
+                        'controllers' => ['user'],
                         'actions' => ['index', 'view', 'create', 'update', 'delete', 'admin'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['theCreator', 'impAdmin'],
                     ],
                     [
-                        'controllers' => ['article'],
-                        'actions' => ['create', 'update', 'admin'],
+                        'controllers' => ['sync'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'admin'],
                         'allow' => true,
-                        'roles' => ['editor'],
-                    ],
-                    [
-                        // other rules
+                        'roles' => ['theCreator', 'impAdmin'],
                     ],
 
                 ], // rules

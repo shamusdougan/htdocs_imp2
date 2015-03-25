@@ -2,6 +2,7 @@
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use kartik\widgets\SideNav;
 use yii\widgets\Breadcrumbs;
@@ -33,9 +34,15 @@ AppAsset::register($this);
 				'type' => SideNav::TYPE_DEFAULT,
 				'heading' => "IMP 2.0.0 Menu (".$username.")",
 				'items' => [
-					['label' => 'Dashboard', 'icon' => 'home'],
-					['label' => 'Settings', 'icon' => 'cog'],
-					['label' => 'Logout', 'icon' => 'off', 'url' => 'site/logout']
+					['label' => 'Dashboard', 'icon' => 'home', 'url' => Url::toRoute('/')],
+					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
+					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts")],
+					['label' => 'Settings', 'icon' => 'cog', 'visible' => Yii::$app->user->can("useAdmin"), 'items' => [
+						['label' => 'User Accounts', 'url' => Url::toRoute('/user')],
+						['label' => 'Sync Settings', 'url' => Url::toRoute('/sync')]
+					
+					]],
+					['label' => 'Logout', 'icon' => 'off', 'url' => Url::toRoute('site/logout')]
 				
 				]
 				]);        
