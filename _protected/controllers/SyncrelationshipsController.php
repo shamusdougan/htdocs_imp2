@@ -118,4 +118,9 @@ class SyncrelationshipsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionSync($id)
+    {
+		return $this->redirect(['index']);
+	}
 }

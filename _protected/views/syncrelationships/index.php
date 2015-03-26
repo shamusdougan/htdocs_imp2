@@ -33,7 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'LastStatus',
             // 'LastStatusData',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            	'template' => '{view} {update} {delete} {sync}',
+            	'contentOptions' => ['style' => 'width:100px;'],
+            	'buttons' => 
+            		[
+            		'sync' => function ($url, $model){
+						return Html::a('<span class="glyphicon glyphicon-refresh"></span>', $url, [
+							'title' => Yii::t('app', "Sync"),
+						]);
+						}
+            		]
+            ],
         ],
     ]); ?>
 
