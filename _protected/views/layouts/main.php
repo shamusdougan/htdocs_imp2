@@ -36,10 +36,16 @@ AppAsset::register($this);
 				'items' => [
 					['label' => 'Dashboard', 'icon' => 'home', 'url' => Url::toRoute('/')],
 					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
-					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts")],
+					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts"), 'items' => [
+						['label' => 'Clients', 'url' => Url::toRoute('/client')]
+					
+					
+					
+					]],
 					['label' => 'Settings', 'icon' => 'cog', 'visible' => Yii::$app->user->can("useAdmin"), 'items' => [
 						['label' => 'User Accounts', 'url' => Url::toRoute('/user')],
-						['label' => 'Sync Settings', 'url' => Url::toRoute('/sync')]
+						['label' => 'Sync Settings', 'url' => Url::toRoute('/syncrelationships')],
+						['label' => 'gii (remove later)', 'url' => Url::toRoute('/gii')]
 					
 					]],
 					['label' => 'Logout', 'icon' => 'off', 'url' => Url::toRoute('site/logout')]
