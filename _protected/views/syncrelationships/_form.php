@@ -15,6 +15,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'impModelName')->textInput(['maxlength' => 200]) ?>
 
     <?= $form->field($model, 'endPointName')->textInput(['maxlength' => 200]) ?>
+    
+    <?= $form->field($model, 'endPointDataType')->textInput(['maxlength' => 200]) ?>
 
     <?= $form->field($model, 'frequenyMin')->textInput() ?>
 

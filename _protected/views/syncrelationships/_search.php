@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'impModelName') ?>
 
     <?= $form->field($model, 'endPointName') ?>
+    
+    <?= $form->field($model, 'endPointDataType') ?>
 
     <?= $form->field($model, 'frequenyMin') ?>
 

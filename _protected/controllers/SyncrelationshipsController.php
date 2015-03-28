@@ -121,6 +121,16 @@ class SyncrelationshipsController extends Controller
     
     public function actionSync($id)
     {
-		return $this->redirect(['index']);
+		$model = $this->findModel($id);
+		
+		$syncResult = $model->executeSync();
+		
+		
+		
+		return $this->render('sync', [
+			'result' => $syncResult,
+			'model' => $model,
+		
+			]);
 	}
 }

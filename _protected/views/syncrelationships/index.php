@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'index',
             'impModelName',
             'endPointName',
+            'endPointDataType',
             'frequenyMin',
             'lastSync',
             // 'LastStatus',

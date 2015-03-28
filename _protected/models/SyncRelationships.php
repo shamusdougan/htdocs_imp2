@@ -10,12 +10,13 @@ use Yii;
  * @property integer $index
  * @property string $impModelName
  * @property string $endPointName
+ * @property string $endPointDataType
  * @property integer $frequenyMin
  * @property string $lastSync
  * @property integer $LastStatus
  * @property string $LastStatusData
  */
-class SyncRelationships extends \yii\db\ActiveRecord
+class Syncrelationships extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -31,10 +32,10 @@ class SyncRelationships extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['impModelName', 'endPointName'], 'required'],
+            [['impModelName', 'endPointName', 'endPointDataType'], 'required'],
             [['frequenyMin', 'LastStatus'], 'integer'],
             [['lastSync'], 'safe'],
-            [['impModelName', 'endPointName'], 'string', 'max' => 200],
+            [['impModelName', 'endPointName', 'endPointDataType'], 'string', 'max' => 200],
             [['LastStatusData'], 'string', 'max' => 500]
         ];
     }
@@ -48,10 +49,29 @@ class SyncRelationships extends \yii\db\ActiveRecord
             'index' => 'Index',
             'impModelName' => 'Imp Model Name',
             'endPointName' => 'End Point Name',
+            'endPointDataType' => 'End Point Data Type',
             'frequenyMin' => 'Frequeny Min',
             'lastSync' => 'Last Sync',
             'LastStatus' => 'Last Status',
             'LastStatusData' => 'Last Status Data',
         ];
     }
+    
+    
+    public function executeSync()
+    {
+		if($this->endPointName == "" || $this->endPointDataType == "" || $this->impModelName == "")
+		{
+			return "Missing Sync Data for executing the Sync";
+		}
+		else
+		{
+			return "Executing Sync between ".$this->endPointName.": ".$this->endPointDataType." and ".$this->impModelName;
+		}
+		
+		
+		
+		
+	}
+    
 }

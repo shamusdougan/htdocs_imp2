@@ -96,6 +96,13 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'labtech' => [
+		    'class' => 'yii\db\Connection',
+		    'dsn' => 'mysql:host=localhost;dbname=labtech',
+		    'username' => 'impadmin',
+		    'password' => 's@p13nt',
+		    'charset' => 'utf8',
+        ],
     ],
     'params' => $params,
 ];

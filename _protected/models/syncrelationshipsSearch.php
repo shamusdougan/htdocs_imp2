@@ -19,7 +19,7 @@ class syncrelationshipsSearch extends syncrelationships
     {
         return [
             [['index', 'frequenyMin', 'LastStatus'], 'integer'],
-            [['impModelName', 'endPointName', 'lastSync', 'LastStatusData'], 'safe'],
+            [['impModelName', 'endPointName', 'endPointDataType', 'lastSync', 'LastStatusData'], 'safe'],
         ];
     }
 
