@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -66,7 +66,28 @@ class Syncrelationships extends \yii\db\ActiveRecord
 		}
 		else
 		{
-			return "Executing Sync between ".$this->endPointName.": ".$this->endPointDataType." and ".$this->impModelName;
+			
+			$LabtechClients = LabtechClient::find()->All();
+			$returnString = "Executing Sync between ".$this->endPointName.": ".$this->endPointDataType." and ".$this->impModelName."<br>";
+			$returnString .= "Found ".count($LabtechClients)." Clients in Labtech database <br>";
+			
+			foreach($LabtechClients as $labtechClient)
+			{
+				$impClient = Client::find()->where(['$IntegrationID1' => $labtechClient->ClientID]);
+				if($impClient != null)
+				{
+					print_r(count($impClient));
+					$returnString .= "Found record checking fields are upto date<br>";
+				}
+				else{
+					$returnString .= "Cant find corresponding IMP record for ".$labtechClient->name." Creating IMP Record<br>";
+				}
+			}
+			
+			$returnString .= "Found ".count($impClients)." Clients in impDatabase database <br>";
+			
+			
+			return $returnString;
 		}
 		
 		
