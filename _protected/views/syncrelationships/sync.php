@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\client */
@@ -17,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
        
     </p>
-
-  <? echo $result; ?>
+<textarea cols=150 rows=20><? echo $result; ?></textarea>
+ 
 
 </div>

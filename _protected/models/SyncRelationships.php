@@ -60,39 +60,34 @@ class Syncrelationships extends \yii\db\ActiveRecord
     
     public function executeSync()
     {
-		if($this->endPointName == "" || $this->endPointDataType == "" || $this->impModelName == "")
-		{
-			return "Missing Sync Data for executing the Sync";
-		}
-		else
-		{
-			
-			$LabtechClients = LabtechClient::find()->All();
-			$returnString = "Executing Sync between ".$this->endPointName.": ".$this->endPointDataType." and ".$this->impModelName."<br>";
-			$returnString .= "Found ".count($LabtechClients)." Clients in Labtech database <br>";
-			
-			foreach($LabtechClients as $labtechClient)
-			{
-				$impClient = Client::find()->where(['$IntegrationID1' => $labtechClient->ClientID]);
-				if($impClient != null)
-				{
-					print_r(count($impClient));
-					$returnString .= "Found record checking fields are upto date<br>";
-				}
-				else{
-					$returnString .= "Cant find corresponding IMP record for ".$labtechClient->name." Creating IMP Record<br>";
-				}
-			}
-			
-			$returnString .= "Found ".count($impClients)." Clients in impDatabase database <br>";
-			
-			
-			return $returnString;
-		}
 		
 		
 		
 		
 	}
+    
+    
+    public function syncLabtechClient()
+    {
+		
+		$targetModelName = 'LabtechClient';
+		$internalModelName = 'client';
+		$foreignKey = 'IntegrationID1';
+		
+		
+		//Foreign modelName => internalModel
+		$fieldMappings = array
+		([
+			'ID' => 'IntgegrationID1'
+			'Name' => 'name',
+			'Address1' => 'address',
+			'City' => 'city',
+			'State' => 'state',
+			'Zip' => 'postcode',
+			
+		]);
+		
+	}
+    
     
 }
