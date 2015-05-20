@@ -78,7 +78,7 @@ class Syncrelationships extends \yii\db\ActiveRecord
 		//Foreign modelName => internalModel
 		$fieldMappings = array
 		([
-			'ID' => 'IntgegrationID1'
+			'ID' => 'IntgegrationID1',
 			'Name' => 'name',
 			'Address1' => 'address',
 			'City' => 'city',
