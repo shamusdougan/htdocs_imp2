@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-use yii\helpers\ArrayHelper;
+
 use Yii;
 
 /**
@@ -10,7 +10,11 @@ use Yii;
  * @property integer $index
  * @property string $impModelName
  * @property string $endPointName
- * @property string $endPointDataType
+ * @property string $endPointDBName
+ * @property string $endPointDBTable
+ * @property string $endPointDBUser
+ * @property string $endPointDBPassword
+ * @property string $syncFunctionName
  * @property integer $frequenyMin
  * @property string $lastSync
  * @property integer $LastStatus
@@ -32,10 +36,10 @@ class Syncrelationships extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['impModelName', 'endPointName', 'endPointDataType'], 'required'],
+            [['impModelName', 'endPointName', 'endPointDBName', 'endPointDBTable', 'endPointDBUser', 'endPointDBPassword', 'syncFunctionName'], 'required'],
             [['frequenyMin', 'LastStatus'], 'integer'],
             [['lastSync'], 'safe'],
-            [['impModelName', 'endPointName', 'endPointDataType'], 'string', 'max' => 200],
+            [['impModelName', 'endPointName', 'endPointDBName', 'endPointDBTable', 'endPointDBUser', 'endPointDBPassword', 'syncFunctionName'], 'string', 'max' => 200],
             [['LastStatusData'], 'string', 'max' => 500]
         ];
     }
@@ -49,45 +53,15 @@ class Syncrelationships extends \yii\db\ActiveRecord
             'index' => 'Index',
             'impModelName' => 'Imp Model Name',
             'endPointName' => 'End Point Name',
-            'endPointDataType' => 'End Point Data Type',
+            'endPointDBName' => 'End Point Dbname',
+            'endPointDBTable' => 'End Point Dbtable',
+            'endPointDBUser' => 'End Point Dbuser',
+            'endPointDBPassword' => 'End Point Dbpassword',
+            'syncFunctionName' => 'Sync Function Name',
             'frequenyMin' => 'Frequeny Min',
             'lastSync' => 'Last Sync',
             'LastStatus' => 'Last Status',
             'LastStatusData' => 'Last Status Data',
         ];
     }
-    
-    
-    public function executeSync()
-    {
-		
-		
-		
-		
-	}
-    
-    
-    public function syncLabtechClient()
-    {
-		
-		$targetModelName = 'LabtechClient';
-		$internalModelName = 'client';
-		$foreignKey = 'IntegrationID1';
-		
-		
-		//Foreign modelName => internalModel
-		$fieldMappings = array
-		([
-			'ID' => 'IntgegrationID1',
-			'Name' => 'name',
-			'Address1' => 'address',
-			'City' => 'city',
-			'State' => 'state',
-			'Zip' => 'postcode',
-			
-		]);
-		
-	}
-    
-    
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2015 at 09:24 AM
+-- Generation Time: May 22, 2015 at 07:40 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -190,7 +190,11 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 `index` int(11) NOT NULL,
   `impModelName` varchar(200) NOT NULL,
   `endPointName` varchar(200) NOT NULL,
-  `endPointDataType` varchar(200) NOT NULL,
+  `endPointDBName` varchar(200) NOT NULL,
+  `endPointDBTable` varchar(200) NOT NULL,
+  `endPointDBUser` varchar(200) NOT NULL,
+  `endPointDBPassword` varchar(200) NOT NULL,
+  `syncFunctionName` varchar(200) NOT NULL,
   `frequenyMin` int(11) NOT NULL DEFAULT '60',
   `lastSync` datetime DEFAULT NULL,
   `LastStatus` int(11) DEFAULT NULL,
@@ -201,8 +205,8 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 -- Dumping data for table `syncrelationships`
 --
 
-INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointDataType`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`) VALUES
-(1, 'client', 'Labtech', 'clients', 30, NULL, NULL, '');
+INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointDBName`, `endPointDBTable`, `endPointDBUser`, `endPointDBPassword`, `syncFunctionName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`) VALUES
+(1, 'client', 'Labtech', 'clients', '', '', '', '', 30, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
