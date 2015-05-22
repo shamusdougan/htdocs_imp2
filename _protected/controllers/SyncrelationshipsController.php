@@ -3,14 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\syncrelationships;
-use app\models\syncrelationshipsSearch;
+use app\models\Syncrelationships;
+use app\models\SyncrelationshipsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SyncrelationshipsController implements the CRUD actions for syncrelationships model.
+ * SyncrelationshipsController implements the CRUD actions for Syncrelationships model.
  */
 class SyncrelationshipsController extends Controller
 {
@@ -27,12 +27,12 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Lists all syncrelationships models.
+     * Lists all Syncrelationships models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new syncrelationshipsSearch();
+        $searchModel = new SyncrelationshipsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Displays a single syncrelationships model.
+     * Displays a single Syncrelationships model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Creates a new syncrelationships model.
+     * Creates a new Syncrelationships model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new syncrelationships();
+        $model = new Syncrelationships();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->index]);
@@ -72,7 +72,7 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Updates an existing syncrelationships model.
+     * Updates an existing Syncrelationships model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Deletes an existing syncrelationships model.
+     * Deletes an existing Syncrelationships model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,33 +104,18 @@ class SyncrelationshipsController extends Controller
     }
 
     /**
-     * Finds the syncrelationships model based on its primary key value.
+     * Finds the Syncrelationships model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return syncrelationships the loaded model
+     * @return Syncrelationships the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = syncrelationships::findOne($id)) !== null) {
+        if (($model = Syncrelationships::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-    public function actionSync($id)
-    {
-		$model = $this->findModel($id);
-		
-		$syncResult = $model->executeSync();
-		
-		
-		
-		return $this->render('sync', [
-			'result' => $syncResult,
-			'model' => $model,
-		
-			]);
-	}
 }

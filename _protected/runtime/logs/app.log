@@ -8355,3 +8355,1101 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1427597745.613
     'REQUEST_TIME' => 1427597745
 ]
+2015-05-22 07:50:39 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncrelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncrelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncrelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:50:39 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64671'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432273839.251
+    'REQUEST_TIME' => 1432273839
+]
+2015-05-22 07:51:12 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncrelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncrelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncrelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:51:12 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64679'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432273872.557
+    'REQUEST_TIME' => 1432273872
+]
+2015-05-22 07:55:57 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncRelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncRelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncRelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:55:57 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64726'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432274157.809
+    'REQUEST_TIME' => 1432274157
+]
+2015-05-22 07:57:44 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncRelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncRelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncRelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:57:44 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64756'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432274264.015
+    'REQUEST_TIME' => 1432274264
+]
+2015-05-22 07:58:43 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncRelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncRelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncRelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:58:42 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64767'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432274322.952
+    'REQUEST_TIME' => 1432274322
+]
+2015-05-22 07:58:44 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncRelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncRelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncRelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:58:44 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64771'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432274324.013
+    'REQUEST_TIME' => 1432274324
+]
+2015-05-22 07:58:45 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Syncrelationships::endPointDataType' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('endPointDataTyp...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('endPointDataTyp...')
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(app\models\Syncrelationships), 'endPointDataTyp...')
+#3 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 1, 0)
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 1, 0)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 1, 0)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 1, 0)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(50): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('D:\\xampp\\htdocs...')
+#17 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\xampp\\htdocs...', Array)
+#18 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\xampp\\htdocs...', Array, Object(app\controllers\SyncRelationshipsController))
+#19 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncRelationshipsController))
+#20 D:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(41): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\SyncRelationshipsController->actionIndex()
+#22 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#26 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#28 {main}
+2015-05-22 07:58:44 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '64770'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432274324.965
+    'REQUEST_TIME' => 1432274324
+]
+2015-05-22 08:10:10 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Invalid path alias: @app\views\syncrelationships' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\BaseYii.php:152
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2-gii\generators\crud\Generator.php(199): yii\BaseYii::getAlias('@app\\views\\sync...')
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2-gii\generators\crud\Generator.php(166): yii\gii\generators\crud\Generator->getViewPath()
+#2 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2-gii\controllers\DefaultController.php(45): yii\gii\generators\crud\Generator->generate()
+#3 [internal function]: yii\gii\controllers\DefaultController->actionView('crud')
+#4 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('view', Array)
+#7 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('gii/default/vie...', Array)
+#8 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#10 {main}
+2015-05-22 08:10:10 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => 'crud'
+]
+
+$_POST = [
+    '_csrf' => 'ZzBLenF1YzRQcTkiODBXBiliPjBBKjBlHgEcLiU3W1s9UgkUMjAnBg=='
+    'Generator' => [
+        'modelClass' => 'app\\models\\Syncrelationships'
+        'searchModelClass' => 'app\\models\\SyncrelationshipsSearch'
+        'controllerClass' => 'app\\models\\SyncrealationshipsController'
+        'viewPath' => '@app\\views\\syncrelationships'
+        'baseControllerClass' => 'yii\\web\\Controller'
+        'indexWidgetType' => 'grid'
+        'enableI18N' => '0'
+        'messageCategory' => 'app'
+        'template' => 'default'
+    ]
+    'preview' => ''
+    'answers' => [
+        '623ebc60cb2da8949b3042eee1d3015c' => '1'
+        '2ffaf4441ee78dc14203e5f0d348b886' => '1'
+    ]
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/gii/crud'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'CONTENT_LENGTH' => '622'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65017'
+    'REDIRECT_URL' => '/gii/crud'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gii/crud'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275010.904
+    'REQUEST_TIME' => 1432275010
+]
+2015-05-22 08:10:48 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "syncrelationships".' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-22 08:10:48 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65026'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275048.582
+    'REQUEST_TIME' => 1432275048
+]
+2015-05-22 08:10:53 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Syncrelationships".' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('Syncrelationshi...', Array)
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-22 08:10:53 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65030'
+    'REDIRECT_URL' => '/Syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275053.34
+    'REQUEST_TIME' => 1432275053
+]
+2015-05-22 08:11:30 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Syncrelationships".' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('Syncrelationshi...', Array)
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-22 08:11:30 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65028'
+    'REDIRECT_URL' => '/Syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275090.023
+    'REQUEST_TIME' => 1432275090
+]
+2015-05-22 08:11:34 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "syncrelationships".' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-22 08:11:34 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65028'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275094.656
+    'REQUEST_TIME' => 1432275094
+]
+2015-05-22 08:11:38 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "syncrelationships".' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#1 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 D:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-22 08:11:38 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => '971md9j2g6l7mte2fthq2q78c5'
+    '_csrf' => '88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"7ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/syncrelationships'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=971md9j2g6l7mte2fthq2q78c5; _csrf=88db07d8ba1c580953c0aba566afff204b51a6639e0033b0a0f62607e7fcd789a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227ArXIE42NRuJ0_SQy1WTTB8oZbBnCED2%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '65042'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432275098.072
+    'REQUEST_TIME' => 1432275098
+]

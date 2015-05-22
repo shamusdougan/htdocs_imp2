@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\syncrelationships;
+use app\models\Syncrelationships;
 
 /**
- * syncrelationshipsSearch represents the model behind the search form about `app\models\syncrelationships`.
+ * SyncrelationshipsSearch represents the model behind the search form about `app\models\Syncrelationships`.
  */
-class syncrelationshipsSearch extends syncrelationships
+class SyncrelationshipsSearch extends Syncrelationships
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class syncrelationshipsSearch extends syncrelationships
     public function rules()
     {
         return [
-            [['index', 'frequenyMin', 'LastStatus'], 'integer'],
-            [['impModelName', 'endPointName', 'endPointDataType', 'lastSync', 'LastStatusData'], 'safe'],
+            [['index', 'endPointType', 'frequenyMin', 'LastStatus'], 'integer'],
+            [['impModelName', 'endPointName', 'endPointDBServer', 'endPointDBName', 'endPointDBTable', 'endPointUser', 'endPointPassword', 'syncModelName', 'lastSync', 'LastStatusData', 'endPointFilePath', 'endPointBaseURL'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class syncrelationshipsSearch extends syncrelationships
      */
     public function search($params)
     {
-        $query = syncrelationships::find();
+        $query = Syncrelationships::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,6 +57,7 @@ class syncrelationshipsSearch extends syncrelationships
 
         $query->andFilterWhere([
             'index' => $this->index,
+            'endPointType' => $this->endPointType,
             'frequenyMin' => $this->frequenyMin,
             'lastSync' => $this->lastSync,
             'LastStatus' => $this->LastStatus,
@@ -64,7 +65,15 @@ class syncrelationshipsSearch extends syncrelationships
 
         $query->andFilterWhere(['like', 'impModelName', $this->impModelName])
             ->andFilterWhere(['like', 'endPointName', $this->endPointName])
-            ->andFilterWhere(['like', 'LastStatusData', $this->LastStatusData]);
+            ->andFilterWhere(['like', 'endPointDBServer', $this->endPointDBServer])
+            ->andFilterWhere(['like', 'endPointDBName', $this->endPointDBName])
+            ->andFilterWhere(['like', 'endPointDBTable', $this->endPointDBTable])
+            ->andFilterWhere(['like', 'endPointUser', $this->endPointUser])
+            ->andFilterWhere(['like', 'endPointPassword', $this->endPointPassword])
+            ->andFilterWhere(['like', 'syncModelName', $this->syncModelName])
+            ->andFilterWhere(['like', 'LastStatusData', $this->LastStatusData])
+            ->andFilterWhere(['like', 'endPointFilePath', $this->endPointFilePath])
+            ->andFilterWhere(['like', 'endPointBaseURL', $this->endPointBaseURL]);
 
         return $dataProvider;
     }

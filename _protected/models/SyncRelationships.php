@@ -10,15 +10,19 @@ use Yii;
  * @property integer $index
  * @property string $impModelName
  * @property string $endPointName
+ * @property integer $endPointType
+ * @property string $endPointDBServer
  * @property string $endPointDBName
  * @property string $endPointDBTable
- * @property string $endPointDBUser
- * @property string $endPointDBPassword
- * @property string $syncFunctionName
+ * @property string $endPointUser
+ * @property string $endPointPassword
+ * @property string $syncModelName
  * @property integer $frequenyMin
  * @property string $lastSync
  * @property integer $LastStatus
  * @property string $LastStatusData
+ * @property string $endPointFilePath
+ * @property string $endPointBaseURL
  */
 class Syncrelationships extends \yii\db\ActiveRecord
 {
@@ -36,11 +40,11 @@ class Syncrelationships extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['impModelName', 'endPointName', 'endPointDBName', 'endPointDBTable', 'endPointDBUser', 'endPointDBPassword', 'syncFunctionName'], 'required'],
-            [['frequenyMin', 'LastStatus'], 'integer'],
+            [['impModelName', 'endPointName', 'endPointType', 'endPointDBServer', 'endPointDBName', 'endPointDBTable', 'endPointUser', 'endPointPassword', 'syncModelName', 'endPointFilePath', 'endPointBaseURL'], 'required'],
+            [['endPointType', 'frequenyMin', 'LastStatus'], 'integer'],
             [['lastSync'], 'safe'],
-            [['impModelName', 'endPointName', 'endPointDBName', 'endPointDBTable', 'endPointDBUser', 'endPointDBPassword', 'syncFunctionName'], 'string', 'max' => 200],
-            [['LastStatusData'], 'string', 'max' => 500]
+            [['impModelName', 'endPointName', 'endPointDBServer', 'endPointDBName', 'endPointDBTable', 'endPointUser', 'endPointPassword', 'syncModelName', 'endPointFilePath'], 'string', 'max' => 200],
+            [['LastStatusData', 'endPointBaseURL'], 'string', 'max' => 500]
         ];
     }
 
@@ -53,15 +57,19 @@ class Syncrelationships extends \yii\db\ActiveRecord
             'index' => 'Index',
             'impModelName' => 'Imp Model Name',
             'endPointName' => 'End Point Name',
+            'endPointType' => 'End Point Type',
+            'endPointDBServer' => 'End Point Dbserver',
             'endPointDBName' => 'End Point Dbname',
             'endPointDBTable' => 'End Point Dbtable',
-            'endPointDBUser' => 'End Point Dbuser',
-            'endPointDBPassword' => 'End Point Dbpassword',
-            'syncFunctionName' => 'Sync Function Name',
+            'endPointUser' => 'End Point User',
+            'endPointPassword' => 'End Point Password',
+            'syncModelName' => 'Sync Model Name',
             'frequenyMin' => 'Frequeny Min',
             'lastSync' => 'Last Sync',
             'LastStatus' => 'Last Status',
             'LastStatusData' => 'Last Status Data',
+            'endPointFilePath' => 'End Point File Path',
+            'endPointBaseURL' => 'End Point Base Url',
         ];
     }
 }

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\syncrelationshipsSearch */
+/* @var $searchModel app\models\SyncrelationshipsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Syncrelationships';
@@ -28,24 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'index',
             'impModelName',
             'endPointName',
-            'endPointDataType',
-            'frequenyMin',
-            'lastSync',
+            'endPointType',
+            'endPointDBServer',
+            // 'endPointDBName',
+            // 'endPointDBTable',
+            // 'endPointUser',
+            // 'endPointPassword',
+            // 'syncModelName',
+            // 'frequenyMin',
+            // 'lastSync',
             // 'LastStatus',
             // 'LastStatusData',
+            // 'endPointFilePath',
+            // 'endPointBaseURL:url',
 
-            ['class' => 'yii\grid\ActionColumn',
-            	'template' => '{view} {update} {delete} {sync}',
-            	'contentOptions' => ['style' => 'width:100px;'],
-            	'buttons' => 
-            		[
-            		'sync' => function ($url, $model){
-						return Html::a('<span class="glyphicon glyphicon-refresh"></span>', $url, [
-							'title' => Yii::t('app', "Sync"),
-						]);
-						}
-            		]
-            ],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

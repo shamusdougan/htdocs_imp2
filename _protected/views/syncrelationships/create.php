@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\syncrelationships */
+/* @var $model app\models\Syncrelationships */
 
 $this->title = 'Create Syncrelationships';
 $this->params['breadcrumbs'][] = ['label' => 'Syncrelationships', 'url' => ['index']];

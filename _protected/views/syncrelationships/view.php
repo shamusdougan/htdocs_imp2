@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\syncrelationships */
+/* @var $model app\models\Syncrelationships */
 
 $this->title = $model->index;
 $this->params['breadcrumbs'][] = ['label' => 'Syncrelationships', 'url' => ['index']];
@@ -31,11 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'index',
             'impModelName',
             'endPointName',
-            'endPointDataType',
+            'endPointType',
+            'endPointDBServer',
+            'endPointDBName',
+            'endPointDBTable',
+            'endPointUser',
+            'endPointPassword',
+            'syncModelName',
             'frequenyMin',
             'lastSync',
             'LastStatus',
             'LastStatusData',
+            'endPointFilePath',
+            'endPointBaseURL:url',
         ],
     ]) ?>
 
