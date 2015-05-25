@@ -29,6 +29,11 @@ class Syncrelationships extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+     const ENDPOINTTYPE_DATABASE=1;
+ 	 const ENDPOINTTYPE_WEB=2;
+	 const ENDPOINTTPYE_FILE=3;
+     
+     
     public static function tableName()
     {
         return 'syncrelationships';
@@ -40,7 +45,7 @@ class Syncrelationships extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['impModelName', 'endPointName', 'endPointType', 'endPointDBServer', 'endPointDBName', 'endPointDBTable', 'endPointUser', 'endPointPassword', 'syncModelName', 'endPointFilePath', 'endPointBaseURL'], 'required'],
+            [['impModelName', 'endPointName', 'endPointType', 'syncModelName', 'frequenyMin'], 'required'],
             [['endPointType', 'frequenyMin', 'LastStatus'], 'integer'],
             [['lastSync'], 'safe'],
             [['impModelName', 'endPointName', 'endPointDBServer', 'endPointDBName', 'endPointDBTable', 'endPointUser', 'endPointPassword', 'syncModelName', 'endPointFilePath'], 'string', 'max' => 200],

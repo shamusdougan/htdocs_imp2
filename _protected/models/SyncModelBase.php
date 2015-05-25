@@ -15,6 +15,14 @@ Class syncModelBase{
 	public $dataMapping;
 	
 	
+	/*
+	Function ExecuteSync
+	Description: This function executes the sync between the two data sources
+	*/
+	function executeSync()
+	{
+		
+	}
 	
 	
 }

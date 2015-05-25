@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Lookup;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SyncrelationshipsSearch */
@@ -25,10 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'index',
-            'impModelName',
-            'endPointName',
-            'endPointType',
+            'impModelName:text:Source',
+            'endPointName:text:Target',
+ //           'endPointType',
+            array(
+            	'attribute' => 'endPointType',
+	           	'value' => function($data) {
+            					return Lookup::item("SyncEndPointType", $data->endPointType);
+								}
+	        //    'filter' => Lookup::items("SyncEndPointType"),
+            
+	           ),
             'endPointDBServer',
             // 'endPointDBName',
             // 'endPointDBTable',

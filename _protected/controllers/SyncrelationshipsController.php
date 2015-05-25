@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Syncrelationships;
 use app\models\SyncrelationshipsSearch;
+use app\models\Lookup;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
