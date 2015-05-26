@@ -11544,3 +11544,1639 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1432528693.582
     'REQUEST_TIME' => 1432528693
 ]
+2015-05-26 11:40:41 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "lookups".' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookups', Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-26 11:40:41 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59714'
+    'REDIRECT_URL' => '/lookups'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookups'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432633240.643
+    'REQUEST_TIME' => 1432633240
+]
+2015-05-26 11:40:51 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Lookups".' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('Lookups', Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-26 11:40:51 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59721'
+    'REDIRECT_URL' => '/Lookups'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Lookups'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432633250.234
+    'REQUEST_TIME' => 1432633250
+]
+2015-05-26 11:40:57 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Lookup".' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('Lookup', Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-26 11:40:57 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59741'
+    'REDIRECT_URL' => '/Lookup'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Lookup'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432633256.688
+    'REQUEST_TIME' => 1432633256
+]
+2015-05-26 11:41:09 [127.0.0.1][2][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Lookup".' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('Lookup', Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#2 {main}
+2015-05-26 11:41:09 [127.0.0.1][2][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/'
+    '__id' => 2
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59747'
+    'REDIRECT_URL' => '/Lookup'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/Lookup'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432633268.365
+    'REQUEST_TIME' => 1432633268
+]
+2015-05-26 11:52:50 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function load() on a non-object' in C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php:100
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:52:50 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59814'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432633969.067
+    'REQUEST_TIME' => 1432633969
+]
+2015-05-26 11:53:22 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:8
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(8): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 8, Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#6 [internal function]: app\controllers\LookupController->actionTest()
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#13 {main}
+2015-05-26 11:53:22 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59815'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634001.602
+    'REQUEST_TIME' => 1432634001
+]
+2015-05-26 11:57:37 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '->' (T_OBJECT_OPERATOR)' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:20
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:57:37 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59873'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634256.327
+    'REQUEST_TIME' => 1432634256
+]
+2015-05-26 11:58:18 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '->' (T_OBJECT_OPERATOR)' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:20
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:58:18 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59872'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634297.621
+    'REQUEST_TIME' => 1432634297
+]
+2015-05-26 11:58:55 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'Lookup' not found' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:20
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:58:55 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59905'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634334.705
+    'REQUEST_TIME' => 1432634334
+]
+2015-05-26 11:59:06 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'lookup' not found' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:20
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:59:06 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59910'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634345.36
+    'REQUEST_TIME' => 1432634345
+]
+2015-05-26 11:59:52 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '}'' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:59
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 11:59:52 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59917'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432634391.183
+    'REQUEST_TIME' => 1432634391
+]
+2015-05-26 12:12:33 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Missing argument 1 for yii\db\BaseActiveRecord::findAll(), called in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php on line 21 and defined' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php:108
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(108): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', 'C:\\xampp\\htdocs...', 108, Array)
+#1 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(21): yii\db\BaseActiveRecord::findAll()
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#6 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#7 [internal function]: app\controllers\LookupController->actionTest()
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#12 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#14 {main}
+2015-05-26 12:12:33 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60126'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432635152.431
+    'REQUEST_TIME' => 1432635152
+]
+2015-05-26 12:12:43 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Missing argument 1 for yii\db\BaseActiveRecord::findAll(), called in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php on line 21 and defined' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php:108
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(108): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', 'C:\\xampp\\htdocs...', 108, Array)
+#1 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(21): yii\db\BaseActiveRecord::findAll()
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#6 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#7 [internal function]: app\controllers\LookupController->actionTest()
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#12 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#14 {main}
+2015-05-26 12:12:43 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60125'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432635162.687
+    'REQUEST_TIME' => 1432635162
+]
+2015-05-26 12:14:52 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:25
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(25): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#6 [internal function]: app\controllers\LookupController->actionTest()
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#13 {main}
+2015-05-26 12:14:52 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60163'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432635291.057
+    'REQUEST_TIME' => 1432635291
+]
+2015-05-26 12:15:05 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:25
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(25): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#6 [internal function]: app\controllers\LookupController->actionTest()
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#13 {main}
+2015-05-26 12:15:05 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60164'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432635304.624
+    'REQUEST_TIME' => 1432635304
+]
+2015-05-26 12:31:56 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Array to string conversion' in C:\xampp\htdocs_imp2\_protected\views\lookup\test.php:25
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(25): yii\base\ErrorHandler->handleError(8, 'Array to string...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#5 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#6 [internal function]: app\controllers\LookupController->actionTest()
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#13 {main}
+2015-05-26 12:31:56 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60478'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432636315.555
+    'REQUEST_TIME' => 1432636315
+]
+2015-05-26 12:35:42 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Lookup::Code' in C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\db\BaseActiveRecord.php(246): yii\base\Component->__get('Code')
+#1 C:\xampp\htdocs_imp2\_protected\models\Lookup.php(65): yii\db\BaseActiveRecord->__get('Code')
+#2 C:\xampp\htdocs_imp2\_protected\views\lookup\test.php(24): app\models\Lookup->items('SyncEndPointTyp...')
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\LookupController))
+#6 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('test', Array, Object(app\controllers\LookupController))
+#7 C:\xampp\htdocs_imp2\_protected\controllers\LookupController.php(103): yii\base\Controller->render('test', Array)
+#8 [internal function]: app\controllers\LookupController->actionTest()
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('test', Array)
+#12 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('lookup/test', Array)
+#13 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#15 {main}
+2015-05-26 12:35:42 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60548'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432636541.459
+    'REQUEST_TIME' => 1432636541
+]
+2015-05-26 12:38:16 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC), expecting identifier (T_STRING)' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:19
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 12:38:16 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60565'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432636695.266
+    'REQUEST_TIME' => 1432636695
+]
+2015-05-26 12:38:28 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'const' (T_CONST), expecting variable (T_VARIABLE)' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:19
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 12:38:28 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60568'
+    'REDIRECT_URL' => '/lookup/test'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/lookup/test'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432636707.248
+    'REQUEST_TIME' => 1432636707
+]
+2015-05-26 12:43:49 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:58
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\models\Lookup.php(58): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(36): app\models\Lookup->item('SyncEndPointTyp...', 1)
+#2 [internal function]: yii\base\View->{closure}(Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(190): call_user_func(Object(Closure), Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 2, 0)
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 2, 0)
+#6 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 2, 0)
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 2, 0)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#15 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#16 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(56): yii\base\Widget::widget(Array)
+#17 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#19 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SyncrelationshipsController))
+#20 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncrelationshipsController))
+#21 C:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(42): yii\base\Controller->render('index', Array)
+#22 [internal function]: app\controllers\SyncrelationshipsController->actionIndex()
+#23 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#25 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#26 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#27 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#29 {main}
+2015-05-26 12:43:49 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/lookup/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60725'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432637028.703
+    'REQUEST_TIME' => 1432637028
+]
+2015-05-26 12:44:29 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:58
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\models\Lookup.php(58): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 58, Array)
+#1 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(36): app\models\Lookup->item('SyncEndPointTyp...', 1)
+#2 [internal function]: yii\base\View->{closure}(Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(190): call_user_func(Object(Closure), Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 2, 0)
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 2, 0)
+#6 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 2, 0)
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 2, 0)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#15 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#16 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(56): yii\base\Widget::widget(Array)
+#17 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#19 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SyncrelationshipsController))
+#20 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncrelationshipsController))
+#21 C:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(42): yii\base\Controller->render('index', Array)
+#22 [internal function]: app\controllers\SyncrelationshipsController->actionIndex()
+#23 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#25 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#26 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#27 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#29 {main}
+2015-05-26 12:44:29 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/lookup/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60733'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432637068.543
+    'REQUEST_TIME' => 1432637068
+]
+2015-05-26 12:45:11 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs_imp2\_protected\models\Lookup.php:62
+Stack trace:
+#0 C:\xampp\htdocs_imp2\_protected\models\Lookup.php(62): yii\base\ErrorHandler->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 62, Array)
+#1 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(36): app\models\Lookup->item('SyncEndPointTyp...', 1)
+#2 [internal function]: yii\base\View->{closure}(Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#3 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(190): call_user_func(Object(Closure), Object(app\models\Syncrelationships), 2, 0, Object(yii\grid\DataColumn))
+#4 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(app\models\Syncrelationships), 2, 0)
+#5 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(app\models\Syncrelationships), 2, 0)
+#6 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(app\models\Syncrelationships), 2, 0)
+#7 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(app\models\Syncrelationships), 2, 0)
+#8 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#9 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#10 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#11 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#13 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#14 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#15 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#16 C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php(56): yii\base\Widget::widget(Array)
+#17 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#19 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SyncrelationshipsController))
+#20 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(app\controllers\SyncrelationshipsController))
+#21 C:\xampp\htdocs_imp2\_protected\controllers\SyncrelationshipsController.php(42): yii\base\Controller->render('index', Array)
+#22 [internal function]: app\controllers\SyncrelationshipsController->actionIndex()
+#23 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#25 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#26 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('syncrelationshi...', Array)
+#27 C:\xampp\htdocs_imp2\_protected\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\xampp\htdocs_imp2\index.php(12): yii\base\Application->run()
+#29 {main}
+2015-05-26 12:45:11 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/lookup/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60780'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432637110.647
+    'REQUEST_TIME' => 1432637110
+]
+2015-05-26 12:48:34 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ''filter'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'' in C:\xampp\htdocs_imp2\_protected\views\syncrelationships\index.php:38
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-26 12:48:34 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'eec7k3erncq9ne66tiekt5uur4'
+    '_csrf' => '832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/lookup/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=eec7k3erncq9ne66tiekt5uur4; _csrf=832f8992879eb8f3efcd927b2741c6b6d504ecf586f39ec6f13ff6807f694589a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ae9EOwcfkKMgJgFfLiW7m6VO0cAhy0_W%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.5.15'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '60826'
+    'REDIRECT_URL' => '/syncrelationships'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/syncrelationships'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432637313.14
+    'REQUEST_TIME' => 1432637313
+]

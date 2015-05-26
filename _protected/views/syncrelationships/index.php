@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Lookup;
+use app\models\lookup;
 
 
 /* @var $this yii\web\View */
@@ -33,9 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             array(
             	'attribute' => 'endPointType',
 	           	'value' => function($data) {
-            					return Lookup::item("SyncEndPointType", $data->endPointType);
-								}
-	        //    'filter' => Lookup::items("SyncEndPointType"),
+            					return Lookup::item($data->endPointType, "SyncEndPointType");
+								},
+	            'filter' => Lookup::items("SyncEndPointType"),
             
 	           ),
             'endPointDBServer',

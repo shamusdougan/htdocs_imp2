@@ -45,6 +45,7 @@ AppAsset::register($this);
 					['label' => 'Settings', 'icon' => 'cog', 'visible' => Yii::$app->user->can("useAdmin"), 'items' => [
 						['label' => 'User Accounts', 'url' => Url::toRoute('/user')],
 						['label' => 'Sync Settings', 'url' => Url::toRoute('/syncrelationships')],
+						['label' => 'Lookups', 'url' => Url::toRoute('/lookup')],
 						['label' => 'gii (remove later)', 'url' => Url::toRoute('/gii')]
 					
 					]],
