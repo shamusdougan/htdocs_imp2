@@ -13180,3 +13180,204 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1432637313.14
     'REQUEST_TIME' => 1432637313
 ]
+2015-05-27 07:00:12 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ':'' in D:\xampp\htdocs_imp2\_protected\views\syncrelationships\_form.php:19
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-27 07:00:12 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'inunltg3cgev45g60rlpe6hvi5'
+    '_csrf' => '3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/syncrelationships/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=inunltg3cgev45g60rlpe6hvi5; _csrf=3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59065'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/syncrelationships/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_URI' => '/syncrelationships/update?id=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432702812.705
+    'REQUEST_TIME' => 1432702812
+]
+2015-05-27 07:00:30 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'Lookup' not found' in D:\xampp\htdocs_imp2\_protected\views\syncrelationships\_form.php:19
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-27 07:00:30 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'inunltg3cgev45g60rlpe6hvi5'
+    '_csrf' => '3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/syncrelationships/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=inunltg3cgev45g60rlpe6hvi5; _csrf=3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '59083'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/syncrelationships/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_URI' => '/syncrelationships/update?id=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432702830.645
+    'REQUEST_TIME' => 1432702830
+]
+2015-05-27 08:19:17 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'View' not found' in D:\xampp\htdocs_imp2\_protected\views\syncrelationships\_form.php:17
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-27 08:19:16 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'inunltg3cgev45g60rlpe6hvi5'
+    '_csrf' => '3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'text/html, application/xhtml+xml, */*'
+    'HTTP_REFERER' => 'http://imp.sapient-tech.com.au/syncrelationships/index'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-AU'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_HOST' => 'imp.sapient-tech.com.au'
+    'HTTP_DNT' => '1'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_COOKIE' => 'PHPSESSID=inunltg3cgev45g60rlpe6hvi5; _csrf=3641803c35c98c97d06111930cac005d6089eacda72690b38aba9f59612eb987a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22um9PvMf3CSpyvSIYFPOyV21XFQ4qIJA3%22%3B%7D'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Microsoft Online Services;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:Support\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Windows Imaging\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Windows AIK\\Tools\\amd64;D:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11 Server at imp.sapient-tech.com.au Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.11'
+    'SERVER_NAME' => 'imp.sapient-tech.com.au'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs_imp2'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs_imp2/index.php'
+    'REMOTE_PORT' => '62466'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/syncrelationships/update'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_URI' => '/syncrelationships/update?id=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1432707556.979
+    'REQUEST_TIME' => 1432707556
+]

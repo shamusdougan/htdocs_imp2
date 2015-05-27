@@ -30,26 +30,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'impModelName:text:Source',
             'endPointName:text:Target',
  //           'endPointType',
-            array(
-            	'attribute' => 'endPointType',
+          
+	        'frequenyMin',
+	        'lastSync',
+            'LastStatus',
+	          array(
+	        	'attribute' => 'endPointType',
 	           	'value' => function($data) {
-            					return Lookup::item($data->endPointType, "SyncEndPointType");
+	        					return Lookup::item($data->endPointType, "SyncEndPointType");
 								},
 	            'filter' => Lookup::items("SyncEndPointType"),
-            
+	        
 	           ),
+	        'endPointUser',
+	        'endPointPassword',
             'endPointDBServer',
-            // 'endPointDBName',
-            // 'endPointDBTable',
-            // 'endPointUser',
-            // 'endPointPassword',
-            // 'syncModelName',
-            // 'frequenyMin',
-            // 'lastSync',
-            // 'LastStatus',
-            // 'LastStatusData',
-            // 'endPointFilePath',
-            // 'endPointBaseURL:url',
+            'endPointDBName',
+            'endPointDBTable',
+            'endPointFilePath',
+            'endPointBaseURL:url',
+            'syncModelName',
+            
+            
+           
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
