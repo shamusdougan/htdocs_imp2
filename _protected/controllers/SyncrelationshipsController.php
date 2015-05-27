@@ -119,4 +119,23 @@ class SyncrelationshipsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    
+     public function actionSync($id)
+    {
+		$model = $this->findModel($id);
+		
+		$syncModel = $model->syncModelName;
+		include_once("_protected\models\\".$syncModel.".php");
+		$newModel = new $syncModel();
+		
+		$syncResult =  $newModel->executeSync();
+		
+		return $this->render('sync', [
+			'result' => $syncResult,
+			'model' => $model,
+		
+			]);
+	}
+    
 }

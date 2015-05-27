@@ -21,7 +21,7 @@ Class syncModelBase{
 	*/
 	function executeSync()
 	{
-		
+		return "blah";
 	}
 	
 	

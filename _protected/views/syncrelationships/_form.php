@@ -14,18 +14,39 @@ $this->registerJs("
 	$(document).ready(function () {changeEndPointType();});
 	
 	
+	
+
+
+
+", View::POS_LOAD);
+
+?>
+<script type="text/javascript">
+	
 	function changeEndPointType(){
 		value = $('#syncrelationships-endpointtype option:selected').text();
 		
-		alert(value);
+		if(value == "Database"){
+			$("#databaseSection").show();
+			$("#FileSection").hide();
+			$("#WebSection").hide();
+			}
 		
-	}
-
-
-
-", View::POS_READY);
-?>
-
+		if(value == "Webpage"){
+			$("#databaseSection").hide();
+			$("#FileSection").hide();
+			$("#WebSection").show();
+			}
+		if(value == "File"){
+			$("#databaseSection").hide();
+			$("#FileSection").show();
+			$("#WebSection").hide();
+			}
+		
+		
+		}
+	
+</script>
 <div class="syncrelationships-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -38,11 +59,11 @@ $this->registerJs("
      
     <?= $form->field($model, 'frequenyMin')->textInput() ?>
     
-    <?= $form->field($model, 'lastSync')->textInput() ?>
+    <?= $form->field($model, 'lastSync')->textInput(['readonly' => true]) ?>
 
-    <?= $form->field($model, 'LastStatus')->textInput() ?>
+    <?= $form->field($model, 'LastStatus')->textInput(['readonly' => true]) ?>
     
-    <?= $form->field($model, 'LastStatusData')->textInput(['maxlength' => 500]) ?>
+    <?= $form->field($model, 'LastStatusData')->textInput(['maxlength' => 500, 'readonly' => true]) ?>
 
     <?= $form->field($model, 'endPointType')->dropDownList(Lookup::items("SyncEndPointType"), ['prompt' => '---- Select Type ----', 'onchange' => 'javascript:changeEndPointType()' ]) ?>
     
