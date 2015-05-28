@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\clientSearch */
+/* @var $model app\models\ClientSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -19,17 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'ownerContact') ?>
+    <?= $form->field($model, 'address') ?>
 
-    <?= $form->field($model, 'authorizedContact') ?>
+    <?= $form->field($model, 'city') ?>
 
-    <?= $form->field($model, 'billingContact') ?>
-
-    <?php // echo $form->field($model, 'address') ?>
-
-    <?php // echo $form->field($model, 'city') ?>
-
-    <?php // echo $form->field($model, 'state') ?>
+    <?= $form->field($model, 'state') ?>
 
     <?php // echo $form->field($model, 'postcode') ?>
 
@@ -39,15 +33,31 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'ABN') ?>
 
-    <?php // echo $form->field($model, 'IntegrationID1') ?>
-
-    <?php // echo $form->field($model, 'IntegrationID2') ?>
-
-    <?php // echo $form->field($model, 'IntegrationID3') ?>
-
     <?php // echo $form->field($model, 'defaultBillingRate') ?>
 
     <?php // echo $form->field($model, 'deafultBillingType') ?>
+
+    <?php // echo $form->field($model, 'accountBillTo') ?>
+
+    <?php // echo $form->field($model, 'FK1') ?>
+
+    <?php // echo $form->field($model, 'FK2') ?>
+
+    <?php // echo $form->field($model, 'FK3') ?>
+
+    <?php // echo $form->field($model, 'FK4') ?>
+
+    <?php // echo $form->field($model, 'FK5') ?>
+
+    <?php // echo $form->field($model, 'last_change') ?>
+
+    <?php // echo $form->field($model, 'sync_status') ?>
+
+    <?php // echo $form->field($model, 'contact_billing') ?>
+
+    <?php // echo $form->field($model, 'contact_authorized') ?>
+
+    <?php // echo $form->field($model, 'contact_owner') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

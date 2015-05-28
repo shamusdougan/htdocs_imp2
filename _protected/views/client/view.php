@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\client */
+/* @var $model app\models\Client */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Clients', 'url' => ['index']];
@@ -30,9 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'ownerContact',
-            'authorizedContact',
-            'billingContact',
             'address',
             'city',
             'state',
@@ -40,11 +37,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone1',
             'phone2',
             'ABN',
-            'IntegrationID1',
-            'IntegrationID2',
-            'IntegrationID3',
             'defaultBillingRate',
             'deafultBillingType',
+            'accountBillTo',
+            'FK1',
+            'FK2',
+            'FK3',
+            'FK4',
+            'FK5',
+            'last_change',
+            'sync_status',
+            'contact_billing',
+            'contact_authorized',
+            'contact_owner',
         ],
     ]) ?>
 

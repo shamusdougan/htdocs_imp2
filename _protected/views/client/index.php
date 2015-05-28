@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\clientSearch */
+/* @var $searchModel app\models\ClientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Clients';
@@ -25,23 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'ownerContact',
-            'authorizedContact',
-            'billingContact',
-            // 'address',
-            // 'city',
-            // 'state',
-            // 'postcode',
+            'address',
+            'city',
             // 'phone1',
             // 'phone2',
             // 'ABN',
-            // 'IntegrationID1',
-            // 'IntegrationID2',
-            // 'IntegrationID3',
-            // 'defaultBillingRate',
-            // 'deafultBillingType',
+            'defaultBillingRate',
+            'deafultBillingType',
+            'accountBillTo',
+            // 'FK1',
+            // 'FK2',
+            // 'FK3',
+            // 'FK4',
+            // 'FK5',
+            // 'last_change',
+            // 'sync_status',
+            'contact_billing',
+            'contact_authorized',
+            'contact_owner',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
