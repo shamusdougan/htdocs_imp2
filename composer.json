@@ -17,7 +17,7 @@
         "nenad/yii2-password-strength": "*",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-krajee-base": "*",
-        "kartik-v/yii2-widget-activeform": "*"
+        "kartik-v/yii2-builder":"*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

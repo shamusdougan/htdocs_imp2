@@ -1,6 +1,6 @@
 <?php
 
-//use yii\helpers\Html;
+use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 
 
@@ -24,37 +24,60 @@ use kartik\builder\Form;
     	'form'=>$form,
     	'columns'=>2,
     	'attributes'=>[
-    		'name' =>['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder'=>'Enter Company Name....'] ]
+    		'name' =>['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder'=>'Enter Company Name....'] ],
+    		'ABN' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder'=>'Company ABN'] ]
     	
     	]
     ]);
+ 
+     echo Form::widget([
+    	'model'=>$model,
+    	'form'=>$form,
+    	'columns'=>1,
+    	'attributes'=>[
+    		'address' =>['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder'=>'Enter Company Address....'] ]
+    	]
+    ]);
     
+    echo Form::widget([
+    	'model'=>$model,
+    	'form'=>$form,
+    	'columns'=>3,
+    	'attributes'=>[
+    		'city' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'City...'] ],
+    		'state' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'State..'] ],
+    		'postcode' => ['type' => FORM::INPUT_TEXT, 'options' => ['placeholder' => 'Postcode...'] ]
+    		]
     
+    ]);
     
+    echo Form::widget([
+    	'model'=>$model,
+    	'form'=>$form,
+    	'columns'=>3,
+    	'attributes'=>[
+    		'phone1' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'Phone Number...'] ],
+    		'phone2' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Phone Number...'] ]
+    		]
+    
+    ]);
+    
+    Echo "<b>Billing Information</B>";
+    
+     echo Form::widget([
+    	'model'=>$model,
+    	'form'=>$form,
+    	'columns'=>3,
+    	'attributes'=>[
+    		'defaultBillingRate' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'Billing Rate Dropdown'] ],
+    		'deafultBillingType' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Billing Type Dropdown'] ],
+    		'accountBillTo' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Bill To Company'] ]
+    		]
+    
+    ]);
     ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 500]) ?>
-
-    <?= $form->field($model, 'address')->textInput(['maxlength' => 500]) ?>
-
-    <?= $form->field($model, 'city')->textInput(['maxlength' => 500]) ?>
-
-    <?= $form->field($model, 'state')->textInput() ?>
-
-    <?= $form->field($model, 'postcode')->textInput() ?>
-
-    <?= $form->field($model, 'phone1')->textInput() ?>
-
-    <?= $form->field($model, 'phone2')->textInput() ?>
-
-    <?= $form->field($model, 'ABN')->textInput() ?>
-
-    <?= $form->field($model, 'defaultBillingRate')->textInput() ?>
-
-    <?= $form->field($model, 'deafultBillingType')->textInput() ?>
-
-    <?= $form->field($model, 'accountBillTo')->textInput() ?>
-
+ 
     <?= $form->field($model, 'contact_billing')->textInput() ?>
 
     <?= $form->field($model, 'contact_authorized')->textInput() ?>
