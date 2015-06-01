@@ -129,7 +129,7 @@ class SyncrelationshipsController extends Controller
 		include_once("_protected\models\\".$syncModel.".php");
 		$newModel = new $syncModel();
 		
-		$syncResult =  $newModel->executeSync();
+		$syncResult =  $newModel->executeSync($model);
 		
 		return $this->render('sync', [
 			'result' => $syncResult,

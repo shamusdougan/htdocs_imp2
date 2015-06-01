@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
        
     </p>
 
-  <? echo $result; ?>
+
 <textarea cols=150 rows=20><? echo $result; ?></textarea>
  
 
