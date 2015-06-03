@@ -92,7 +92,7 @@ Class syncModelBase{
 	{
 		//query the local database for any records that have changed since the last sync
 		
-		
+		//date_default_timezone_set("Australia/Melbourne");
 		//$results = $connection->createCommand("Select * From clients")->queryAll();
 		if($syncRelationship->lastSync == "")
 		{
