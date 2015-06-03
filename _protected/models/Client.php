@@ -46,7 +46,7 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'defaultBillingRate', 'deafultBillingType', 'sync_status'], 'required'],
+            [['name', 'defaultBillingRate', 'deafultBillingType'], 'required'],
             [['state', 'postcode', 'phone1', 'phone2', 'ABN', 'defaultBillingRate', 'deafultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
             [['last_change'], 'safe'],
             [['name', 'address', 'city'], 'string', 'max' => 500]

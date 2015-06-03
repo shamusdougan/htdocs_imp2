@@ -1,5 +1,6 @@
 <?php
 use app\models\Syncrelationships;
+use app\models\Client;
 /*
 * Class SyncModelBase class
 * Description: This model provides all of the common functionality for all of the sync models
@@ -92,25 +93,32 @@ Class syncModelBase{
 	{
 		//query the local database for any records that have changed since the last sync
 		
-		//date_default_timezone_set("Australia/Melbourne");
 		//$results = $connection->createCommand("Select * From clients")->queryAll();
+		
+		//No sync has been done yet start the process off
 		if($syncRelationship->lastSync == "")
 		{
-			
-			$syncRelationship->lastSync = date("Y-m-d H:i:s");
+			$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
 			$syncRelationship->save();
-			return $syncRelationship->lastSync;
-			
-			
-			return "No Previous sync performed";
-		}
-		else
-		{
-			$syncRelationship->lastSync = date("Y-m-d H:i:s");
-			$syncRelationship->save();
-			return $syncRelationship->lastSync;
 		}
 		
+		
+		//	fetch the imp records that have changed since the last sync
+		
+ 		$results = Client::find()
+ 			->where("last_change > '".$syncRelationship->lastSync."'")
+ 			->all(); 
+		print_r($results);
+		
+		
+		
+		
+		// fetch the foreign records that have changed since the last sync was performed
+		$results = $connection->createCommand("Select * From clients")->queryAll();
+
+
+		return $syncRelationship->lastSync;
+
 		
 		
 	}
