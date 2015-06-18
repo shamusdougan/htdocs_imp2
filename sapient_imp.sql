@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2015 at 08:34 AM
+-- Generation Time: Jun 18, 2015 at 04:24 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -166,13 +166,20 @@ CREATE TABLE IF NOT EXISTS `client` (
   `FK3` int(30) DEFAULT NULL,
   `FK4` int(30) DEFAULT NULL,
   `FK5` int(30) DEFAULT NULL,
-  `last_change` date DEFAULT NULL,
+  `last_change` datetime DEFAULT NULL,
   `sync_status` int(5) NOT NULL,
   `contact_billing` int(5) DEFAULT NULL,
   `contact_authorized` int(5) DEFAULT NULL,
   `contact_owner` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `deafultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
+(1, 'Sapient Technology Solutions', 'Suite 3, 1501 Malvern Rd', 'Glen Iris', 1, 3146, 1300787471, NULL, 2147483647, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-06-18 15:26:06', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -251,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 --
 
 INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointType`, `endPointDBServer`, `endPointDBName`, `endPointDBTable`, `endPointUser`, `endPointPassword`, `syncModelName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`, `endPointFilePath`, `endPointBaseURL`) VALUES
-(2, 'Clients', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, NULL, NULL, '', '', '');
+(2, 'Clients', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-06-18 16:05:41', NULL, '', '', '');
 
 -- --------------------------------------------------------
 

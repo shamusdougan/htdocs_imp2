@@ -54,32 +54,6 @@ Class syncModelBase{
 		
 	}
 	
-	/*
-	Function connectDatabase
-	Descitpion: takes the syncRelationship object and connected to the database
-	inputs: syncRelationship Object -> see syncRelationship Model
-	outputs: either the database connections object or the error message to be returned
-	*/
-	function connectDatabase($syncRelationship)
-	{
-		$dsn = "mysql:host=".$syncRelationship->endPointDBServer.";dbname=".$syncRelationship->endPointDBName;
-		$connection = new \yii\db\Connection([
-		    'dsn' => $dsn,
-		    'username' => $syncRelationship->endPointUser,
-		    'password' => $syncRelationship->endPointPassword,
-		]);
-	
-	try{
-		$connection->open();	
-		}
-	catch(Exception $e)
-		{
-			return "Unable to connect to Database: ".$dsn." using: ".$syncRelationship->endPointUser."\nError Message Returned: ".$e->getMessage();
-		}
-	
-	return $connection;
-	
-	}
 	
 	
 	/*
@@ -91,9 +65,6 @@ Class syncModelBase{
 	*/
 	function syncDatabase($connection, $syncRelationship)
 	{
-		//query the local database for any records that have changed since the last sync
-		
-		//$results = $connection->createCommand("Select * From clients")->queryAll();
 		
 		//No sync has been done yet start the process off
 		if($syncRelationship->lastSync == "")
@@ -102,24 +73,57 @@ Class syncModelBase{
 			$syncRelationship->save();
 		}
 		
+		$returnText = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
+		$returnText .= "\nSyncing Imp:".$syncRelationship->impModelName." and ".$syncRelationship->endPointName.": ".$syncRelationship->endPointDBTable."\n";
+		
+		
 		
 		//	fetch the imp records that have changed since the last sync
-		
- 		$results = Client::find()
+		$updatedRecords = Client::find()
  			->where("last_change > '".$syncRelationship->lastSync."'")
  			->all(); 
-		print_r($results);
+		
+		$returnText .= "    ".count($updatedRecords)." imp record(s) changed since last sync\n";
 		
 		
+		foreach($updatedRecords as $record)
+		{
+			$returnText .= "      ".$record->name." changed\n";
+		}
 		
 		
-		// fetch the foreign records that have changed since the last sync was performed
-		$results = $connection->createCommand("Select * From clients")->queryAll();
+/*		//Fetch the Foreign records that have changed since the last syncLabtechClient
+		$updatedForeignRecords = $connection->createCommand("Select * From ".$syncRelationship->endPointDBTable." WHERE ")->queryAll();
+		$returnText .= "    ".count($updatedForeignRecords)." Foreign record(s) changed since last sync\n";
+		
+		
+		foreach($updatedForeignRecords as $record)
+				{
+					$returnText .= "      ".$record['Name']."\n";
+				}
+				
+*/				
+		
+		
+		$returnText .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
+		$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		$syncRelationship->save();
+		return $returnText;
+
+		
+		
+	}
 
 
-		return $syncRelationship->lastSync;
+	//Place holder only, this needs to be defined in the child object
+	function connectDatabase()
+	{
+	}
 
-		
+
+	//place holder only, this needs to defined in the child object
+	function fetchDataArray()
+	{
 		
 	}
 	

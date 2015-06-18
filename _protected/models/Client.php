@@ -83,4 +83,11 @@ class Client extends \yii\db\ActiveRecord
             'contact_owner' => 'Contact Owner',
         ];
     }
+    
+    public function beforeSave($insert)
+    {
+		$this->last_change =  date("Y-m-d H:i:s");
+		return parent::beforeSave($insert);
+
+	}
 }
