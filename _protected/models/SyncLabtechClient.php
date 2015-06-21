@@ -6,8 +6,9 @@ class syncLabtechClient extends syncModelBase
 
 {
 	
-	var $dataMapping = [
-		"FK1" => "ClientID",
+	
+	var $dataIndex = array("imp" => "FK1", "foriegn" => "ClientID");
+	var $dataFromImpMapping = [
 		"name" => "Name",
 		"address" => "Address1",
 		"city" => "City",
@@ -16,7 +17,16 @@ class syncLabtechClient extends syncModelBase
 		"phone1" => "Phone",
 		];
 		
-	public $defaultDirection = syncModelBase::SYNC_BOTHWAYS;
+	var $dataToImpMapping = [
+		"name" => "Name",
+		"address" => "Address1",
+		"city" => "City",
+		"state" => "State",
+		"postcode" => "Zip",
+		"phone1" => "Phone",
+		];
+	
+	
 	
 	
 	
@@ -66,7 +76,10 @@ class syncLabtechClient extends syncModelBase
 		
 	}
 	
-	
+	function transferToForiegn($impModel)
+	{
+		
+	}
 	
 }
 

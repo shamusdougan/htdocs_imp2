@@ -14,13 +14,16 @@ Class syncModelBase{
 	
 	//datamapping variable should be an array 
 	//   "impModelFieldName" => "ForeignFieldName" - simply 1-to-1 datatranslation
-	//	"impModelFieldName" => array("name" => "ForeignFieldName", "callBack" => "transformationFunctionName", "direction" => "SyncDirection")
-	public $dataMapping;
-	public $defaultDirection;
+	//	"impModelFieldName" => array("name" => "ForeignFieldName", "callBack" => "transformationFunctionName")
+	public  $dataFromImpMapping;
 	
-	const SYNC_BOTHWAYS=1;
- 	const SYNC_FROMIMP=2;
-	const SYNC_TOIMP=3;
+	// dataToImpMapping -> is an array of keys from the data array into implements
+	// array("foreignFieldName" => "impFieldName") - basic one to one mapping
+	// array("foreignFieldNAme" =>  array("name" => "impFieldName", "callback" =>transformationFunctionName))
+	public 	$dataToImpMapping ;
+	
+	//DataIndex -> How the two enties are related array("imp" => "ImpFieldName", "foreign" => foriegnFieldName)
+	public $dataIndex;
 	
 	
 	/*
@@ -131,10 +134,22 @@ Class syncModelBase{
 	*/
 	function copyFromImp($impModels)
 	{
-		
+	
+		foreach($impModels as $impModel)
+			{
+			$this->transferToForiegn($impModel;)
+			}
 	}
 
-
+	/*
+	Function: copyToImp
+	Descitpion: Takes the associated array of data from the Foreign source and copies it into Imp database
+	Input: foreignDataArray
+	*/
+	function copyToImp($foreignDataArray)
+	{
+		
+	}
 
 
 	/*
