@@ -26,6 +26,21 @@ class LookupController extends Controller
         ];
     }
 
+
+
+	public function beforeAction($action)
+	{
+	    if (!parent::beforeAction($action)) {
+	        return false;
+	    }
+
+	    $this->view->params['menuItem'] = 'lookup';
+
+	    return true; // or false to not run the action
+	}
+
+
+
     /**
      * Lists all lookup models.
      * @return mixed

@@ -27,6 +27,20 @@ class SyncrelationshipsController extends Controller
         ];
     }
 
+
+	public function beforeAction($action)
+	{
+	    if (!parent::beforeAction($action)) {
+	        return false;
+	    }
+
+	    $this->view->params['menuItem'] = 'syncrelationships';
+
+	    return true; // or false to not run the action
+	}
+
+  
+
     /**
      * Lists all Syncrelationships models.
      * @return mixed
@@ -123,6 +137,8 @@ class SyncrelationshipsController extends Controller
     
      public function actionSync($id)
     {
+    	
+    	
 		$model = $this->findModel($id);
 		
 		$syncModel = $model->syncModelName;

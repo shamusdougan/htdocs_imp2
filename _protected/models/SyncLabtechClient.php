@@ -7,12 +7,18 @@ class syncLabtechClient extends syncModelBase
 {
 	
 	var $dataMapping = [
-		"FK1" => "id",
-	
-	
-	
+		"FK1" => "ClientID",
+		"name" => "Name",
+		"address" => "Address1",
+		"city" => "City",
+		"state" => "State",
+		"postcode" => "Zip",
+		"phone1" => "Phone",
 		];
 		
+	public $defaultDirection = syncModelBase::SYNC_BOTHWAYS;
+	
+	
 	
 	/*
 	Function connectDatabase
@@ -42,8 +48,21 @@ class syncLabtechClient extends syncModelBase
 	}
 	
 	
-	function fetchDataArray()
+	function fetchForeignChanges($syncRelationship)
 	{
+	
+	
+		$connection = $this->connectDatabase($syncRelationship);
+		
+		try{
+			$updatedForeignRecords = $connection->createCommand("Select * From ".$syncRelationship->endPointDBTable." WHERE Last_Date > '".$syncRelationship->lastSync."'")->queryAll();
+			}
+		catch(Exception $e)
+		{
+			return "Error in fetching Foreign Data, Error: ".$e->getMessage();	
+		}
+	
+		return $updatedForeignRecords;
 		
 	}
 	

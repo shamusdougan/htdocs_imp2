@@ -13,6 +13,24 @@ use Yii;
  */
 class UserController extends AppController
 {
+	
+	
+	
+	public function beforeAction($action)
+	{
+	    if (!parent::beforeAction($action)) {
+	        return false;
+	    }
+
+	    $this->view->params['menuItem'] = 'user';
+
+	    return true; // or false to not run the action
+	}
+
+	
+	
+	
+	
     /**
      * Lists all User models.
      *

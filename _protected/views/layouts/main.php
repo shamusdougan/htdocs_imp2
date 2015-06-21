@@ -11,6 +11,14 @@ use yii\widgets\Breadcrumbs;
 /* @var $content string */
 
 AppAsset::register($this);
+
+	$currentItem = false;
+		if(isset($this->params['menuItem']))
+		{
+		$currentItem = $this->params['menuItem'];
+		}
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -37,15 +45,15 @@ AppAsset::register($this);
 					['label' => 'Dashboard', 'icon' => 'home', 'url' => Url::toRoute('/')],
 					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
 					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts"), 'items' => [
-						['label' => 'Clients', 'url' => Url::toRoute('/client')]
+						['label' => 'Clients', 'url' => Url::toRoute('/client'), 'active'=>($currentItem == 'client')]
 					
 					
 					
 					]],
 					['label' => 'Settings', 'icon' => 'cog', 'visible' => Yii::$app->user->can("useAdmin"), 'items' => [
-						['label' => 'User Accounts', 'url' => Url::toRoute('/user')],
-						['label' => 'Sync Settings', 'url' => Url::toRoute('/syncrelationships')],
-						['label' => 'Lookups', 'url' => Url::toRoute('/lookup')],
+						['label' => 'User Accounts', 'url' => Url::toRoute('/user'), 'active'=>($currentItem == 'user')],
+						['label' => 'Sync Settings', 'url' => Url::toRoute('/syncrelationships'), 'active'=>($currentItem == 'syncrelationships')],
+						['label' => 'Lookups', 'url' => Url::toRoute('/lookup'), 'active'=>($currentItem == 'lookup')],
 						['label' => 'gii (remove later)', 'url' => Url::toRoute('/gii')]
 					
 					]],

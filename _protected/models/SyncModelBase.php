@@ -12,12 +12,15 @@ Class syncModelBase{
 	
 	
 	
-	public $impModelName;
-	
 	//datamapping variable should be an array 
 	//   "impModelFieldName" => "ForeignFieldName" - simply 1-to-1 datatranslation
-	//	"impModelFieldName" => array("name" => "ForeignFieldName", "callBack" => "transformationFunctionName")
+	//	"impModelFieldName" => array("name" => "ForeignFieldName", "callBack" => "transformationFunctionName", "direction" => "SyncDirection")
 	public $dataMapping;
+	public $defaultDirection;
+	
+	const SYNC_BOTHWAYS=1;
+ 	const SYNC_FROMIMP=2;
+	const SYNC_TOIMP=3;
 	
 	
 	/*
@@ -33,14 +36,7 @@ Class syncModelBase{
 		
 		if($syncRelationship->endPointType == Syncrelationships::ENDPOINTTYPE_DATABASE)
 		{
-			$dataConnection = $this->connectDatabase($syncRelationship);
-			if(is_string($dataConnection))
-				{
-				return $dataConnection;
-				}
-			else{
-				return $this->syncDatabase($dataConnection, $syncRelationship);
-			}
+			return $this->syncDatabase($syncRelationship);
 		}
 		elseif($syncRelationship->endPointType == Syncrelationships::ENDPOINTTYPE_WEB)
 		{
@@ -63,7 +59,7 @@ Class syncModelBase{
 		$syncRelationship -> the given sync relationship object. This object stores the information for the last sync etc
 	
 	*/
-	function syncDatabase($connection, $syncRelationship)
+	function syncDatabase($syncRelationship)
 	{
 		
 		//No sync has been done yet start the process off
@@ -82,37 +78,79 @@ Class syncModelBase{
 		$updatedRecords = Client::find()
  			->where("last_change > '".$syncRelationship->lastSync."'")
  			->all(); 
-		
 		$returnText .= "    ".count($updatedRecords)." imp record(s) changed since last sync\n";
-		
-		
 		foreach($updatedRecords as $record)
 		{
 			$returnText .= "      ".$record->name." changed\n";
 		}
 		
-		
-/*		//Fetch the Foreign records that have changed since the last syncLabtechClient
-		$updatedForeignRecords = $connection->createCommand("Select * From ".$syncRelationship->endPointDBTable." WHERE ")->queryAll();
-		$returnText .= "    ".count($updatedForeignRecords)." Foreign record(s) changed since last sync\n";
-		
-		
-		foreach($updatedForeignRecords as $record)
+		//Of this section will grab all the records from the foreign source that have changed since the last sync
+		//was carried out.
+		$returnText .= "\n\nFetching Changes in Foreign Data\n";				
+		$foreignChanges = $this->fetchForeignChanges($syncRelationship);
+		if(is_string($foreignChanges))
+			{
+			$returnText .= $foreignChanges;
+			}
+		else
+			{	
+			$returnText .= "    ".count($foreignChanges)." Foreign record(s) changed since last sync\n";
+			foreach($foreignChanges as $record)
 				{
-					$returnText .= "      ".$record['Name']."\n";
+				$returnText .= "      ".$record['Name']."\n";
 				}
-				
-*/				
+			}
+		
+		
+		
+		
+		
+		//OK from this point we have two arrays, the array of imp records that have changed since the last syncLabtechClient
+		//and the array of records of the foreign datasource that have changed since the last sync was carried out.
+		//print_r($foreignChanges);
+		//$updatedRecords -> Imp models
+		//$foreignChanges -> Foreigns changes in an assoicated array of data. not index by id but by number
+		
 		
 		
 		$returnText .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
-		$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		//$syncRelationship->lastSync = date("Y-m-d H:i:s");
 		$syncRelationship->save();
 		return $returnText;
 
 		
 		
 	}
+
+
+
+	/*
+	Function: copyFromImp
+	Description: Takes the given array of changes to IMP and copies to the foreign datasource
+	input: impModels -> an array of imp models that have changed since the last sync
+	*/
+	function copyFromImp($impModels)
+	{
+		
+	}
+
+
+
+
+	/*
+	Function: CheckDuplicates
+	Description: This function runs through and check for duplicated in the two arrays
+				If any duplicated are found then the latest entry is copied over the other entry
+	input: The two dataarrays, one containing the imp models and the other containing the foriegn DataColumn
+	output: none
+	*/
+	function checkDuplicates($impModels, $foreignDataArray)
+	{
+		
+	}
+	
+	
+	
 
 
 	//Place holder only, this needs to be defined in the child object
@@ -122,10 +160,14 @@ Class syncModelBase{
 
 
 	//place holder only, this needs to defined in the child object
-	function fetchDataArray()
+	function fetchForeignChanges()
 	{
 		
 	}
+	
+	
+	
+	
 	
 }
 
