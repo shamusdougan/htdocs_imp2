@@ -1,4 +1,6 @@
 <?php
+use app\models\Client;
+
 
 require_once("SyncModelBase.php");
 
@@ -6,8 +8,9 @@ class syncLabtechClient extends syncModelBase
 
 {
 	
+	var $syncType = syncModelBase::DUALSYNC;
 	
-	var $dataIndex = array("imp" => "FK1", "foriegn" => "ClientID");
+	var $dataIndex = array("imp" => "FK1", "remote" => "ClientID");
 	var $dataFromImpMapping = [
 		"name" => "Name",
 		"address" => "Address1",
@@ -28,58 +31,79 @@ class syncLabtechClient extends syncModelBase
 	
 	
 	
-	
-	
 	/*
-	Function connectDatabase
-	Descitpion: takes the syncRelationship object and connected to the database
-	inputs: syncRelationship Object -> see syncRelationship Model
-	outputs: either the database connections object or the error message to be returned
-	*/
-	function connectDatabase($syncRelationship)
-	{
-		$dsn = "mysql:host=".$syncRelationship->endPointDBServer.";dbname=".$syncRelationship->endPointDBName;
-		$connection = new \yii\db\Connection([
-		    'dsn' => $dsn,
-		    'username' => $syncRelationship->endPointUser,
-		    'password' => $syncRelationship->endPointPassword,
-		]);
-	
-	try{
-		$connection->open();	
-		}
-	catch(Exception $e)
+		Function: getRemoteRecordsChangedSince
+		input
+		$dateTime: the given date/time of the last successfuly syncLabtechClient
+		$dbconnection: the connection to the foreign database
+		output:
+		should return anarray of records changed since the last sync, the array should be indexed on record id.	*/
+	function getRemoteRecordsChangedSince($syncRelationship, $dbConnection)
 		{
-			return "Unable to connect to Database: ".$dsn." using: ".$syncRelationship->endPointUser."\nError Message Returned: ".$e->getMessage();
-		}
-	
-	return $connection;
-	
-	}
-	
-	
-	function fetchForeignChanges($syncRelationship)
-	{
-	
-	
-		$connection = $this->connectDatabase($syncRelationship);
-		
 		try{
-			$updatedForeignRecords = $connection->createCommand("Select * From ".$syncRelationship->endPointDBTable." WHERE Last_Date > '".$syncRelationship->lastSync."'")->queryAll();
+			$sqlQuery = "Select * From ".$syncRelationship->endPointDBTable." WHERE ".$syncRelationship->endPointDBTable.".Last_Date > '".$syncRelationship->lastSync."'";
+			$updatedRemoteRecords = $dbConnection->createCommand($sqlQuery)->queryAll();
+
 			}
 		catch(Exception $e)
 		{
 			return "Error in fetching Foreign Data, Error: ".$e->getMessage();	
 		}
+		return $updatedRemoteRecords;
+		}
+
+
+
+	/*
+		Function: getLocalRecordsChangedSince
+		input
+		$dateTime: the given date/time of the last successfuly syncLabtechClient
+		$dbconnection: the connection to the foreign database
+		output:
+		should return anarray of records changed since the last sync, the array should be indexed on record id. */
+	function getLocalRecordsChangedSince($syncRelationship, $dbConnection)
+		{
+		return Client::find()->where("last_change > '".$syncRelationship->lastSync."'")->asArray()->all();
+		}
+
+
 	
-		return $updatedForeignRecords;
-		
-	}
 	
-	function transferToForiegn($impModel)
+	/*
+	Function: checkConflicts()
+	input:
+		$localRecords -> an array of local records, inrementing index
+		$remoteRecords -> an array of remote records, incrementing IndexAction
+	output: none
+	Description: this function takes the two list and checks for any conflicts in the data records. The newest record is taken to be
+				the authorative record, and the old record will be unset. */
+	function checkConflicts()
 	{
-		
+
+	foreach($this->localRecords as $localRecordIndex => $localRecord)
+		{
+		$impKey = $this->dataIndex['imp'];
+		$remoteKey = $this->dataIndex['remote'];
+		$remoteRecordIndex = array_search($localRecord->$impKey, array_column($this->remoteRecords, $remoteKey));
+		if($remoteRecordIndex !== false)
+			{
+			$this->progress .= "found conflicting record for ".$localRecordIndex."\n";
+			if($localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_date'])
+				{
+				unset($this->remoteRecords[$remoteRecordIndex]); 
+				}
+			else{
+				unset($this->localRecords[$localRecordIndex]);
+				}
+			}
+		}
 	}
+	
+	
+	
+	
+	
+	
 	
 }
 

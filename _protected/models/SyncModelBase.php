@@ -10,7 +10,11 @@ use app\models\Client;
 
 Class syncModelBase{
 	
-	
+	const DUALSYNC = 1;
+	const LOCAL2REMOTE_ONLY = 2;
+	const REMOTE2LOCAL_ONLY = 3;
+	const LOCAL_OVERIDE_REMOTE = 4;
+	const REMOTE_OVERRIDE_LOCAL = 5;
 	
 	//datamapping variable should be an array 
 	//   "impModelFieldName" => "ForeignFieldName" - simply 1-to-1 datatranslation
@@ -24,6 +28,14 @@ Class syncModelBase{
 	
 	//DataIndex -> How the two enties are related array("imp" => "ImpFieldName", "foreign" => foriegnFieldName)
 	public $dataIndex;
+	
+	
+	//Progress -> the running progress of the sync. during the sync process the status of each step should be written to $this-Progress
+	public $progress;
+	public $syncType;
+	
+	public $localRecords = array();
+	public $remoteRecords = array();
 	
 	
 	/*
@@ -55,6 +67,10 @@ Class syncModelBase{
 	
 	
 	
+	
+	
+	
+	
 	/*
 	Function: syncDatabase
 	Description: Takes the db Connection obejcts and performs the sync, this is designed to be run from the child object that 
@@ -72,59 +88,109 @@ Class syncModelBase{
 			$syncRelationship->save();
 		}
 		
-		$returnText = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
-		$returnText .= "\nSyncing Imp:".$syncRelationship->impModelName." and ".$syncRelationship->endPointName.": ".$syncRelationship->endPointDBTable."\n";
+		$this->progress = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
+		$this->progress .= "\nSyncing Imp:".$syncRelationship->impModelName." and ".$syncRelationship->endPointName.": ".$syncRelationship->endPointDBTable."\n";
 		
 		
-		
-		//	fetch the imp records that have changed since the last sync
-		$updatedRecords = Client::find()
- 			->where("last_change > '".$syncRelationship->lastSync."'")
- 			->all(); 
-		$returnText .= "    ".count($updatedRecords)." imp record(s) changed since last sync\n";
-		foreach($updatedRecords as $record)
-		{
-			$returnText .= "      ".$record->name." changed\n";
-		}
-		
-		//Of this section will grab all the records from the foreign source that have changed since the last sync
-		//was carried out.
-		$returnText .= "\n\nFetching Changes in Foreign Data\n";				
-		$foreignChanges = $this->fetchForeignChanges($syncRelationship);
-		if(is_string($foreignChanges))
+		//Initiate the connect to the remote database
+		$this->progress .= "Connecting to Remote Database...\n";
+		$dbConnection = $this->connectDatabase($syncRelationship);
+		if(is_string($dbConnection))
 			{
-			$returnText .= $foreignChanges;
+			$this->progress .= $dbConnection."\n";
+			$this->progress .= "Sync Failed at ".date(" h:i d/m/Y")."\n";	
+			return;
 			}
-		else
-			{	
-			$returnText .= "    ".count($foreignChanges)." Foreign record(s) changed since last sync\n";
-			foreach($foreignChanges as $record)
+		$this->progress .= "   ....Connected \n";
+		
+		
+		//Grab the remote data if required by the sync client type
+		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::REMOTE_OVERRIDE_LOCAL || $this->syncType == syncModelBase::REMOTE2LOCAL_ONLY )
+			{
+			$this->progress .= "Fetching remote records changed since ".$syncRelationship->lastSync."\n";				
+			$this->remoteRecords = $this->getRemoteRecordsChangedSince($syncRelationship, $dbConnection);
+			if(is_string($this->remoteRecords))
 				{
-				$returnText .= "      ".$record['Name']."\n";
+				$this->progress .= 	$this->remoteRecords."\n";
+				return;		
 				}
+			$this->progress .= "  ".count($this->remoteRecords)." Records Retrieved from Remote Source\n";
 			}
 		
-		
+		//Grab the local Data if required by the sync client sync type		
+		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::LOCAL2REMOTE_ONLY || $this->syncType == syncModelBase::LOCAL_OVERIDE_REMOTE )
+			{
+			$this->progress .= "Fetching imp records changed since ".$syncRelationship->lastSync."\n";
+			$this->localRecords = $this->getLocalRecordsChangedSince($syncRelationship, $dbConnection);
+			if(is_string($this->localRecords))
+				{
+				$this->progress .= 	$this->localRecords."\n";
+				return;		
+				}
+			$this->progress .= "  ".count($this->localRecords)." Records Retrieved from Imp\n";
+			}	
 		
 		
 		
 		//OK from this point we have two arrays, the array of imp records that have changed since the last syncLabtechClient
 		//and the array of records of the foreign datasource that have changed since the last sync was carried out.
-		//print_r($foreignChanges);
-		//$updatedRecords -> Imp models
-		//$foreignChanges -> Foreigns changes in an assoicated array of data. not index by id but by number
+		//$localRecords -> Imp models as an array
+		//$remoteRecords -> Foreigns changes in an assoicated array of data. not index by id but by number
+		
+		//check for any clicts if the sync is twoway, which ever record was updated last is seen to be the correct record.
+		if($this->syncType == syncModelBase::DUALSYNC)
+			{
+			$this->progress .= "checking for and record conflicts in both sources... the newest record changed will over right the older\n";
+			$this->checkConflicts($this->localRecords, $this->remoteRecords);	
+			}
+		
+
+
+
 		
 		
 		
-		$returnText .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
+		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
 		//$syncRelationship->lastSync = date("Y-m-d H:i:s");
 		$syncRelationship->save();
-		return $returnText;
+		return;
 
 		
 		
 	}
 
+
+
+	/*
+	Function connectDatabase
+	Descitpion: takes the syncRelationship object and connected to the database
+	inputs: syncRelationship Object -> see syncRelationship Model
+	outputs: either the database connections object or the error message to be returned, if the database to be connected to isn't an sql database
+			override on the child class.
+	*/
+	function connectDatabase($syncRelationship)
+	{
+		$dsn = "mysql:host=".$syncRelationship->endPointDBServer.";dbname=".$syncRelationship->endPointDBName;
+		$connection = new \yii\db\Connection([
+		    'dsn' => $dsn,
+		    'username' => $syncRelationship->endPointUser,
+		    'password' => $syncRelationship->endPointPassword,
+		]);
+	
+	try{
+		$connection->open();	
+		}
+	catch(Exception $e)
+		{
+			return "Unable to connect to Database: ".$dsn." using: ".$syncRelationship->endPointUser."\nError Message Returned: ".$e->getMessage();
+		}
+	
+	return $connection;
+	
+	}
+	
+	
+	
 
 
 	/*
@@ -137,7 +203,7 @@ Class syncModelBase{
 	
 		foreach($impModels as $impModel)
 			{
-			$this->transferToForiegn($impModel;)
+			$this->transferToForiegn($impModel);
 			}
 	}
 
@@ -168,10 +234,6 @@ Class syncModelBase{
 	
 
 
-	//Place holder only, this needs to be defined in the child object
-	function connectDatabase()
-	{
-	}
 
 
 	//place holder only, this needs to defined in the child object

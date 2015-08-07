@@ -139,17 +139,17 @@ class SyncrelationshipsController extends Controller
     {
     	
     	
-		$model = $this->findModel($id);
+		$syncRelationshipModel = $this->findModel($id);
 		
-		$syncModel = $model->syncModelName;
-		include_once("_protected\models\\".$syncModel.".php");
-		$newModel = new $syncModel();
+		$syncModelName = $syncRelationshipModel->syncModelName;
+		include_once("_protected\models\\".$syncModelName.".php");
+		$syncModel = new $syncModelName();
 		
-		$syncResult =  $newModel->executeSync($model);
+		$syncModel->executeSync($syncRelationshipModel);
 		
 		return $this->render('sync', [
-			'result' => $syncResult,
-			'model' => $model,
+			'result' => $syncModel->progress,
+			'model' => $syncRelationshipModel,
 		
 			]);
 	}
