@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'phone2',
             // 'ABN',
             'defaultBillingRate',
-            'deafultBillingType',
+            'defaultBillingType',
             'accountBillTo',
             // 'FK1',
             // 'FK2',

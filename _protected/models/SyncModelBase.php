@@ -37,6 +37,13 @@ Class syncModelBase{
 	public $localRecords = array();
 	public $remoteRecords = array();
 	
+	public $recordConflicts = 0;
+	public $errorCount = 0;
+	public $localRecordsUpdated = 0;
+	public $localRecordsCreated = 0;
+	public $remoteRecordsUpdated = 0;
+	public $remoteRecordsCreated = 0;
+	
 	
 	/*
 	Function ExecuteSync
@@ -148,6 +155,7 @@ Class syncModelBase{
 		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::LOCAL_OVERIDE_REMOTE || $this->syncType == syncModelBase::REMOTE_OVERRIDE_LOCAL)
 			{
 			$this->progress .= "transfering remote records to local database \n";
+			$this->transferFromRemote();
 			}
 		
 		

@@ -11,7 +11,9 @@ class syncLabtechClient extends syncModelBase
 	var $syncType = syncModelBase::DUALSYNC;
 	
 	var $dataIndex = array("imp" => "FK1", "remote" => "ClientID");
-	var $dataFromImpMapping = [
+	
+	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
+	var $mappingToRemote = [
 		"name" => "Name",
 		"address" => "Address1",
 		"city" => "City",
@@ -20,7 +22,7 @@ class syncLabtechClient extends syncModelBase
 		"phone1" => "Phone",
 		];
 		
-	var $dataToImpMapping = [
+	var $mappingFromRemote = [
 		"name" => "Name",
 		"address" => "Address1",
 		"city" => "City",
@@ -87,24 +89,85 @@ class syncLabtechClient extends syncModelBase
 		
 		
 		$remoteRecordIndex = array_search($localRecord[$impKey], array_column($this->remoteRecords, $remoteKey));
+		
+		
+	
+		
 		if($remoteRecordIndex !== false)
 			{
-			$this->progress .= "found conflicting record for ".$localRecordIndex."\n";
-			if($localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_date'])
+			$this->progress .= "found conflicting record for ".$localRecord['name']."\n";
+			$this->recordConflicts++;
+			
+			$this->progress .= "Comapring ".$localRecord['last_change']." to ".$this->remoteRecords[$remoteRecordIndex]["Last_Date"]."\n";
+			$this->progress .= $localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_Date'];
+	
+			
+			
+			if($localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_Date'])
 				{
 				unset($this->remoteRecords[$remoteRecordIndex]); 
 				}
 			else{
 				unset($this->localRecords[$localRecordIndex]);
 				}
+			
 			}
+		
 		}
 	}
 	
-	
-	function transerFromRemote()
+	/*
+		function: transferFromRemote()
+		inputs: none
+		output: none
+		description: takes the list of records from the internal $this->remoteRecords and transfers to the local database.
+					this uses the yii2 object to create and save so that the transfered object adheres to the valiadations rules
+	*/
+	function transferFromRemote()
 	{
 		
+		//Itereate through each record, find local record and update. Or create the new record if it doesn't exist locally'
+		foreach($this->remoteRecords as $remoteRecord)
+			{
+				$localClientRecord = Client::find()->where($this->dataIndex['imp']."=".$remoteRecord[$this->dataIndex['remote']])->one();
+				
+				//no local record found for that client, need to create a new client`
+				if(!$localClientRecord)
+					{
+					$this->progress .= " create new local record\n";
+					$localClientRecord =  new Client();
+					$localClientRecord->defaultBillingType = 1;
+					$localClientRecord->defaultBillingRate = 1;
+					$localFK = $this->dataIndex['imp'];
+					$localClientRecord->$localFK = $remoteRecord[$this->dataIndex['remote']];
+					$this->localRecordsCreated++;
+					}
+
+				//mapp the datafields
+				foreach($this->mappingFromRemote as $impFieldName => $remoteFieldName)
+					{
+					$localClientRecord->$impFieldName = $remoteRecord[$remoteFieldName];
+					}
+				
+				//save the object, if the save failes report the error
+				if(!$localClientRecord->Save())
+					{
+					$this->progress .= "Failed to Save local Client Rcord for client Name: ".$localClientRecord->name."\n ";
+					foreach($localClientRecord->getErrors() as $error)
+						{
+						$this->progress .= $error[0]."\n";
+						}	
+					$this->errorCount++;
+					}
+				else{
+					$this->localRecordsUpdated++;
+					}
+					
+				
+					
+					
+			
+			}
 	}
 	
 	

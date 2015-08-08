@@ -17,7 +17,7 @@ use Yii;
  * @property integer $phone2
  * @property integer $ABN
  * @property integer $defaultBillingRate
- * @property integer $deafultBillingType
+ * @property integer $defaultBillingType
  * @property integer $accountBillTo
  * @property integer $FK1
  * @property integer $FK2
@@ -46,8 +46,8 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'defaultBillingRate', 'deafultBillingType'], 'required'],
-            [['state', 'postcode', 'phone1', 'phone2', 'ABN', 'defaultBillingRate', 'deafultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
+            [['name', 'defaultBillingRate', 'defaultBillingType'], 'required'],
+            [['state', 'postcode', 'defaultBillingRate', 'defaultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
             [['last_change'], 'safe'],
             [['name', 'address', 'city'], 'string', 'max' => 500]
         ];
@@ -69,7 +69,7 @@ class Client extends \yii\db\ActiveRecord
             'phone2' => 'Phone2',
             'ABN' => 'Abn',
             'defaultBillingRate' => 'Default Billing Rate',
-            'deafultBillingType' => 'Deafult Billing Type',
+            'defaultBillingType' => 'Deafult Billing Type',
             'accountBillTo' => 'Account Bill To',
             'FK1' => 'Fk1',
             'FK2' => 'Fk2',

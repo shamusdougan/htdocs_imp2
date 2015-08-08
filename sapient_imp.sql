@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2015 at 04:24 PM
+-- Generation Time: Aug 09, 2015 at 08:44 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -155,11 +155,11 @@ CREATE TABLE IF NOT EXISTS `client` (
   `city` varchar(500) DEFAULT NULL,
   `state` int(5) DEFAULT NULL,
   `postcode` int(4) DEFAULT NULL,
-  `phone1` int(10) DEFAULT NULL,
-  `phone2` int(10) DEFAULT NULL,
-  `ABN` int(10) DEFAULT NULL,
+  `phone1` varchar(50) DEFAULT NULL,
+  `phone2` varchar(50) DEFAULT NULL,
+  `ABN` varchar(50) DEFAULT NULL,
   `defaultBillingRate` int(11) NOT NULL,
-  `deafultBillingType` int(11) NOT NULL,
+  `defaultBillingType` int(11) NOT NULL,
   `accountBillTo` int(5) DEFAULT NULL,
   `FK1` int(30) DEFAULT NULL,
   `FK2` int(30) DEFAULT NULL,
@@ -172,14 +172,19 @@ CREATE TABLE IF NOT EXISTS `client` (
   `contact_authorized` int(5) DEFAULT NULL,
   `contact_owner` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `deafultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
-(1, 'Sapient Technology Solutions', 'Suite 3, 1501 Malvern Rd', 'Glen Iris', 1, 3146, 1300787471, NULL, 2147483647, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-06-18 15:26:06', 0, NULL, NULL, NULL);
+INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
+(1, 'Sapient Technology Solutions', 'Suite 3, 1501 Malvern Rd', 'Glen Iris', 1, 3146, '1300787471', NULL, '2147483647', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-06-18 15:26:06', 0, NULL, NULL, NULL),
+(22, 'BDKG Pty Ltd', '', '', NULL, NULL, '9943 3858', NULL, NULL, 1, 1, NULL, 60, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
+(23, 'Kelly Woodward', '', '', NULL, NULL, '9717 0048', NULL, NULL, 1, 1, NULL, 76, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
+(24, 'Savi Loans Pty Ltd', '', '', NULL, NULL, '0411 393 049', NULL, NULL, 1, 1, NULL, 84, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
+(25, 'You Are Good Enough', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 86, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
+(26, 'GDMC', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -194,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `lookup` (
   `type` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `lookup`
@@ -203,7 +208,9 @@ CREATE TABLE IF NOT EXISTS `lookup` (
 INSERT INTO `lookup` (`id`, `name`, `code`, `type`, `position`) VALUES
 (1, 'Database', 1, 'SyncEndPointType', 1),
 (2, 'Webpage', 2, 'SyncEndPointType', 2),
-(3, 'File', 3, 'SyncEndPointType', 3);
+(3, 'File', 3, 'SyncEndPointType', 3),
+(4, 'VIC', 1, 'STATE', 1),
+(5, 'NSW', 2, 'STATE', 2);
 
 -- --------------------------------------------------------
 
@@ -258,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 --
 
 INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointType`, `endPointDBServer`, `endPointDBName`, `endPointDBTable`, `endPointUser`, `endPointPassword`, `syncModelName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`, `endPointFilePath`, `endPointBaseURL`) VALUES
-(2, 'Clients', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-06-18 16:05:41', NULL, '', '', '');
+(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-06-18 16:05:41', NULL, '', '', '');
 
 -- --------------------------------------------------------
 
