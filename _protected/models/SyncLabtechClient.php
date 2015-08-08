@@ -84,7 +84,9 @@ class syncLabtechClient extends syncModelBase
 		{
 		$impKey = $this->dataIndex['imp'];
 		$remoteKey = $this->dataIndex['remote'];
-		$remoteRecordIndex = array_search($localRecord->$impKey, array_column($this->remoteRecords, $remoteKey));
+		
+		
+		$remoteRecordIndex = array_search($localRecord[$impKey], array_column($this->remoteRecords, $remoteKey));
 		if($remoteRecordIndex !== false)
 			{
 			$this->progress .= "found conflicting record for ".$localRecordIndex."\n";
@@ -100,7 +102,10 @@ class syncLabtechClient extends syncModelBase
 	}
 	
 	
-	
+	function transerFromRemote()
+	{
+		
+	}
 	
 	
 	

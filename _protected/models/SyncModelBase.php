@@ -137,15 +137,20 @@ Class syncModelBase{
 		//$localRecords -> Imp models as an array
 		//$remoteRecords -> Foreigns changes in an assoicated array of data. not index by id but by number
 		
-		//check for any clicts if the sync is twoway, which ever record was updated last is seen to be the correct record.
+		//check for any conflicts if the sync is twoway, which ever record was updated last is seen to be the correct record.
 		if($this->syncType == syncModelBase::DUALSYNC)
 			{
 			$this->progress .= "checking for and record conflicts in both sources... the newest record changed will over right the older\n";
 			$this->checkConflicts($this->localRecords, $this->remoteRecords);	
 			}
 		
-
-
+		//transfer the data from remote source to local
+		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::LOCAL_OVERIDE_REMOTE || $this->syncType == syncModelBase::REMOTE_OVERRIDE_LOCAL)
+			{
+			$this->progress .= "transfering remote records to local database \n";
+			}
+		
+		
 
 		
 		
