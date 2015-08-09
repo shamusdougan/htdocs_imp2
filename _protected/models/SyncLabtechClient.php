@@ -11,6 +11,8 @@ class syncLabtechClient extends syncModelBase
 	var $syncType = syncModelBase::DUALSYNC;
 	
 	var $dataIndex = array("imp" => "FK1", "remote" => "ClientID");
+	var $dataLastChangeFields = array("imp" => "last_change", "remote" => "Last_Date");
+
 	
 	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
 	var $mappingToRemote = [
@@ -71,65 +73,7 @@ class syncLabtechClient extends syncModelBase
 
 	
 	
-	/*
-	Function: checkConflicts()
-	input:
-		$localRecords -> an array of local records, inrementing index
-		$remoteRecords -> an array of remote records, incrementing IndexAction
-	output: none
-	Description: this function takes the two list and checks for any conflicts in the data records. The newest record is taken to be
-				the authorative record, and the old record will be unset. */
-	function checkConflicts()
-	{
-
-
-	$newLocalRecords = array();
-	$newRemoteRecords = array();
-	$impKey = $this->dataIndex['imp'];
-	$remoteKey = $this->dataIndex['remote'];
 	
-	//check the local records for any conflicts with the remote data
-	foreach($this->localRecords as $localRecordIndex => $localRecord)
-		{
-	
-		
-		
-		
-		//for any instances of the foriegn key from the local data in the remote data
-		$remoteRecordIndex = array_search($localRecord[$impKey], array_column($this->remoteRecords, $remoteKey));
-		
-		
-	
-		
-		if($remoteRecordIndex !== false)
-			{
-			$this->progress .= "found conflicting record for ".$localRecord['name']."\n";
-			$this->recordConflicts++;
-			if($localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_Date'])
-				{
-				$newLocalRecords[] = $localRecord;
-				}
-			}
-		else{
-			$newLocalRecords[] = $localRecord;
-			}
-		}
-		
-	
-	//check for any conflicts in the remote data with the local data
-	foreach($this->remoteRecords as $remoteRecordIndex => $remoteRecord)
-		{
-		//for any instances of the foriegn key from the local data in the remote data
-		$localRecordIndex = array_search($remoteRecord[$remoteKey], array_column($this->localRecords, $impKey));	
-			
-			
-			
-			
-			
-		}
-		
-		
-	}
 	
 	/*
 		function: transferFromRemote()
@@ -146,7 +90,7 @@ class syncLabtechClient extends syncModelBase
 			{
 				$localClientRecord = Client::find()->where($this->dataIndex['imp']."=".$remoteRecord[$this->dataIndex['remote']])->one();
 				
-				//no local record found for that client, need to create a new client`
+				//no local record found for that client, need to create a new client`and set the default values
 				if(!$localClientRecord)
 					{
 					$this->progress .= " create new local record\n";
@@ -161,7 +105,17 @@ class syncLabtechClient extends syncModelBase
 				//mapp the datafields
 				foreach($this->mappingFromRemote as $impFieldName => $remoteFieldName)
 					{
-					$localClientRecord->$impFieldName = $remoteRecord[$remoteFieldName];
+						
+					//this needs to be changed properly lateron	
+					if($impFieldName == "state")
+						{
+						
+						$localClientRecord->$impFieldName = 1;
+						}
+					else{
+					$localClientRecord->$impFieldName = $remoteRecord[$remoteFieldName];	
+						}
+					
 					}
 				
 				//save the object, if the save failes report the error

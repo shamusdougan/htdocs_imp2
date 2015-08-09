@@ -202,7 +202,83 @@ Class syncModelBase{
 	
 	}
 	
+	/*
+	Function: checkConflicts()
+	input:
+		$localRecords -> an array of local records, inrementing index
+		$remoteRecords -> an array of remote records, incrementing IndexAction
+	output: none
+	Description: this function takes the two list and checks for any conflicts in the data records. The newest record is taken to be
+				the authorative record, and the old record will be unset. */
+	function checkConflicts()
+	{
+
+	if(!isset($this->dataLastChangeFields) || !isset($this->dataLastChangeFields['imp']) || !isset($this->dataLastChangeFields['remote']))
+		{
+		die("datalastChangeFields not set correctly");
+		}
+		
+		
+	$newLocalRecords = array();
+	$newRemoteRecords = array();
+	$impKey = $this->dataIndex['imp'];
+	$impLastchangeField = $this->dataLastChangeFields['imp'];
+	$remoteKey = $this->dataIndex['remote'];
+	$remoteLastchangeField = $this->dataLastChangeFields['remote'];
 	
+	
+	//check the local records for any conflicts with the remote data
+	foreach($this->localRecords as $localRecordIndex => $localRecord)
+		{
+		//for any instances of the foriegn key from the local data in the remote data
+		$remoteRecordIndex = array_search($localRecord[$impKey], array_column($this->remoteRecords, $remoteKey));
+		
+		if($remoteRecordIndex !== false)
+			{
+			$this->progress .= "found conflicting record localRecord: ".$localRecord[$impLastchangeField]." Remote Record: ".$this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField]."\n";
+			$this->recordConflicts++;
+			if($localRecord[$impLastchangeField] >= $this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField])
+				{
+				$this->progress .= "   ...Using the local record\n";
+				$newLocalRecords[] = $localRecord;
+				}
+			else{
+				$this->progress .= "   ...Using the Remote Record\n";
+				}
+			}
+		else{
+			$newLocalRecords[] = $localRecord;
+			}
+		}
+		
+	
+	//check for any conflicts in the remote data with the local data
+	foreach($this->remoteRecords as $remoteRecordIndex => $remoteRecord)
+		{
+		//for any instances of the foriegn key from the local data in the remote data
+		$localRecordIndex = array_search($remoteRecord[$remoteKey], array_column($this->localRecords, $impKey));	
+			
+		if($localRecordIndex !== false)
+			{
+			$this->progress .= "found conflicting record for ".$localRecord['name']." localRecord: ".$localRecord[$impLastchangeField]." Remote Record: ".$this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField]."\n";
+			if($localRecord[$impLastchangeField] < $this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField])
+				{
+				$this->progress .= " .... Using remote record\n";
+				$newRemoteRecords[] = $remoteRecord;
+				}
+			else{
+				$this->progress .= " .... Using the Local Record\n";
+				}
+			}
+		else{
+			$newRemoteRecords[] = $remoteRecord;
+			}	
+		}
+		
+	$this->localRecords = $newLocalRecords;
+	$this->remoteRecords = $newRemoteRecords;
+		
+	}
 	
 
 
