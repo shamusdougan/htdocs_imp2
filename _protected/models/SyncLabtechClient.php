@@ -82,12 +82,20 @@ class syncLabtechClient extends syncModelBase
 	function checkConflicts()
 	{
 
+
+	$newLocalRecords = array();
+	$newRemoteRecords = array();
+	$impKey = $this->dataIndex['imp'];
+	$remoteKey = $this->dataIndex['remote'];
+	
+	//check the local records for any conflicts with the remote data
 	foreach($this->localRecords as $localRecordIndex => $localRecord)
 		{
-		$impKey = $this->dataIndex['imp'];
-		$remoteKey = $this->dataIndex['remote'];
+	
 		
 		
+		
+		//for any instances of the foriegn key from the local data in the remote data
 		$remoteRecordIndex = array_search($localRecord[$impKey], array_column($this->remoteRecords, $remoteKey));
 		
 		
@@ -97,23 +105,30 @@ class syncLabtechClient extends syncModelBase
 			{
 			$this->progress .= "found conflicting record for ".$localRecord['name']."\n";
 			$this->recordConflicts++;
-			
-			$this->progress .= "Comapring ".$localRecord['last_change']." to ".$this->remoteRecords[$remoteRecordIndex]["Last_Date"]."\n";
-			$this->progress .= $localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_Date'];
-	
-			
-			
 			if($localRecord['last_change'] >= $this->remoteRecords[$remoteRecordIndex]['Last_Date'])
 				{
-				unset($this->remoteRecords[$remoteRecordIndex]); 
+				$newLocalRecords[] = $localRecord;
 				}
-			else{
-				unset($this->localRecords[$localRecordIndex]);
-				}
-			
 			}
-		
+		else{
+			$newLocalRecords[] = $localRecord;
+			}
 		}
+		
+	
+	//check for any conflicts in the remote data with the local data
+	foreach($this->remoteRecords as $remoteRecordIndex => $remoteRecord)
+		{
+		//for any instances of the foriegn key from the local data in the remote data
+		$localRecordIndex = array_search($remoteRecord[$remoteKey], array_column($this->localRecords, $impKey));	
+			
+			
+			
+			
+			
+		}
+		
+		
 	}
 	
 	/*
