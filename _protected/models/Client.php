@@ -69,7 +69,7 @@ class Client extends \yii\db\ActiveRecord
             'phone2' => 'Phone2',
             'ABN' => 'Abn',
             'defaultBillingRate' => 'Default Billing Rate',
-            'defaultBillingType' => 'Deafult Billing Type',
+            'defaultBillingType' => 'Default Billing Type',
             'accountBillTo' => 'Account Bill To',
             'FK1' => 'Fk1',
             'FK2' => 'Fk2',
@@ -90,4 +90,13 @@ class Client extends \yii\db\ActiveRecord
 		return parent::beforeSave($insert);
 
 	}
+	
+	
+	  public function getContacts()
+    {
+		 return $this->hasMany(clientContact::className(), ['client_id' => 'id']);
+	}
+
+	
+	
 }

@@ -1,11 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-//use yii\widgets\ActiveForm;
+use yii\bootstrap\Modal;
 
 
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
+use kartik\tabs\TabsX;
 
 
 /* @var $this yii\web\View */
@@ -15,11 +16,11 @@ use kartik\builder\Form;
 
 <div class="client-form">
 
-    <?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]); 
+  
+<?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);     
+   
     
-    
-    
-    echo Form::widget([
+$companyInfo = Form::widget([
     	'model'=>$model,
     	'form'=>$form,
     	'columns'=>2,
@@ -30,7 +31,7 @@ use kartik\builder\Form;
     	]
     ]);
  
-     echo Form::widget([
+$companyInfo .= Form::widget([
     	'model'=>$model,
     	'form'=>$form,
     	'columns'=>1,
@@ -39,7 +40,7 @@ use kartik\builder\Form;
     	]
     ]);
     
-    echo Form::widget([
+$companyInfo .= Form::widget([
     	'model'=>$model,
     	'form'=>$form,
     	'columns'=>3,
@@ -51,7 +52,7 @@ use kartik\builder\Form;
     
     ]);
     
-    echo Form::widget([
+$companyInfo .= Form::widget([
     	'model'=>$model,
     	'form'=>$form,
     	'columns'=>3,
@@ -62,15 +63,15 @@ use kartik\builder\Form;
     
     ]);
     
-    Echo "<b>Billing Information</B>";
+$companyInfo .= "<b>Billing Information</B>";
     
-     echo Form::widget([
+$companyInfo .= Form::widget([
     	'model'=>$model,
     	'form'=>$form,
     	'columns'=>3,
     	'attributes'=>[
     		'defaultBillingRate' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'Billing Rate Dropdown'] ],
-    		'deafultBillingType' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Billing Type Dropdown'] ],
+    		'defaultBillingType' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Billing Type Dropdown'] ],
     		'accountBillTo' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Bill To Company'] ]
     		]
     
@@ -78,16 +79,64 @@ use kartik\builder\Form;
     ?>
 
  
-    <?= $form->field($model, 'contact_billing')->textInput() ?>
 
-    <?= $form->field($model, 'contact_authorized')->textInput() ?>
+   
 
-    <?= $form->field($model, 'contact_owner')->textInput() ?>
+</div>
 
-    <div class="form-group">
+
+
+
+
+	
+
+
+
+<?
+
+echo TabsX::widget([
+		'items'=> 
+		[
+			[			
+			'label'=>'<i class="glyphicon glyphicon-home"></i> Company',
+			'content'=>$companyInfo,
+			
+			],
+			[
+				'label'=>'<i class="glyphicon glyphicon-user"></i> Contacts',
+				'content'=>$this->render("_contactGrid", ['model' => $model, 'form' => $form]),
+				'active'=>true
+			],
+		],
+		'position'=>TabsX::POS_ABOVE,
+		'encodeLabels'=>false
+]);
+?>
+
+ <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 
-</div>
+
+
+<?php		
+Modal::begin([
+    'id' => 'activity-modal',
+    'header' => '<h4 class="modal-title">Contact Information</h4>',
+    'size' => 'modal-lg',
+
+]);		?>
+
+
+<div id="modal_content"></div>
+
+<?php
+
+Modal::end(); 
+
+?>
+
+
+
