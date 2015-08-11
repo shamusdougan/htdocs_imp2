@@ -36,7 +36,7 @@ class ClientContact extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname', 'surname', 'client_id', 'address'], 'required'],
+            [['firstname', 'surname', 'client_id'], 'required'],
             [['client_id', 'address', 'owner_contact', 'accounts_contact', 'authorized_contact'], 'integer'],
             [['firstname', 'surname', 'phone1', 'phone2', 'mobile', 'email'], 'string', 'max' => 100]
         ];
@@ -51,8 +51,8 @@ class ClientContact extends \yii\db\ActiveRecord
             'id' => 'ID',
             'firstname' => 'Firstname',
             'surname' => 'Surname',
-            'phone1' => 'Phone1',
-            'phone2' => 'Phone2',
+            'phone1' => 'Land Line',
+            'phone2' => 'Fax',
             'mobile' => 'Mobile',
             'email' => 'Email',
             'client_id' => 'Client ID',

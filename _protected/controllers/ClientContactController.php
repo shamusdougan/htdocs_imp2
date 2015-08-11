@@ -90,6 +90,23 @@ class ClientContactController extends Controller
         }
     }
 
+  	/**
+     * Creates a new ClientContact model.
+     *
+     */
+	public function actionModalCreate($client_id)
+	{
+		 $model = new ClientContact();
+		 $model->client_id = $client_id;
+		 if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return true;
+        } else {
+            return $this->renderAjax('_modalAdd', [
+                'model' => $model,
+            ]);
+        }
+	}
+
     /**
      * Deletes an existing ClientContact model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

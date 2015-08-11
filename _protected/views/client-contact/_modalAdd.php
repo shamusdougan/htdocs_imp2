@@ -10,7 +10,7 @@ use kartik\builder\Form;
 
 <div class="client-contact-form">
 
-    <?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]); ?>
+    <?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL, 'id' => 'modal_add_contact']); ?>
 
 	<?= Form::widget([
     	'model'=>$model,
@@ -42,6 +42,7 @@ use kartik\builder\Form;
     				'colspan' => 2,
     				]
     			],
+    		'client_id' =>['type' =>FORM::INPUT_HIDDEN, 'label' => false],
     	]
     ]);
 ?>

@@ -45,7 +45,8 @@ AppAsset::register($this);
 					['label' => 'Dashboard', 'icon' => 'home', 'url' => Url::toRoute('/')],
 					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
 					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts"), 'items' => [
-						['label' => 'Clients', 'url' => Url::toRoute('/client'), 'active'=>($currentItem == 'client')]
+						['label' => 'Clients', 'url' => Url::toRoute('/client'), 'active'=>($currentItem == 'client')],
+						['label' => 'Contacts', 'url' => Url::toRoute('/client-contact'), 'active'=>($currentItem == 'client')]
 					
 					
 					
