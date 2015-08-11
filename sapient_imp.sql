@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2015 at 08:44 AM
+-- Generation Time: Aug 11, 2015 at 04:18 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -172,19 +172,54 @@ CREATE TABLE IF NOT EXISTS `client` (
   `contact_authorized` int(5) DEFAULT NULL,
   `contact_owner` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
-(1, 'Sapient Technology Solutions', 'Suite 3, 1501 Malvern Rd', 'Glen Iris', 1, 3146, '1300787471', NULL, '2147483647', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-06-18 15:26:06', 0, NULL, NULL, NULL),
 (22, 'BDKG Pty Ltd', '', '', NULL, NULL, '9943 3858', NULL, NULL, 1, 1, NULL, 60, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
 (23, 'Kelly Woodward', '', '', NULL, NULL, '9717 0048', NULL, NULL, 1, 1, NULL, 76, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
 (24, 'Savi Loans Pty Ltd', '', '', NULL, NULL, '0411 393 049', NULL, NULL, 1, 1, NULL, 84, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
 (25, 'You Are Good Enough', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 86, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(26, 'GDMC', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL);
+(26, 'GDMC', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
+(27, 'Sapient Technology Solutions', '', '', NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-08-11 15:13:11', 0, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_contact`
+--
+
+CREATE TABLE IF NOT EXISTS `client_contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
+  `phone1` varchar(100) DEFAULT NULL,
+  `phone2` varchar(100) DEFAULT NULL,
+  `mobile` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `client_id` int(11) NOT NULL,
+  `address` int(11) DEFAULT NULL,
+  `City` varchar(100) DEFAULT NULL,
+  `Postcode` varchar(10) DEFAULT NULL,
+  `State` int(10) DEFAULT NULL,
+  `Notes` varchar(500) NOT NULL,
+  `owner_contact` tinyint(1) NOT NULL DEFAULT '0',
+  `accounts_contact` tinyint(1) NOT NULL DEFAULT '0',
+  `authorized_contact` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `client_contact`
+--
+
+INSERT INTO `client_contact` (`id`, `firstname`, `surname`, `phone1`, `phone2`, `mobile`, `email`, `client_id`, `address`, `City`, `Postcode`, `State`, `Notes`, `owner_contact`, `accounts_contact`, `authorized_contact`) VALUES
+(1, 'asdfasd', 'asdfasdf', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0),
+(2, 'dddddd', '3332223', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0),
+(3, 'sadfasdf', 'asdfasdfasdfasdfasdfasdfasdfasdfasdf', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
