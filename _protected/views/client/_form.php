@@ -72,7 +72,12 @@ $companyInfo .= Form::widget([
     	'attributes'=>[
     		'defaultBillingRate' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'Billing Rate Dropdown'] ],
     		'defaultBillingType' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Billing Type Dropdown'] ],
-    		'accountBillTo' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Bill To Company'] ]
+    		'accountBillTo' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Bill To Company'] ],
+    		'notes' => 
+    			[
+    			'type' => FORM::INPUT_TEXTAREA,
+    			'columnOptions' => ['colspan' => 3],
+    			]
     		]
     
     ]);

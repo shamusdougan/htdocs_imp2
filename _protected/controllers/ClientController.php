@@ -51,10 +51,14 @@ class ClientController extends Controller
     {
         $searchModel = new ClientSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/client/create"];
+        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'actionItems' => $actionItems,
         ]);
     }
 
@@ -69,11 +73,28 @@ class ClientController extends Controller
     {
         $model = new Client();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
+        if ($model->load(Yii::$app->request->post()) && $model->save())
+			{
+            $get = Yii::$app->request->get();
+    		if(isset($get['exit']) && $get['exit'] == 'false' )
+    			{
+				return $this->redirect(['update', 'id' => $model->id]);
+				}
+			else{
+				return $this->redirect(['index']);
+				}
+       		} 
+       	else {
+        	
+        	
+			$actionItems[] = ['label'=>'Save & Exit', 'button' => 'save', 'url'=>null, 'submit'=> 'client-update-form', 'confirm' => 'Save Client Information and Exit?'];
+        	$actionItems[] = ['label'=>'Save', 'button' => 'save', 'overrideAction' =>'/client/create?&exit=false', 'url'=>null, 'submit'=> 'client-update-form', 'confirm' => 'Save Client Information?'];
+   
+        	
+        	
             return $this->render('create', [
                 'model' => $model,
+                'actionItems' => $actionItems
             ]);
         }
     }

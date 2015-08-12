@@ -47,8 +47,8 @@ class Client extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'defaultBillingRate', 'defaultBillingType'], 'required'],
-            [['state', 'postcode', 'defaultBillingRate', 'defaultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
-            [['last_change', 'labtech'], 'safe'],
+            [['postcode', 'defaultBillingRate', 'defaultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
+            [['last_change', 'labtech', 'state'], 'safe'],
             [['name', 'address', 'city'], 'string', 'max' => 500]
         ];
     }

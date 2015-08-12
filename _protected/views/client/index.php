@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\components\actionButtons;
 use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -12,12 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="client-index">
 
+
+	 <?= actionButtons::widget(['items' => $actionItems]) ?>
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Client', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+   
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

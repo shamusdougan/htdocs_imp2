@@ -15,22 +15,14 @@ class syncLabtechClient extends syncModelBase
 
 	
 	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
-	var $mappingToRemote = [
+	var $fieldMapping = [
 		"name" => "Name",
 		"address" => "Address1",
 		"city" => "City",
 		"state" => "State",
 		"postcode" => "Zip",
 		"phone1" => "Phone",
-		];
-		
-	var $mappingFromRemote = [
-		"name" => "Name",
-		"address" => "Address1",
-		"city" => "City",
-		"state" => "State",
-		"postcode" => "Zip",
-		"phone1" => "Phone",
+		'notes' => 'Comment',
 		];
 	
 	
@@ -106,18 +98,10 @@ class syncLabtechClient extends syncModelBase
 					}
 
 				//mapp the datafields
-				foreach($this->mappingFromRemote as $impFieldName => $remoteFieldName)
+				foreach($this->fieldMapping as $impFieldName => $remoteFieldName)
 					{
 						
-					//this needs to be changed properly lateron	
-					if($impFieldName == "state")
-						{
-						
-						$localClientRecord->$impFieldName = 1;
-						}
-					else{
 					$localClientRecord->$impFieldName = $remoteRecord[$remoteFieldName];	
-						}
 					
 					}
 				

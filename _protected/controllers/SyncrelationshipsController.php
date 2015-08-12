@@ -49,10 +49,16 @@ class SyncrelationshipsController extends Controller
     {
         $searchModel = new SyncrelationshipsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        
+        $actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/syncrelationships/create"];
+    	
+        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'actionItems' => $actionItems,
         ]);
     }
 
@@ -135,21 +141,28 @@ class SyncrelationshipsController extends Controller
     }
     
     
-     public function actionSync($id)
+     public function actionSync($id, $sync=false)
     {
     	
+    	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=>"/syncrelationships"];
+    	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=>"/syncrelationships"];
     	
-		$syncRelationshipModel = $this->findModel($id);
-		
-		$syncModelName = $syncRelationshipModel->syncModelName;
+    	
+    	
+    	$syncRelationshipModel = $this->findModel($id);
+    	$syncModelName = $syncRelationshipModel->syncModelName;
 		include_once("_protected\models\\".$syncModelName.".php");
 		$syncModel = new $syncModelName();
-		
-		$syncModel->executeSync($syncRelationshipModel);
-		
+    	
+    	if($sync)
+    		{
+			$syncModel->executeSync($syncRelationshipModel);	
+			}
+    		
 		return $this->render('sync', [
 			'result' => $syncModel->progress,
 			'model' => $syncRelationshipModel,
+			'actionItems' => $actionItems,
 		
 			]);
 	}

@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use app\components\actionButtons;
+use kartik\grid\GridView;
 use app\models\lookup;
 
 
@@ -14,16 +15,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="syncrelationships-index">
 
+	 <?= actionButtons::widget(['items' => $actionItems]) ?>
+  
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Syncrelationships', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    
+   
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'export' => false,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -42,21 +43,21 @@ $this->params['breadcrumbs'][] = $this->title;
 	            'filter' => Lookup::items("SyncEndPointType"),
 	        
 	           ),
-	        'endPointUser',
-	        'endPointPassword',
-            'endPointDBServer',
-            'endPointDBName',
-            'endPointDBTable',
-            'endPointFilePath',
-            'endPointBaseURL:url',
-            'syncModelName',
+	       // 'endPointUser',
+	        //'endPointPassword',
+            //'endPointDBServer',
+            //'endPointDBName',
+            //'endPointDBTable',
+            //'endPointFilePath',
+            //'endPointBaseURL:url',
+            //'syncModelName',
             
             
            
 
-             ['class' => 'yii\grid\ActionColumn',
-            	'template' => '{view} {update} {delete} {sync}',
-            	'contentOptions' => ['style' => 'width:100px;'],
+             ['class' => 'kartik\grid\ActionColumn',
+            	'template' => '{update} {delete} {sync}',
+            	'noWrap' => true,
             	'buttons' => 
             		[
             		'sync' => function ($url, $model){

@@ -16,6 +16,9 @@ Class syncModelBase{
 	const LOCAL_OVERIDE_REMOTE = 4;
 	const REMOTE_OVERRIDE_LOCAL = 5;
 	
+	const SYNC_SUCCESS = 1;
+	const SYNC_ERROR = 2;
+	
 	//datamapping variable should be an array 
 	//   "impModelFieldName" => "ForeignFieldName" - simply 1-to-1 datatranslation
 	//	"impModelFieldName" => array("name" => "ForeignFieldName", "callBack" => "transformationFunctionName")
@@ -105,7 +108,11 @@ Class syncModelBase{
 		if(is_string($dbConnection))
 			{
 			$this->progress .= $dbConnection."\n";
-			$this->progress .= "Sync Failed at ".date(" h:i d/m/Y")."\n";	
+			$this->progress .= "Sync Failed at ".date(" h:i d/m/Y")."\n";
+			
+			$syncRelationship->LastStatus = syncModelBase::SYNC_ERROR;
+			$syncRelationship->save();
+			
 			return;
 			}
 		$this->progress .= "   ....Connected \n";
@@ -165,6 +172,7 @@ Class syncModelBase{
 		
 		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
 		$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		$syncRelationship->LastStatus = syncModelBase::SYNC_SUCCESS;
 		$syncRelationship->save();
 		return;
 
