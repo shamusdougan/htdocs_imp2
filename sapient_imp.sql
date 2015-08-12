@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2015 at 04:32 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Aug 13, 2015 at 08:05 AM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `summary` text COLLATE utf8_unicode_ci NOT NULL,
@@ -35,9 +35,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `status` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -49,8 +47,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`item_name`,`user_id`)
+  `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -74,10 +71,7 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
   `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `data` text COLLATE utf8_unicode_ci,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `rule_name` (`rule_name`),
-  KEY `idx-auth_item-type` (`type`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -101,9 +95,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`parent`,`child`),
-  KEY `child` (`child`)
+  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -131,8 +123,7 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `data` text COLLATE utf8_unicode_ci,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -149,15 +140,16 @@ INSERT INTO `auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `client` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `address` varchar(500) DEFAULT NULL,
   `city` varchar(500) DEFAULT NULL,
-  `state` int(5) DEFAULT NULL,
+  `state` varchar(10) DEFAULT NULL,
   `postcode` int(4) DEFAULT NULL,
   `phone1` varchar(50) DEFAULT NULL,
   `phone2` varchar(50) DEFAULT NULL,
   `ABN` varchar(50) DEFAULT NULL,
+  `notes` varchar(500) DEFAULT NULL,
   `defaultBillingRate` int(11) NOT NULL,
   `defaultBillingType` int(11) NOT NULL,
   `accountBillTo` int(5) DEFAULT NULL,
@@ -171,22 +163,21 @@ CREATE TABLE IF NOT EXISTS `client` (
   `sync_status` int(5) NOT NULL,
   `contact_billing` int(5) DEFAULT NULL,
   `contact_authorized` int(5) DEFAULT NULL,
-  `contact_owner` int(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+  `contact_owner` int(5) DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `labtech`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
-(35, 'Oscar Hospitality', 'Suite 2, Level 2, 295 Springvale Road', 'Glen Waverley', 1, 3150, '(03) 9560 1844', NULL, NULL, 1, 1, NULL, 27, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(36, 'BDKG Pty Ltd', '', '', 1, NULL, '9943 3858', NULL, NULL, 1, 1, NULL, 60, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(37, 'Kelly Woodward', '', '', 1, NULL, '9717 0048', NULL, NULL, 1, 1, NULL, 76, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(38, 'Savi Loans Pty Ltd', '', '', 1, NULL, '0411 393 049', NULL, NULL, 1, 1, NULL, 84, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(39, 'You Are Good Enough', '', '', 1, NULL, '', NULL, NULL, 1, 1, NULL, 86, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(40, 'GDMC', '', '', 1, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
-(41, 'Paul Broadfoot', 'Suite G6, Corporate One, 84 Hotham Street', 'Preston', 1, 3072, '0400 605 889', NULL, NULL, 1, 1, NULL, 88, NULL, NULL, NULL, NULL, 1, '2015-08-20 01:16:29', 0, NULL, NULL, NULL);
+INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `notes`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `labtech`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
+(51, 'Oscar Hospitality', 'Suite 2, Level 2, 295 Springvale Road', 'Glen Waverley', 'Victoria', 3150, '(03) 9560 1844', NULL, NULL, '', 1, 1, NULL, 27, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(52, 'BDKG Pty Ltd', '', '', '', NULL, '9943 3858', NULL, NULL, '', 1, 1, NULL, 60, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(53, 'Kelly Woodward', '', '', '', NULL, '9717 0048', NULL, NULL, 'kellie_woodward@travel-associates.com.au', 1, 1, NULL, 76, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(54, 'Savi Loans Pty Ltd', '', '', '', NULL, '0411 393 049', NULL, NULL, 'Savi Loans Pty Ltd abn is 89 130 547 401\r\nSole Trader ABN 275 209 26973\r\nMortgage Broker crn 453786 \r\nM:  0411 393 049  F:  03 9459 4569    \r\nE:    nataliesavic@saviloans.com.au\r\nW:  www.saviloans.com.au\r\n\r\nof BLSSA Pty Ltd ACL 391237\r\n', 1, 1, NULL, 84, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(55, 'You Are Good Enough', '', '', '', NULL, '', NULL, NULL, 'ABN 51435650157', 1, 1, NULL, 86, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(56, 'GDMC', '', '', '', NULL, '', NULL, NULL, '', 1, 1, NULL, 87, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL),
+(57, 'Paul Broadfoot', 'Suite G6, Corporate One, 84 Hotham Street', 'Preston', 'VICTORIA', 3072, '0400 605 889', NULL, NULL, '', 1, 1, NULL, 88, NULL, NULL, NULL, NULL, 1, '2015-08-12 19:51:34', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -195,7 +186,7 @@ INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `pho
 --
 
 CREATE TABLE IF NOT EXISTS `client_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `surname` varchar(100) NOT NULL,
   `phone1` varchar(100) DEFAULT NULL,
@@ -210,9 +201,8 @@ CREATE TABLE IF NOT EXISTS `client_contact` (
   `Notes` varchar(500) NOT NULL,
   `owner_contact` tinyint(1) NOT NULL DEFAULT '0',
   `accounts_contact` tinyint(1) NOT NULL DEFAULT '0',
-  `authorized_contact` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `authorized_contact` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `client_contact`
@@ -231,13 +221,12 @@ INSERT INTO `client_contact` (`id`, `firstname`, `surname`, `phone1`, `phone2`, 
 --
 
 CREATE TABLE IF NOT EXISTS `lookup` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `code` int(11) NOT NULL,
   `type` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `position` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+  `position` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `lookup`
@@ -247,8 +236,8 @@ INSERT INTO `lookup` (`id`, `name`, `code`, `type`, `position`) VALUES
 (1, 'Database', 1, 'SyncEndPointType', 1),
 (2, 'Webpage', 2, 'SyncEndPointType', 2),
 (3, 'File', 3, 'SyncEndPointType', 3),
-(4, 'VIC', 1, 'STATE', 1),
-(5, 'NSW', 2, 'STATE', 2);
+(6, 'Success', 1, 'SYNC_RESULT', 1),
+(7, 'Error', 2, 'SYNC_RESULT', 2);
 
 -- --------------------------------------------------------
 
@@ -258,8 +247,7 @@ INSERT INTO `lookup` (`id`, `name`, `code`, `type`, `position`) VALUES
 
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
+  `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -279,7 +267,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `syncrelationships` (
-  `index` int(11) NOT NULL AUTO_INCREMENT,
+`index` int(11) NOT NULL,
   `impModelName` varchar(200) NOT NULL,
   `endPointName` varchar(200) NOT NULL,
   `endPointType` int(5) NOT NULL,
@@ -294,8 +282,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
   `LastStatus` int(11) DEFAULT NULL,
   `LastStatusData` varchar(500) DEFAULT NULL,
   `endPointFilePath` varchar(200) DEFAULT NULL,
-  `endPointBaseURL` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`index`)
+  `endPointBaseURL` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -303,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 --
 
 INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointType`, `endPointDBServer`, `endPointDBName`, `endPointDBTable`, `endPointUser`, `endPointPassword`, `syncModelName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`, `endPointFilePath`, `endPointBaseURL`) VALUES
-(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-08-12 16:30:42', NULL, '', '', '');
+(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-08-12 20:41:03', 1, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -312,7 +299,7 @@ INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPo
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -321,8 +308,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `account_activation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -334,6 +320,110 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_
 (5, 'shamus', 'test@test.com', '$2y$13$a0JVb.KGIEintCd4Jo89zuSsG0gPXOGr8AaoTAFiCLYUkechkT9/a', 10, 'IUTHnAzXzyW5YOof6D-OwievOpQWP9nQ', NULL, NULL, 1427250473, 1427253473);
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+ ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+ ADD PRIMARY KEY (`item_name`,`user_id`);
+
+--
+-- Indexes for table `auth_item`
+--
+ALTER TABLE `auth_item`
+ ADD PRIMARY KEY (`name`), ADD KEY `rule_name` (`rule_name`), ADD KEY `idx-auth_item-type` (`type`);
+
+--
+-- Indexes for table `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+ ADD PRIMARY KEY (`parent`,`child`), ADD KEY `child` (`child`);
+
+--
+-- Indexes for table `auth_rule`
+--
+ALTER TABLE `auth_rule`
+ ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_contact`
+--
+ALTER TABLE `client_contact`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lookup`
+--
+ALTER TABLE `lookup`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migration`
+--
+ALTER TABLE `migration`
+ ADD PRIMARY KEY (`version`);
+
+--
+-- Indexes for table `syncrelationships`
+--
+ALTER TABLE `syncrelationships`
+ ADD PRIMARY KEY (`index`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT for table `client_contact`
+--
+ALTER TABLE `client_contact`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `lookup`
+--
+ALTER TABLE `lookup`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `syncrelationships`
+--
+ALTER TABLE `syncrelationships`
+MODIFY `index` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- Constraints for dumped tables
 --
 
@@ -341,26 +431,26 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_
 -- Constraints for table `article`
 --
 ALTER TABLE `article`
-  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item`
 --
 ALTER TABLE `auth_item`
-  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
