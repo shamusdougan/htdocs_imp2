@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2015 at 04:18 PM
+-- Generation Time: Aug 12, 2015 at 04:32 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -166,25 +166,27 @@ CREATE TABLE IF NOT EXISTS `client` (
   `FK3` int(30) DEFAULT NULL,
   `FK4` int(30) DEFAULT NULL,
   `FK5` int(30) DEFAULT NULL,
+  `labtech` tinyint(1) DEFAULT NULL,
   `last_change` datetime DEFAULT NULL,
   `sync_status` int(5) NOT NULL,
   `contact_billing` int(5) DEFAULT NULL,
   `contact_authorized` int(5) DEFAULT NULL,
   `contact_owner` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
-(22, 'BDKG Pty Ltd', '', '', NULL, NULL, '9943 3858', NULL, NULL, 1, 1, NULL, 60, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(23, 'Kelly Woodward', '', '', NULL, NULL, '9717 0048', NULL, NULL, 1, 1, NULL, 76, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(24, 'Savi Loans Pty Ltd', '', '', NULL, NULL, '0411 393 049', NULL, NULL, 1, 1, NULL, 84, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(25, 'You Are Good Enough', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 86, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(26, 'GDMC', '', '', NULL, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, '2015-08-09 08:41:25', 0, NULL, NULL, NULL),
-(27, 'Sapient Technology Solutions', '', '', NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2015-08-11 15:13:11', 0, NULL, NULL, NULL);
+INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `labtech`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
+(35, 'Oscar Hospitality', 'Suite 2, Level 2, 295 Springvale Road', 'Glen Waverley', 1, 3150, '(03) 9560 1844', NULL, NULL, 1, 1, NULL, 27, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(36, 'BDKG Pty Ltd', '', '', 1, NULL, '9943 3858', NULL, NULL, 1, 1, NULL, 60, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(37, 'Kelly Woodward', '', '', 1, NULL, '9717 0048', NULL, NULL, 1, 1, NULL, 76, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(38, 'Savi Loans Pty Ltd', '', '', 1, NULL, '0411 393 049', NULL, NULL, 1, 1, NULL, 84, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(39, 'You Are Good Enough', '', '', 1, NULL, '', NULL, NULL, 1, 1, NULL, 86, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(40, 'GDMC', '', '', 1, NULL, '', NULL, NULL, 1, 1, NULL, 87, NULL, NULL, NULL, NULL, 1, '2015-08-12 16:16:29', 0, NULL, NULL, NULL),
+(41, 'Paul Broadfoot', 'Suite G6, Corporate One, 84 Hotham Street', 'Preston', 1, 3072, '0400 605 889', NULL, NULL, 1, 1, NULL, 88, NULL, NULL, NULL, NULL, 1, '2015-08-20 01:16:29', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -210,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `client_contact` (
   `accounts_contact` tinyint(1) NOT NULL DEFAULT '0',
   `authorized_contact` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `client_contact`
@@ -219,7 +221,8 @@ CREATE TABLE IF NOT EXISTS `client_contact` (
 INSERT INTO `client_contact` (`id`, `firstname`, `surname`, `phone1`, `phone2`, `mobile`, `email`, `client_id`, `address`, `City`, `Postcode`, `State`, `Notes`, `owner_contact`, `accounts_contact`, `authorized_contact`) VALUES
 (1, 'asdfasd', 'asdfasdf', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0),
 (2, 'dddddd', '3332223', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0),
-(3, 'sadfasdf', 'asdfasdfasdfasdfasdfasdfasdfasdfasdf', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0);
+(3, 'sadfasdf', 'asdfasdfasdfasdfasdfasdfasdfasdfasdf', '', '', '', '', 1, NULL, NULL, NULL, NULL, '', 0, 0, 0),
+(5, 'shamus', 'Dougan', '1234', '', '', '', 27, NULL, NULL, NULL, NULL, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -300,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
 --
 
 INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointType`, `endPointDBServer`, `endPointDBName`, `endPointDBTable`, `endPointUser`, `endPointPassword`, `syncModelName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`, `endPointFilePath`, `endPointBaseURL`) VALUES
-(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-06-18 16:05:41', NULL, '', '', '');
+(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2015-08-12 16:30:42', NULL, '', '', '');
 
 -- --------------------------------------------------------
 

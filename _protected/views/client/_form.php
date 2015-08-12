@@ -17,7 +17,7 @@ use kartik\tabs\TabsX;
 <div class="client-form">
 
   
-<?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL]);     
+<?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL, 'id' => 'client-update-form']);     
    
     
 $companyInfo = Form::widget([
@@ -76,23 +76,20 @@ $companyInfo .= Form::widget([
     		]
     
     ]);
-    ?>
 
- 
-
-   
-
-</div>
-
-
-
-
-
-	
+$integrationInfo = Form::widget([
+		'model' => $model,
+		'form' => $form,
+		'columns' => 4,
+		'attributes' =>
+			[
+			'labtech' => ['type' => FORM::INPUT_CHECKBOX],
+			
+			]
 
 
+		]);
 
-<?
 
 echo TabsX::widget([
 		'items'=> 
@@ -100,26 +97,31 @@ echo TabsX::widget([
 			[			
 			'label'=>'<i class="glyphicon glyphicon-home"></i> Company',
 			'content'=>$companyInfo,
+			'active'=>true
 			
 			],
 			[
 				'label'=>'<i class="glyphicon glyphicon-user"></i> Contacts',
 				'content'=>$this->render("_contactGrid", ['model' => $model, 'form' => $form]),
-				'active'=>true
+				
 			],
+			[
+				'label'=>'<i class="glyphicon glyphicon-retweet"></i> Integration',
+				'content'=>$integrationInfo,
+				
+			],
+			
+			
 		],
 		'position'=>TabsX::POS_ABOVE,
 		'encodeLabels'=>false
 ]);
 ?>
 
- <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
 
 <?php ActiveForm::end(); ?>
 
-
+</div>
 
 <?php		
 Modal::begin([

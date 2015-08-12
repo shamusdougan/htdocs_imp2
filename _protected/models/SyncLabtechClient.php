@@ -67,7 +67,9 @@ class syncLabtechClient extends syncModelBase
 		should return anarray of records changed since the last sync, the array should be indexed on record id. */
 	function getLocalRecordsChangedSince($syncRelationship, $dbConnection)
 		{
-		return Client::find()->where("last_change > '".$syncRelationship->lastSync."'")->asArray()->all();
+		return Client::find()
+			->where("last_change > '".$syncRelationship->lastSync."' AND labtech = 1")
+			->asArray()->all();
 		}
 
 
@@ -97,6 +99,7 @@ class syncLabtechClient extends syncModelBase
 					$localClientRecord =  new Client();
 					$localClientRecord->defaultBillingType = 1;
 					$localClientRecord->defaultBillingRate = 1;
+					$localClientRecord->labtech = 1;
 					$localFK = $this->dataIndex['imp'];
 					$localClientRecord->$localFK = $remoteRecord[$this->dataIndex['remote']];
 					$this->localRecordsCreated++;

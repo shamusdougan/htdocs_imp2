@@ -216,10 +216,10 @@ hr.article-devider {
 
 .sapient_content
 {
-	float: left;
-
-	
+	width:auto;
+	overflow:hidden;
 	padding-left : 10px;
+	padding-right : 10px;
 }
 
 .sapient_login
@@ -229,3 +229,117 @@ hr.article-devider {
 	margin-right: auto;
 
 }
+
+
+
+.sapActionBar{
+	width: 1278px;
+	height: 40px;
+	border: 1px solid;
+
+
+	
+}
+
+
+.sapFieldSet
+{
+	width: 100%;
+	height: 90px;
+	border: 1px solid #beafb7;
+	padding-left: 10px;
+	margin-top: 0px;
+}
+
+.sapFieldSetLegend
+{
+	margin-left: 0px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+	font-size:1em;
+	width: 60px;
+	position: relative;
+	top: 5px;
+	border: 0px;
+}
+
+.sapContent{
+	width: 1280px;
+	}
+	
+
+	
+.sap_button{
+	width: 60px;
+	height: 40px;
+	float: left;
+		
+	}
+	
+.sap_button a{
+	color: #000000;
+	text-decoration: none;
+}
+	
+.sap_buttonText{
+	text-align: center;
+	line-height: 85%;
+
+	}
+
+	
+.sap_icon {
+	width: 32px;
+	height: 32px;
+	margin-left:auto;
+ 	margin-right:auto;
+ 
+	}
+	
+.sap_icon:hover {
+	background-position:0px -32px;
+}
+
+.sap_edit{
+	background-image:url('/images/icons_action/icon-32-edit.png');
+	}
+	
+.sap_list{
+	background-image:url('/images/icons_action/icon-32-list.png');
+	}
+
+.sap_alert{
+	background-image:url('/images/icons_action/icon-32-alert.png');
+}
+
+.sap_viewButton{
+	background-image:url('/images/icons_action/icon-32-view.png');
+}
+	
+.sap_cancel{
+	background-image:url('/images/icons_action/icon-32-cancel.png');
+	}
+	
+.sap_save{
+	background-image:url('/images/icons_action/icon-32-save.png');
+	}
+
+.sap_new{
+	background-image:url('/images/icons_action/icon-32-new.png');
+	}
+
+.sap_export{
+	background-image:url('/images/icons_action/icon-32-export.png');
+	}
+	
+.sap_delete{
+	background-image:url('/images/icons_action/icon-32-delete.png');
+	}
+	
+.sap_back{
+	background-image:url('/images/icons_action/icon-32-back.png');
+	}
+
+.sap_truck{
+	background-image:url('/images/icons_action/icon-32-truck.png');
+	}

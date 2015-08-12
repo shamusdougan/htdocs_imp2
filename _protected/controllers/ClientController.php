@@ -58,17 +58,7 @@ class ClientController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Client model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+   
 
     /**
      * Creates a new Client model.
@@ -99,10 +89,29 @@ class ClientController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        	$get = Yii::$app->request->get();
+    		if(isset($get['exit']) && $get['exit'] == 'false' )
+    			{
+				return $this->redirect(['update', 'id' => $model->id]);
+				}
+			else{
+				return $this->redirect(['index']);
+				}
+        } 
+        
+        
+        
+        else {
+        	
+        	
+        	$actionItems[] = ['label'=>'Save & Exit', 'button' => 'save', 'url'=>null, 'submit'=> 'client-update-form', 'confirm' => 'Save Client Information and Exit?'];
+        	$actionItems[] = ['label'=>'Save', 'button' => 'save', 'overrideAction' =>'/client/update?id='.$id.'&exit=false', 'url'=>null, 'submit'=> 'client-update-form', 'confirm' => 'Save Client Information?'];
+        	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/client/index', 'confirm' => 'Cancel Changes?'];
+        
+        
+        	
             return $this->render('update', [
-                'model' => $model,
+                'model' => $model, 'actionItems' => $actionItems
             ]);
         }
     }

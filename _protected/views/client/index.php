@@ -42,11 +42,14 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'FK5',
             // 'last_change',
             // 'sync_status',
-            'contact_billing',
-            'contact_authorized',
-            'contact_owner',
+            //'contact_billing',
+            //'contact_authorized',
+            //'contact_owner',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+            'class'=>'kartik\grid\ActionColumn',
+			'template' => '{update} {delete}',
+			],
         ],
     ]); ?>
 

@@ -50,12 +50,12 @@ if($model->id)
     	{
 		$.ajax
   		({
-  		url: '".yii\helpers\Url::toRoute("contacts/modal")."',
+  		url: '".yii\helpers\Url::toRoute("client-contact/modal-update")."',
 		data: {id: $(this).closest('tr').data('key')},
 		success: function (data, textStatus, jqXHR) 
 			{
 			$('.modal-body').removeData('bs.modal').find('.modal-content').empty();
-			//$('#activity-modal').modal();
+			$('#activity-modal').modal();
 			$('.modal-body').html(data);
           
 
@@ -69,6 +69,33 @@ if($model->id)
 		});
 	"
    );
+ 
+ 
+  $this->registerJs(
+    "$(document).on('click', '.activity-delete-link', function() 
+    	{
+    	if(!confirm('Delete Contact?'))
+    		{
+				return;
+			}
+		$.ajax
+  		({
+  		url: '".yii\helpers\Url::toRoute("client-contact/modal-delete")."',
+		data: {id: $(this).closest('tr').data('key')},
+		success: function (data, textStatus, jqXHR) 
+			{
+			$.pjax.reload({container:'#client-contact-grid-pjax'});
+			},
+        error: function (jqXHR, textStatus, errorThrown) 
+        	{
+            console.log('An error occured!');
+            alert('Error in ajax request' );
+        	}
+		});
+		});
+	"
+   );
+ 
  
 
    
@@ -100,17 +127,6 @@ $('body').on('beforeSubmit', 'form#modal_add_contact', function () {
 
 
 
-
-/*
-$this->registerJs("
-
-$('body').on('hidden.bs.modal', '.modal', function () {
-  	$(this).removeData('bs.modal');
-});
-
-
-");
-*/
 		
 $gridColumns = [
 	['attribute' => 'firstname'],
@@ -131,10 +147,14 @@ $gridColumns = [
                 	[
                     'class' => 'activity-update-link',
                     'title' => 'Update',
-                  	'data-toggle' => 'modal',
-                  	'data-target' => '#activity-modal',
-                  //  'data-id' => $key,
-                  //  'data-pjax' => '0',
+					]);
+				},
+			'delete' => function ($url, $model, $key) 
+	   			{
+                return Html::a('<span class="glyphicon glyphicon-trash"></span>','#', 
+                	[
+                    'class' => 'activity-delete-link',
+                    'title' => 'Delete',
 					]);
 				},
 			],

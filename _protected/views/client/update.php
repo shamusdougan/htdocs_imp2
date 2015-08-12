@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\components\actionButtons;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Client */
@@ -11,6 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="client-update">
+
+ <?= actionButtons::widget(['items' => $actionItems]) ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 

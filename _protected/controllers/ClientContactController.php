@@ -107,6 +107,37 @@ class ClientContactController extends Controller
         }
 	}
 
+	/**
+     * Creates a new ClientContact model.
+     *
+     */
+	public function actionModalUpdate($id)
+	{
+		 $model = $this->findModel($id);
+		
+		 if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return true;
+        } else {
+            return $this->renderAjax('_modalAdd', [
+                'model' => $model,
+            ]);
+        }
+	}
+
+/**
+     * Creates a new ClientContact model.
+     *
+     */
+	public function actionModalDelete($id)
+	{
+		 $this->findModel($id)->delete();
+		 
+		 return;
+		
+	}
+
+
+
     /**
      * Deletes an existing ClientContact model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

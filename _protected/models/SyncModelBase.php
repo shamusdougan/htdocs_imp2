@@ -164,7 +164,7 @@ Class syncModelBase{
 		
 		
 		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
-		//$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		$syncRelationship->lastSync = date("Y-m-d H:i:s");
 		$syncRelationship->save();
 		return;
 
@@ -260,7 +260,7 @@ Class syncModelBase{
 			
 		if($localRecordIndex !== false)
 			{
-			$this->progress .= "found conflicting record for ".$localRecord['name']." localRecord: ".$localRecord[$impLastchangeField]." Remote Record: ".$this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField]."\n";
+			$this->progress .= "found conflicting record localRecord: ".$localRecord[$impLastchangeField]." Remote Record: ".$this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField]."\n";
 			if($localRecord[$impLastchangeField] < $this->remoteRecords[$remoteRecordIndex][$remoteLastchangeField])
 				{
 				$this->progress .= " .... Using remote record\n";
@@ -275,6 +275,8 @@ Class syncModelBase{
 			}	
 		}
 		
+	$this->progress .= "   ".$this->recordConflicts." Conflicting records Found \n";
+		
 	$this->localRecords = $newLocalRecords;
 	$this->remoteRecords = $newRemoteRecords;
 		
@@ -282,54 +284,9 @@ Class syncModelBase{
 	
 
 
-	/*
-	Function: copyFromImp
-	Description: Takes the given array of changes to IMP and copies to the foreign datasource
-	input: impModels -> an array of imp models that have changed since the last sync
-	*/
-	function copyFromImp($impModels)
-	{
-	
-		foreach($impModels as $impModel)
-			{
-			$this->transferToForiegn($impModel);
-			}
-	}
-
-	/*
-	Function: copyToImp
-	Descitpion: Takes the associated array of data from the Foreign source and copies it into Imp database
-	Input: foreignDataArray
-	*/
-	function copyToImp($foreignDataArray)
-	{
-		
-	}
-
-
-	/*
-	Function: CheckDuplicates
-	Description: This function runs through and check for duplicated in the two arrays
-				If any duplicated are found then the latest entry is copied over the other entry
-	input: The two dataarrays, one containing the imp models and the other containing the foriegn DataColumn
-	output: none
-	*/
-	function checkDuplicates($impModels, $foreignDataArray)
-	{
-		
-	}
-	
-	
-	
 
 
 
-
-	//place holder only, this needs to defined in the child object
-	function fetchForeignChanges()
-	{
-		
-	}
 	
 	
 	
