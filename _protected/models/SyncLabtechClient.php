@@ -22,10 +22,11 @@ class syncLabtechClient extends syncModelBase
 		"state" => "State",
 		"postcode" => "Zip",
 		"phone1" => "Phone",
-		'notes' => 'Comment',
+		"phone2" => "Fax",
+		'notes' => 'Comment'
 		];
 	
-	
+	var $dbConnection;
 	
 	/*
 		Function: getRemoteRecordsChangedSince
@@ -34,11 +35,11 @@ class syncLabtechClient extends syncModelBase
 		$dbconnection: the connection to the foreign database
 		output:
 		should return anarray of records changed since the last sync, the array should be indexed on record id.	*/
-	function getRemoteRecordsChangedSince($syncRelationship, $dbConnection)
+	function getRemoteRecordsChangedSince($syncRelationship)
 		{
 		try{
 			$sqlQuery = "Select * From ".$syncRelationship->endPointDBTable." WHERE ".$syncRelationship->endPointDBTable.".Last_Date > '".$syncRelationship->lastSync."'";
-			$updatedRemoteRecords = $dbConnection->createCommand($sqlQuery)->queryAll();
+			$updatedRemoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
 
 			}
 		catch(Exception $e)
@@ -54,10 +55,9 @@ class syncLabtechClient extends syncModelBase
 		Function: getLocalRecordsChangedSince
 		input
 		$dateTime: the given date/time of the last successfuly syncLabtechClient
-		$dbconnection: the connection to the foreign database
 		output:
 		should return anarray of records changed since the last sync, the array should be indexed on record id. */
-	function getLocalRecordsChangedSince($syncRelationship, $dbConnection)
+	function getLocalRecordsChangedSince($syncRelationship)
 		{
 		return Client::find()
 			->where("last_change > '".$syncRelationship->lastSync."' AND labtech = 1")
@@ -118,13 +118,127 @@ class syncLabtechClient extends syncModelBase
 				else{
 					$this->localRecordsUpdated++;
 					}
-					
-				
-					
-					
-			
 			}
 	}
+	
+	
+	/*
+		function: transfeToRemote()
+		inputs: none
+		output: none
+		description: takes the list of records from the internal $this->localRecords and transfers to the remote database.
+					this uses the SQL statements to transfer the data into the remote database
+	*/
+	function transferToRemote($syncRelationship)
+	{
+	
+	
+	
+	foreach($this->localRecords as $localRecord)
+		{
+			
+			
+			
+			
+			//For a new record the local FK field would not have been set.
+			if(!isset($localRecord[$this->dataIndex['imp']]))
+				{
+					
+				//Fetch the new ClientID data from the database, cause Labtech doesn't like Autoincrement :('
+				try{
+					$sqlQuery = "Select * From `".$syncRelationship->endPointDBTable."` ORDER BY `ClientID` DESC LIMIT 1 ";
+					$updatedRemoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
+					$nextClientID = $updatedRemoteRecords[0]['ClientID'] + 1;
+					$nextSecurityID = $updatedRemoteRecords[0]['Permissions'] + 1;
+					}
+				catch(Exception $e)
+				{
+					$this->progress .= "Error in fetching Foreign Data, Error: ".$e->getMessage()."\n";	
+				}					
+					
+
+				$sqlStatement = "INSERT INTO `".$syncRelationship->endPointDBTable."` ";
+				
+				//Default columns for creating a labtech agent that dont come from imp
+				$columns = 
+					[
+					"`ClientID`", 
+					"`Firstname`",
+					"`LastName`",
+					"`Address2`",
+					"`Last_Date`",
+					"`Last_User`",
+					"`Country`",
+					"`SupportMins`",
+					"`ExternalID`",
+					"`Flags`",
+					"`GUID`",
+					"`Permissions`",
+					"`Score`",
+					"`Company`",
+					];
+					
+				//Default values for the default columns that dont come from imp
+				$dataValue = 
+					[
+					$nextClientID,
+					"''",
+					"''",
+					"''",
+					"'".date("Y-m-d H:i:s")."'",
+					"'Imp@sync_engine'",
+					"''",
+					0,
+					0,
+					0,
+					"''",
+					$nextSecurityID,
+					0,
+					"'".$localRecord['name']."'",
+					]; 
+					
+				foreach($this->fieldMapping as $impFieldName => $remoteFieldName)
+					{
+						$columns[] = "`".$remoteFieldName."`";
+						$dataValue[] = "'".$localRecord[$impFieldName]."'";
+					}
+				$sqlStatement .= "(".implode($columns, ", ").") VALUES (".implode($dataValue, ", ").")";
+				
+				
+				
+				//update the local Foreign key
+				$clientRecord = Client::findOne($localRecord);
+				$remoteKeyAttribute = $this->dataIndex['imp'];
+				$clientRecord->$remoteKeyAttribute = $nextClientID;
+				$clientRecord->save();
+				
+				$this->progress .= "   Creating new Client Entry in Labtech Database \n";
+				
+				}
+			else{
+				
+				$sqlStatement = "UPDATE `".$syncRelationship->endPointDBTable."` SET ";
+				$fields = array();
+				foreach($this->fieldMapping as $impFieldName => $remoteFieldName)
+					{
+						$fields[] = "`".$remoteFieldName."` = '".$localRecord[$impFieldName]."'";
+					}
+				$sqlStatement .= implode($fields, ", ")." WHERE ".$this->dataIndex['remote']." = ".$localRecord[$this->dataIndex['imp']];
+				}
+			
+			
+			try{
+				$this->dbConnection->createCommand($sqlStatement)->query();
+				}
+			catch(Exception $e)
+				{
+				$this->progress .= "Error in updating Foreign Data, Error: ".$e->getMessage()."\n";	
+				}
+
+		}
+	}
+	
+	
 	
 	
 	

@@ -141,11 +141,11 @@ class SyncrelationshipsController extends Controller
     }
     
     
-     public function actionSync($id, $sync=false)
+     public function actionSync($id, $start=false)
     {
     	
     	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=>"/syncrelationships"];
-    	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=>"/syncrelationships"];
+    	$actionItems[] = ['label'=>'Start Sync', 'button' => 'sync', 'url'=>"/syncrelationships/sync?id=".$id."&start=true"];
     	
     	
     	
@@ -154,7 +154,7 @@ class SyncrelationshipsController extends Controller
 		include_once("_protected\models\\".$syncModelName.".php");
 		$syncModel = new $syncModelName();
     	
-    	if($sync)
+    	if($start)
     		{
 			$syncModel->executeSync($syncRelationshipModel);	
 			}

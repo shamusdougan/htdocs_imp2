@@ -104,10 +104,10 @@ Class syncModelBase{
 		
 		//Initiate the connect to the remote database
 		$this->progress .= "Connecting to Remote Database...\n";
-		$dbConnection = $this->connectDatabase($syncRelationship);
-		if(is_string($dbConnection))
+		$this->dbConnection = $this->connectDatabase($syncRelationship);
+		if(is_string($this->dbConnection))
 			{
-			$this->progress .= $dbConnection."\n";
+			$this->progress .= $this->dbConnection."\n";
 			$this->progress .= "Sync Failed at ".date(" h:i d/m/Y")."\n";
 			
 			$syncRelationship->LastStatus = syncModelBase::SYNC_ERROR;
@@ -122,7 +122,7 @@ Class syncModelBase{
 		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::REMOTE_OVERRIDE_LOCAL || $this->syncType == syncModelBase::REMOTE2LOCAL_ONLY )
 			{
 			$this->progress .= "Fetching remote records changed since ".$syncRelationship->lastSync."\n";				
-			$this->remoteRecords = $this->getRemoteRecordsChangedSince($syncRelationship, $dbConnection);
+			$this->remoteRecords = $this->getRemoteRecordsChangedSince($syncRelationship);
 			if(is_string($this->remoteRecords))
 				{
 				$this->progress .= 	$this->remoteRecords."\n";
@@ -135,7 +135,7 @@ Class syncModelBase{
 		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::LOCAL2REMOTE_ONLY || $this->syncType == syncModelBase::LOCAL_OVERIDE_REMOTE )
 			{
 			$this->progress .= "Fetching imp records changed since ".$syncRelationship->lastSync."\n";
-			$this->localRecords = $this->getLocalRecordsChangedSince($syncRelationship, $dbConnection);
+			$this->localRecords = $this->getLocalRecordsChangedSince($syncRelationship);
 			if(is_string($this->localRecords))
 				{
 				$this->progress .= 	$this->localRecords."\n";
@@ -165,7 +165,11 @@ Class syncModelBase{
 			$this->transferFromRemote();
 			}
 		
-		
+		if($this->syncType == syncModelBase::DUALSYNC)
+			{
+			$this->progress .= "Transferring data to the remote database\n";
+			$this->transferToRemote($syncRelationship);	
+			}
 
 		
 		
