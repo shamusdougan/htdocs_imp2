@@ -151,9 +151,18 @@ class SyncrelationshipsController extends Controller
     	
     	$syncRelationshipModel = $this->findModel($id);
     	$syncModelName = $syncRelationshipModel->syncModelName;
-		include_once("_protected\models\\".$syncModelName.".php");
-		$syncModel = new $syncModelName();
     	
+    	
+    	if(!@include("_protected\models\\".$syncModelName.".php")) 
+    		{
+    		return $this->render('sync', [
+				'result' => "Unable to locate sync model file: ".$syncModelName."\n\r",
+				'model' => null,
+				'actionItems' => $actionItems,
+				]);
+    		};
+    		
+		$syncModel = new $syncModelName();
     	if($start)
     		{
 			$syncModel->executeSync($syncRelationshipModel);	

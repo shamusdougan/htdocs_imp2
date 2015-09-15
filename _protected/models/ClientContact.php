@@ -62,4 +62,11 @@ class ClientContact extends \yii\db\ActiveRecord
             'authorized_contact' => 'Authorized Contact',
         ];
     }
+    
+    
+    
+    public function getClient()
+    {
+		 return $this->hasOne(Client::className(), ['id' => 'client_id']);
+	}
 }
