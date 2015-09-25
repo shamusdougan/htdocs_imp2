@@ -69,7 +69,7 @@ Class syncModelBase{
 		}
 		elseif($syncRelationship->endPointType == Syncrelationships::ENDPOINTTPYE_FILE)
 		{
-			return "File Type Sync";
+			return $this->syncFile($syncRelationship);
 		}
 		
 		
@@ -162,16 +162,19 @@ Class syncModelBase{
 		if($this->syncType == syncModelBase::DUALSYNC || $this->syncType == syncModelBase::LOCAL_OVERIDE_REMOTE || $this->syncType == syncModelBase::REMOTE_OVERRIDE_LOCAL)
 			{
 			$this->progress .= "transfering remote records to local database \n";
-			$this->transferFromRemote();
-			}
 		
+			$this->transferFromRemote();
+			$this->progress .= "    Created ".$this->localRecordsCreated." new Records\n";
+			$this->progress .= "    Updated ".$this->localRecordsUpdated." Records\n";
+			}
+			
 		if($this->syncType == syncModelBase::DUALSYNC)
 			{
 			$this->progress .= "Transferring data to the remote database\n";
 			$this->transferToRemote($syncRelationship);	
 			}
 
-		
+
 		
 		
 		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
@@ -225,11 +228,13 @@ Class syncModelBase{
 	function checkConflicts()
 	{
 
+	//Check to make sure we have valid config and setup
 	if(!isset($this->dataLastChangeFields) || !isset($this->dataLastChangeFields['imp']) || !isset($this->dataLastChangeFields['remote']))
 		{
 		die("datalastChangeFields not set correctly");
 		}
 		
+	
 		
 	$newLocalRecords = array();
 	$newRemoteRecords = array();
@@ -237,6 +242,32 @@ Class syncModelBase{
 	$impLastchangeField = $this->dataLastChangeFields['imp'];
 	$remoteKey = $this->dataIndex['remote'];
 	$remoteLastchangeField = $this->dataLastChangeFields['remote'];
+	
+		
+	if(count($this->remoteRecords) === 0 || count($this->localRecords) === 0)
+		{
+		$this->progress .= "No conflicts found\n";
+		return;
+		}
+	
+	
+	
+	//Check that the sync setup is correct
+	if(!array_key_exists($remoteKey, $this->remoteRecords)){
+		$this->progress .= "Invalid Foreign Key defined in SyncRealationship Model\n";
+		return;
+		}
+		
+		
+		
+
+	if(!array_key_exists($impKey, $this->localRecords))
+		{
+		$this->progress .= "Invalid Local Key defined in SyncRealationship Model\n";	
+		return;		
+		}
+	
+	
 	
 	
 	//check the local records for any conflicts with the remote data
@@ -297,12 +328,54 @@ Class syncModelBase{
 
 
 
+/**
+* 
+* @param undefined $Sync Files
+* 
+* @return
+*
+* Description this will push the related models out into a file at a specifed location. Inherently one way 
+* 
+*/
+function syncFile($syncRelationship)
+	{
+		
+		//No sync has been done yet start the process off
+		if($syncRelationship->lastSync == "")
+		{
+			$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
+			$syncRelationship->save();
+		}
+		
+		$this->progress = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
+		$this->progress .= "\nSyncing Imp:".$syncRelationship->impModelName." and target file ".$syncRelationship->endPointFilePath."\n";
+		
+		
+		//Initiate the connect to the remote database
+		$this->progress .= "Connecting to File Location...\n";
+		
+		
+		try{
+			$this->fileHandle = fopen($syncRelationship->endPointFilePath, 'w');
+			}
+		catch(Exception $e)
+			{
+			$this->progress .= "   .... unable to open file location\n";
+			$this->progress .= "   .... ".$e->getMessage();
+			}
+		
+		$this->localRecords = $this->getLocalRecords();
+		
 
+		$this->progress .= "Transferring data to the remote filelocation\n";
+		$this->transferToRemote($syncRelationship);	
 
+		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
+		$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		$syncRelationship->LastStatus = syncModelBase::SYNC_SUCCESS;
+		$syncRelationship->save();
 	
-	
-	
-	
+	}
 	
 }
 

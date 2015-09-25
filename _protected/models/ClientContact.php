@@ -37,8 +37,8 @@ class ClientContact extends \yii\db\ActiveRecord
     {
         return [
             [['firstname', 'surname', 'client_id'], 'required'],
-            [['client_id', 'address', 'owner_contact', 'accounts_contact', 'authorized_contact'], 'integer'],
-            [['firstname', 'surname', 'phone1', 'phone2', 'mobile', 'email'], 'string', 'max' => 100]
+            [['client_id', 'owner_contact', 'accounts_contact', 'authorized_contact'], 'integer'],
+            [['firstname', 'surname', 'phone1', 'phone2', 'mobile', 'email', 'Notes'], 'string', 'max' => 100]
         ];
     }
 
@@ -68,5 +68,13 @@ class ClientContact extends \yii\db\ActiveRecord
     public function getClient()
     {
 		 return $this->hasOne(Client::className(), ['id' => 'client_id']);
+	}
+	
+	
+	public function beforeSave($insert)
+    {
+		$this->last_change =  date("Y-m-d H:i:s");
+		return parent::beforeSave($insert);
+
 	}
 }

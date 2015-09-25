@@ -34,7 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
           
 	        'frequenyMin',
 	        'lastSync',
-            'LastStatus',
+	        	[
+	        	'attribute' => 'LastStatus',
+	        	'value' => function ($data) {
+							return Lookup::item($data->LastStatus, "SYNC_RESULT");
+							},
+				
+	        	],
 	          array(
 	        	'attribute' => 'endPointType',
 	           	'value' => function($data) {
