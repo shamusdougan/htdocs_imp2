@@ -18,7 +18,8 @@
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-krajee-base": "*",
         "kartik-v/yii2-builder":"*",
-        "kartik-v/yii2-tabs-x": "dev-master"
+        "kartik-v/yii2-tabs-x": "dev-master",
+        "kartik-v/yii2-datecontrol": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

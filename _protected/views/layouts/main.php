@@ -46,6 +46,7 @@ AppAsset::register($this);
 					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
 					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts"), 'items' => [
 						['label' => 'Clients', 'url' => Url::toRoute('/client'), 'active'=>($currentItem == 'client')],
+						['label' => 'Charge Rates', 'url' => Url::toRoute('/charge-rates'), 'active'=>($currentItem == 'charge-rates')],
 					
 					
 					
