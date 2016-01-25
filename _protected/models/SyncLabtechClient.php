@@ -34,7 +34,7 @@ class syncLabtechClient extends syncModelBase
 		$dateTime: the given date/time of the last successfuly syncLabtechClient
 		$dbconnection: the connection to the foreign database
 		output:
-		should return anarray of records changed since the last sync, the array should be indexed on record id.	*/
+		should return an array of records changed since the last sync, the array should be indexed on record id.	*/
 	function getRemoteRecordsChangedSince($syncRelationship)
 		{
 		try{
