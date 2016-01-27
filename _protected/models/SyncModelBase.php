@@ -71,6 +71,10 @@ Class syncModelBase{
 		{
 			return $this->syncFile($syncRelationship);
 		}
+		elseif($syncRelationship->endPointType == Syncrelationships::ENDPOINTTYPE_DBSPAN)
+		{
+			return $this->syncDatabaseSpan($syncRelationship);
+		}
 		
 		
 	}
@@ -186,6 +190,67 @@ Class syncModelBase{
 		
 		
 	}
+
+
+
+/*
+	Function: syncDatabaseSpan
+	Description: Takes the db Connection obejcts and performs the sync, this is designed to be run from the child object that 
+	input: connection -> the yii connction object for the foriegn database
+		$syncRelationship -> the given sync relationship object. This kind of sync simply compares the join of the two tables,
+							 if rows dont appear in the imp database it simply creates them using the predefined defaults
+	
+	*/
+	function syncDatabaseSpan($syncRelationship)
+	{
+		
+		//No sync has been done yet start the process off
+		if($syncRelationship->lastSync == "")
+		{
+			$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
+			$syncRelationship->save();
+		}
+		
+		$this->progress = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
+		$this->progress .= "\nSyncing Imp:".$syncRelationship->impModelName." and ".$syncRelationship->endPointName.": ".$syncRelationship->endPointDBTable."\n";
+		
+		
+		//Initiate the connect to the remote database
+		$this->progress .= "Connecting to Remote Database...\n";
+		$this->dbConnection = $this->connectDatabase($syncRelationship);
+		if(is_string($this->dbConnection))
+			{
+			$this->progress .= $this->dbConnection."\n";
+			$this->progress .= "Sync Failed at ".date(" h:i d/m/Y")."\n";
+			
+			$syncRelationship->LastStatus = syncModelBase::SYNC_ERROR;
+			$syncRelationship->save();
+			
+			return;
+			}
+		$this->progress .= "   ....Connected \n";
+		
+		$this->progress .= " Fetching records in labtech that have no corresponding records in imp\n";
+		$this->remoteRecords = $this->getRemoteRecords($syncRelationship);
+		if(is_string($this->remoteRecords))
+			{
+			$this->progress .= $this->remoteRecords."\n";
+			return;
+			}
+		
+		
+		
+		
+		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
+		//$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		//$syncRelationship->LastStatus = syncModelBase::SYNC_SUCCESS;
+		$syncRelationship->save();
+		return;
+
+		
+		
+	}
+
 
 
 

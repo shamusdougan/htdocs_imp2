@@ -32,6 +32,7 @@ class Syncrelationships extends \yii\db\ActiveRecord
      const ENDPOINTTYPE_DATABASE=1;
  	 const ENDPOINTTYPE_WEB=2;
 	 const ENDPOINTTPYE_FILE=3;
+	 const ENDPOINTTYPE_DBSPAN=4;
      
      
     public static function tableName()
