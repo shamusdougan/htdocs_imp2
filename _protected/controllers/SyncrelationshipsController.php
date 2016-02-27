@@ -83,12 +83,19 @@ class SyncrelationshipsController extends Controller
     {
         $model = new Syncrelationships();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
+        	{
             return $this->redirect(['index']);
-        } else {
+        	}
+        else {
+        	
+        	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=> 'index', 'confirm' => 'Exit with out saving?']; 
+			$actionItems[] = ['label'=>'Save', 'button' => 'save', 'submit' => 'sync-form', 'url'=> null, 'confirm' => 'Save Sync info and Exit?']; 
+			
             return $this->render('create', [
                 'model' => $model,
-            ]);
+                'actionItems' => $actionItems
+,            ]);
         }
     }
 
@@ -104,9 +111,21 @@ class SyncrelationshipsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
-        } else {
+        } 
+        
+        else 
+        	{
+        		
+        		
+        		
+        	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=> 'index', 'confirm' => 'Exit with out saving?']; 
+			$actionItems[] = ['label'=>'Save', 'button' => 'save', 'submit' => 'sync-form', 'url'=> null, 'confirm' => 'Save Sync info and Exit?']; 
+			$actionItems[] = ['label'=>'Start Sync', 'button' => 'sync', 'url'=>"/syncrelationships/sync?id=".$id."&start=true"];
+    	
+        		
             return $this->render('update', [
                 'model' => $model,
+                'actionItems' => $actionItems,
             ]);
         }
     }

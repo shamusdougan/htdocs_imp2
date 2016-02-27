@@ -28,10 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'impModelName:text:Source',
-            'endPointName:text:Target',
+ //           'impModelName:text:Source',
+ //           'endPointName:text:Target',
  //           'endPointType',
-          
+ 			'description',
+          	'syncModelName',
+          	'endPoint',
+          	'username',
+          	'password',
 	        'frequenyMin',
 	        'lastSync',
 	        	[
@@ -41,14 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							},
 				
 	        	],
-	          array(
-	        	'attribute' => 'endPointType',
-	           	'value' => function($data) {
-	        					return Lookup::item($data->endPointType, "SyncEndPointType");
-								},
-	            'filter' => Lookup::items("SyncEndPointType"),
-	        
-	           ),
+	       
 	       // 'endPointUser',
 	        //'endPointPassword',
             //'endPointDBServer',

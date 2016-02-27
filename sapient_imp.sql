@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2016 at 08:10 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Feb 27, 2016 at 11:27 PM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `summary` text COLLATE utf8_unicode_ci NOT NULL,
@@ -35,9 +35,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `status` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -49,8 +47,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `item_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`item_name`,`user_id`)
+  `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -74,10 +71,7 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
   `rule_name` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `data` text COLLATE utf8_unicode_ci,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `rule_name` (`rule_name`),
-  KEY `idx-auth_item-type` (`type`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -101,9 +95,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`parent`,`child`),
-  KEY `child` (`child`)
+  `child` varchar(64) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -131,8 +123,7 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `data` text COLLATE utf8_unicode_ci,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -149,7 +140,7 @@ INSERT INTO `auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `charge_rates` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `name` varchar(200) NOT NULL,
   `time_increment` int(10) NOT NULL,
   `abriev` varchar(5) DEFAULT NULL,
@@ -158,8 +149,7 @@ CREATE TABLE IF NOT EXISTS `charge_rates` (
   `integration_2` varchar(10) DEFAULT NULL,
   `integration_3` varchar(10) DEFAULT NULL,
   `integration_4` varchar(10) DEFAULT NULL,
-  `integration_5` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `integration_5` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -169,11 +159,10 @@ CREATE TABLE IF NOT EXISTS `charge_rates` (
 --
 
 CREATE TABLE IF NOT EXISTS `charge_rates_amounts` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+`id` int(10) NOT NULL,
   `valid_from_date` date NOT NULL,
   `amount` float NOT NULL,
-  `charge_rate_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  `charge_rate_id` int(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -190,7 +179,7 @@ INSERT INTO `charge_rates_amounts` (`id`, `valid_from_date`, `amount`, `charge_r
 --
 
 CREATE TABLE IF NOT EXISTS `client` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `address` varchar(500) DEFAULT NULL,
   `city` varchar(500) DEFAULT NULL,
@@ -213,8 +202,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `sync_status` int(5) NOT NULL,
   `contact_billing` int(5) DEFAULT NULL,
   `contact_authorized` int(5) DEFAULT NULL,
-  `contact_owner` int(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `contact_owner` int(5) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
 
 --
@@ -319,7 +307,7 @@ INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `pho
 --
 
 CREATE TABLE IF NOT EXISTS `client_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `surname` varchar(100) NOT NULL,
   `phone1` varchar(100) DEFAULT NULL,
@@ -336,8 +324,7 @@ CREATE TABLE IF NOT EXISTS `client_contact` (
   `accounts_contact` tinyint(1) NOT NULL DEFAULT '0',
   `authorized_contact` tinyint(1) DEFAULT '0',
   `FK1` int(10) NOT NULL,
-  `last_change` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `last_change` datetime NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=411 ;
 
 --
@@ -541,12 +528,11 @@ INSERT INTO `client_contact` (`id`, `firstname`, `surname`, `phone1`, `phone2`, 
 --
 
 CREATE TABLE IF NOT EXISTS `lookup` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `code` int(11) NOT NULL,
   `type` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `position` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `position` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
@@ -569,8 +555,7 @@ INSERT INTO `lookup` (`id`, `name`, `code`, `type`, `position`) VALUES
 
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
+  `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -590,34 +575,27 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `syncrelationships` (
-  `index` int(11) NOT NULL AUTO_INCREMENT,
-  `impModelName` varchar(200) NOT NULL,
-  `endPointName` varchar(200) NOT NULL,
-  `endPointType` int(5) NOT NULL,
-  `endPointDBServer` varchar(200) DEFAULT NULL,
-  `endPointDBName` varchar(200) DEFAULT NULL,
-  `endPointDBTable` varchar(200) DEFAULT NULL,
-  `endPointUser` varchar(200) DEFAULT NULL,
-  `endPointPassword` varchar(200) DEFAULT NULL,
+`index` int(11) NOT NULL,
+  `description` varchar(200) NOT NULL,
   `syncModelName` varchar(200) NOT NULL,
+  `endPoint` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
   `frequenyMin` int(11) NOT NULL DEFAULT '60',
   `lastSync` datetime DEFAULT NULL,
   `LastStatus` int(11) DEFAULT NULL,
-  `LastStatusData` varchar(500) DEFAULT NULL,
-  `endPointFilePath` varchar(200) DEFAULT NULL,
-  `endPointBaseURL` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `LastStatusData` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `syncrelationships`
 --
 
-INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPointType`, `endPointDBServer`, `endPointDBName`, `endPointDBTable`, `endPointUser`, `endPointPassword`, `syncModelName`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`, `endPointFilePath`, `endPointBaseURL`) VALUES
-(2, 'Client', 'Labtech', 1, 'localhost', 'labtech', 'clients', 'root', '', 'SyncLabtechClient', 15, '2016-01-25 15:02:08', 1, '', '', ''),
-(3, 'ClientContact', 'Labtech', 1, 'STS-APP-2', 'labtech', 'contacts', 'imp', 'imp2pwd', 'SyncLabtechContact', 15, '2016-02-25 15:42:36', 2, '', '', ''),
-(4, 'ClientContact', 'Phone Contact List', 3, '', '', '', '', '', 'SyncPhoneContacts', 360, '2016-01-25 15:04:41', 1, '', '\\\\sts-app-1\\wwwroot\\RemotePhonebook.xml', ''),
-(5, 'ticketInfo', 'Labtech', 4, 'localhost', 'labtech', 'tickets', 'root', '', 'SyncTicketInfo', 15, '1970-01-01 00:00:00', NULL, '', '', '');
+INSERT INTO `syncrelationships` (`index`, `description`, `syncModelName`, `endPoint`, `username`, `password`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`) VALUES
+(2, 'This sync model is to sync the Clients between labtech and Imp', 'SyncLabtechClient', 'localhost', 'shamus', 'K@pp@1', 15, '2016-02-27 21:30:13', 1, 'fdgdf'),
+(3, '', 'SyncLabtechContact', NULL, NULL, NULL, 15, '2016-02-25 15:42:36', 2, ''),
+(4, '', 'SyncPhoneContacts', NULL, NULL, NULL, 360, '2016-01-25 15:04:41', 1, ''),
+(5, '', 'SyncTicketInfo', NULL, NULL, NULL, 15, '1970-01-01 00:00:00', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -626,14 +604,13 @@ INSERT INTO `syncrelationships` (`index`, `impModelName`, `endPointName`, `endPo
 --
 
 CREATE TABLE IF NOT EXISTS `ticket_info` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+`id` int(100) NOT NULL,
   `labtech_ticket_id` int(50) NOT NULL,
   `imp_status` int(4) NOT NULL,
   `charge_rate_id` int(4) NOT NULL,
   `invoice_date` date DEFAULT NULL,
   `invoice_id` int(10) DEFAULT NULL,
-  `agreement_type_id` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
+  `agreement_type_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -643,11 +620,10 @@ CREATE TABLE IF NOT EXISTS `ticket_info` (
 --
 
 CREATE TABLE IF NOT EXISTS `timeslip_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `billed_time` float NOT NULL DEFAULT '0',
   `charge_rate_id` int(10) NOT NULL,
-  `agreement_type_id` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
+  `agreement_type_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -657,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `timeslip_info` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -666,8 +642,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `account_activation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -679,6 +654,154 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_
 (5, 'shamus', 'test@test.com', '$2y$13$a0JVb.KGIEintCd4Jo89zuSsG0gPXOGr8AaoTAFiCLYUkechkT9/a', 10, 'IUTHnAzXzyW5YOof6D-OwievOpQWP9nQ', NULL, NULL, 1427250473, 1427253473);
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+ ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+ ADD PRIMARY KEY (`item_name`,`user_id`);
+
+--
+-- Indexes for table `auth_item`
+--
+ALTER TABLE `auth_item`
+ ADD PRIMARY KEY (`name`), ADD KEY `rule_name` (`rule_name`), ADD KEY `idx-auth_item-type` (`type`);
+
+--
+-- Indexes for table `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+ ADD PRIMARY KEY (`parent`,`child`), ADD KEY `child` (`child`);
+
+--
+-- Indexes for table `auth_rule`
+--
+ALTER TABLE `auth_rule`
+ ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `charge_rates`
+--
+ALTER TABLE `charge_rates`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `charge_rates_amounts`
+--
+ALTER TABLE `charge_rates_amounts`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_contact`
+--
+ALTER TABLE `client_contact`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lookup`
+--
+ALTER TABLE `lookup`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migration`
+--
+ALTER TABLE `migration`
+ ADD PRIMARY KEY (`version`);
+
+--
+-- Indexes for table `syncrelationships`
+--
+ALTER TABLE `syncrelationships`
+ ADD PRIMARY KEY (`index`);
+
+--
+-- Indexes for table `ticket_info`
+--
+ALTER TABLE `ticket_info`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `timeslip_info`
+--
+ALTER TABLE `timeslip_info`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `charge_rates`
+--
+ALTER TABLE `charge_rates`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `charge_rates_amounts`
+--
+ALTER TABLE `charge_rates_amounts`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
+--
+-- AUTO_INCREMENT for table `client_contact`
+--
+ALTER TABLE `client_contact`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=411;
+--
+-- AUTO_INCREMENT for table `lookup`
+--
+ALTER TABLE `lookup`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `syncrelationships`
+--
+ALTER TABLE `syncrelationships`
+MODIFY `index` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `ticket_info`
+--
+ALTER TABLE `ticket_info`
+MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `timeslip_info`
+--
+ALTER TABLE `timeslip_info`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- Constraints for dumped tables
 --
 
@@ -686,26 +809,26 @@ INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_
 -- Constraints for table `article`
 --
 ALTER TABLE `article`
-  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item`
 --
 ALTER TABLE `auth_item`
-  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
