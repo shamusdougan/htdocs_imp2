@@ -42,7 +42,7 @@ class ChargeRatesAmounts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'valid_from_date' => 'Valid From Date',
+            'valid_from_date' => 'Date Valid From',
             'amount' => 'Amount',
             'charge_rate_id' => 'Charge Rate ID',
         ];

@@ -52,13 +52,29 @@ class SyncRelationships extends \yii\db\ActiveRecord
             'index' => 'Index',
             'description' => 'Description',
             'syncModelName' => 'Sync Model Name',
-            'endPoint' => 'End Point',
+            'endPoint' => 'Connect To',
             'username' => 'Username',
             'password' => 'Password',
-            'frequenyMin' => 'Frequeny Min',
+            'frequenyMin' => 'Sync Frequeny Min',
             'lastSync' => 'Last Sync',
             'LastStatus' => 'Last Status',
             'LastStatusData' => 'Last Status Data',
         ];
     }
+    
+    /**
+	* 	function: getLastSync
+	* 
+	* @return
+	*/
+    public function getLastSync()
+    {
+	if($this->lastSync == "")
+		{
+		$this->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
+		$this->save();
+		}
+		
+	return $this->lastSync;
+	}
 }

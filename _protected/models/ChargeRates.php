@@ -69,5 +69,29 @@ class ChargeRates extends \yii\db\ActiveRecord
 		  return $this->hasMany(ChargeRatesAmounts::className(), ['charge_rate_id' => 'id' ]);
 	}
   
+  
+  	public function getCurrentRate()
+  	{
+
+  	$currDate = mktime(0,0,0,4,4,2016);
+	return $this->getRate($currDate);
+	}
+  
+
+
+	public function getRate($phpTime)
+	{
+	$currentChargeRate = ChargeRatesAmounts::find()
+							->Where("`valid_from_date` < '".date("Y-m-d", $phpTime)."'")
+							->OrderBy('valid_from_date', 'ASC')
+							->limit(1)
+							->one();
+							
+	if($currentChargeRate == null)
+		{
+		return 0;
+		}
+	return $currentChargeRate->amount;
+	}
     
 }

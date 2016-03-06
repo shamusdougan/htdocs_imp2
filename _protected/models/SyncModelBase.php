@@ -254,20 +254,94 @@ Class syncModelBase{
 
 
 
-	/*
+	
+	
+	
+
+
+
+/**
+* 
+* @param undefined $Sync Files
+* 
+* @return
+*
+* Description this will push the related models out into a file at a specifed location. Inherently one way 
+* 
+*/
+function syncFile($syncRelationship)
+	{
+		
+		//No sync has been done yet start the process off
+		if($syncRelationship->lastSync == "")
+		{
+			$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
+			$syncRelationship->save();
+		}
+		
+		$this->progress = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
+		$this->progress .= "\nSyncing Imp:".$syncRelationship->impModelName." and target file ".$syncRelationship->endPointFilePath."\n";
+		
+		
+		//Initiate the connect to the remote database
+		$this->progress .= "Connecting to File Location...\n";
+		
+		
+		try{
+			$this->fileHandle = fopen($syncRelationship->endPointFilePath, 'w');
+			}
+		catch(Exception $e)
+			{
+			$this->progress .= "   .... unable to open file location\n";
+			$this->progress .= "   .... ".$e->getMessage();
+			}
+		
+		$this->localRecords = $this->getLocalRecords();
+		
+
+		$this->progress .= "Transferring data to the remote filelocation\n";
+		$this->transferToRemote($syncRelationship);	
+
+		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
+		$syncRelationship->lastSync = date("Y-m-d H:i:s");
+		$syncRelationship->LastStatus = syncModelBase::SYNC_SUCCESS;
+		$syncRelationship->save();
+	
+	}
+	
+	
+/**
+* 
+* PLace all the used function below here, all other functions can be safely deleted
+* 
+* 
+*/
+public function getLastSync($syncRelationship)
+	{
+	if($syncRelationship->lastSync == "")
+		{
+		$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
+		$syncRelationship->save();
+		}
+	}	
+
+
+
+
+/*
 	Function connectDatabase
 	Descitpion: takes the syncRelationship object and connected to the database
 	inputs: syncRelationship Object -> see syncRelationship Model
 	outputs: either the database connections object or the error message to be returned, if the database to be connected to isn't an sql database
 			override on the child class.
 	*/
-	function connectDatabase($syncRelationship)
+	public function connectDatabase($syncRelationship, $database, $databaseTable)
 	{
-		$dsn = "mysql:host=".$syncRelationship->endPointDBServer.";dbname=".$syncRelationship->endPointDBName;
+		$dsn = "mysql:host=".$syncRelationship->endPoint.";dbname=".$database;
 		$connection = new \yii\db\Connection([
 		    'dsn' => $dsn,
-		    'username' => $syncRelationship->endPointUser,
-		    'password' => $syncRelationship->endPointPassword,
+		    'username' => $syncRelationship->username,
+		    'password' => $syncRelationship->password,
 		]);
 	
 	try{
@@ -275,17 +349,18 @@ Class syncModelBase{
 		}
 	catch(Exception $e)
 		{
-			return "Unable to connect to Database: ".$dsn." using: ".$syncRelationship->endPointUser."\nError Message Returned: ".$e->getMessage();
+			return "Unable to connect to Database: ".$dsn." using: ".$syncRelationship->username."\nError Message Returned: ".$e->getMessage();
 		}
 	
 	return $connection;
 	
 	}
-	
-	/*
+
+
+/*
 	Function: checkConflicts()
 	input:
-		$localRecords -> an array of local records, inrementing index
+		$localRecords -> an array of local records, incrementing index
 		$remoteRecords -> an array of remote records, incrementing IndexAction
 	output: none
 	Description: this function takes the two list and checks for any conflicts in the data records. The newest record is taken to be
@@ -389,63 +464,21 @@ Class syncModelBase{
 	$this->remoteRecords = $newRemoteRecords;
 		
 	}
-	
+	 
 
 
 
-/**
-* 
-* @param undefined $Sync Files
-* 
-* @return
-*
-* Description this will push the related models out into a file at a specifed location. Inherently one way 
-* 
-*/
-function syncFile($syncRelationship)
-	{
-		
-		//No sync has been done yet start the process off
-		if($syncRelationship->lastSync == "")
-		{
-			$syncRelationship->lastSync = date("Y-m-d H:i:s", mktime(0,0,0,1,1,1970));
-			$syncRelationship->save();
-		}
-		
-		$this->progress = "Attempting Sync between IMP (me) and ".$syncRelationship->endPointName."\n";
-		$this->progress .= "\nSyncing Imp:".$syncRelationship->impModelName." and target file ".$syncRelationship->endPointFilePath."\n";
-		
-		
-		//Initiate the connect to the remote database
-		$this->progress .= "Connecting to File Location...\n";
-		
-		
-		try{
-			$this->fileHandle = fopen($syncRelationship->endPointFilePath, 'w');
-			}
-		catch(Exception $e)
-			{
-			$this->progress .= "   .... unable to open file location\n";
-			$this->progress .= "   .... ".$e->getMessage();
-			}
-		
-		$this->localRecords = $this->getLocalRecords();
-		
 
-		$this->progress .= "Transferring data to the remote filelocation\n";
-		$this->transferToRemote($syncRelationship);	
 
-		$this->progress .= "\n\nSync Completed at ".date("H:m d-M-Y")."\n";
-		$syncRelationship->lastSync = date("Y-m-d H:i:s");
-		$syncRelationship->LastStatus = syncModelBase::SYNC_SUCCESS;
-		$syncRelationship->save();
-	
-	}
-	
+
+
+
+
+
+
+
+
+
+
 }
-
-
-
-
-
 ?>

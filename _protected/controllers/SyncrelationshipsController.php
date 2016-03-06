@@ -165,6 +165,7 @@ class SyncrelationshipsController extends Controller
     	
     	$actionItems[] = ['label'=>'back', 'button' => 'back', 'url'=>"/syncrelationships"];
     	$actionItems[] = ['label'=>'Start Sync', 'button' => 'sync', 'url'=>"/syncrelationships/sync?id=".$id."&start=true"];
+    	$actionItems[] = ['label'=>'Edit Settings', 'button' => 'edit', 'url'=>"/syncrelationships/update?id=".$id];
     	
     	
     	
