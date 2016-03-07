@@ -48,10 +48,13 @@ class ChargeRatesController extends Controller
     {
         $searchModel = new ChargeRatesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+ 		$actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/charge-rates/create"];
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'actionItems' => $actionItems,
         ]);
     }
 
@@ -125,13 +128,23 @@ class ChargeRatesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
+        	{
+            return $this->redirect(['index']);
+        	}
+        else {
+        	
+        	
+        	
+	     	$actionItems[] = ['label'=>'Back', 'button' => 'back', 'url'=>'index'];
+			$actionItems[] = ['label'=>'Save', 'button' => 'save', 'overrideAction' =>'/charge-rates/create?exit=false', 'url'=>null, 'submit'=> 'charge-rate-form', 'confirm' => 'Save Charge Rate Information?'];
+	    	$actionItems[] = ['label'=>'Save & Exit', 'button' => 'save', 'url'=>null, 'submit'=> 'charge-rate-form', 'confirm' => 'Save Charge Rate Information and Exit?'];
+	    	
+	        return $this->render('update', [
+	                'model' => $model,
+	                'actionItems' => $actionItems,
+	            ]);
+        	}
     }
 
     /**
