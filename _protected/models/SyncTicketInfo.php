@@ -12,7 +12,9 @@ class syncTicketInfo extends syncModelBase
 	
 	var $dataIndex = array("imp" => "FK1", "remote" => "ClientID");
 	var $dataLastChangeFields = array("imp" => "last_change", "remote" => "Last_Date");
-
+	var $databaseName = "labtech";
+	var $databaseTable = "tickets";
+	var $startingDate = "2014-06-01";
 	
 	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
 	var $fieldMapping = [
@@ -27,6 +29,45 @@ class syncTicketInfo extends syncModelBase
 		];
 	
 	var $dbConnection;
+	
+	
+	
+	
+	function executeSync($syncRelationship)
+	{
+		
+		$this->progress = "Attempting Sync client information between IMP (me) and Labtech using ".$syncRelationship->endPoint."\n";
+		$this->dbConnection = $this->connectDatabase($syncRelationship, $this->databaseName, $this->databaseTable);
+		if(is_string($this->dbConnection))
+			{
+			$this->progress .= $this->dbConnection;
+			return;
+			}
+		$this->progress .= "   ....Connected \n";
+		
+		
+		
+		$this->progress .= "Fetching any records in labtech that dont't have the coresponding tickinfo object in imp\n";
+		try{
+			
+			$sqlQuery = "Select * From ".$this->databaseTable." A LEFT JOIN Sapient_imp.".ticketInfo::tableName()." B ON A.TicketID = B.labtech_ticket_id WHERE B.labtech_ticket_id IS NULL AND A.StartedDate > '".$this->startingDate."'";
+			$this->remoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
+			}
+		catch(Exception $e)
+			{
+				$this->progress .= "Error in fetching Foreign Data, Error: ".$e->getMessage();	
+			}
+
+
+		foreach($this->remoteRecords as $remoteRecord)
+			{
+			$newTicketInfo = new TicketInfo();
+			$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
+			$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
+			$newTicketInfo->charge_rate_id = 
+			}	
+		
+	}
 	
 	/*
 		Function: getRemoteRecordsChangedSince

@@ -17,6 +17,13 @@ use Yii;
  */
 class TicketInfo extends \yii\db\ActiveRecord
 {
+	
+	
+	const DEFAULT_STATUS = 1;
+	
+	
+	
+	
     /**
      * @inheritdoc
      */
