@@ -64,7 +64,7 @@ class syncTicketInfo extends syncModelBase
 			$newTicketInfo = new TicketInfo();
 			$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
 			$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
-			$newTicketInfo->charge_rate_id = 
+			$newTicketInfo->charge_rate_id = ChargeRates::
 			}	
 		
 	}
