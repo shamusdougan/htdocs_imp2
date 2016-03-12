@@ -1,5 +1,6 @@
 <?php
 use app\models\TicketInfo;
+use app\models\Client;
 
 
 require_once("SyncModelBase.php");
@@ -58,13 +59,18 @@ class syncTicketInfo extends syncModelBase
 				$this->progress .= "Error in fetching Foreign Data, Error: ".$e->getMessage();	
 			}
 
-
+		$clientList = Client::getClientList(Client::LABTECH_KEY);
 		foreach($this->remoteRecords as $remoteRecord)
 			{
 			$newTicketInfo = new TicketInfo();
 			$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
 			$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
-			$newTicketInfo->charge_rate_id = ChargeRates::
+			$newTicketInfo->charge_rate_id = $clientList[$remoteRecord['ClientID']]->getDefaultChargeRate($remoteRecord['ComputerID'], )
+			
+			
+			
+			
+			//$newTicketInfo->charge_rate_id = ChargeRates::
 			}	
 		
 	}

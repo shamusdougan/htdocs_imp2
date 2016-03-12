@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "client".
@@ -35,6 +37,10 @@ class Client extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+     
+    const LABTECH_KEY = 'FK1';
+    
+    
     public static function tableName()
     {
         return 'client';
@@ -97,6 +103,12 @@ class Client extends \yii\db\ActiveRecord
 		 return $this->hasMany(clientContact::className(), ['client_id' => 'id']);
 	}
 
+	public function getClientList($indexField = 'id')
+	{
+	$clientList = Client::find()
+				->All();
+	return ArrayHelper::index($clientList, $indexField);
 	
+	}
 	
 }
