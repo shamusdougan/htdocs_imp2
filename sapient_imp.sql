@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2016 at 11:27 PM
+-- Generation Time: Mar 12, 2016 at 06:26 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -150,7 +150,15 @@ CREATE TABLE IF NOT EXISTS `charge_rates` (
   `integration_3` varchar(10) DEFAULT NULL,
   `integration_4` varchar(10) DEFAULT NULL,
   `integration_5` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `charge_rates`
+--
+
+INSERT INTO `charge_rates` (`id`, `name`, `time_increment`, `abriev`, `status`, `integration_1`, `integration_2`, `integration_3`, `integration_4`, `integration_5`) VALUES
+(1, 'Business Support - Business Hours', 15, 'BS-BH', 1, NULL, NULL, NULL, NULL, NULL),
+(2, 'Business Support - After Hours', 30, 'BS-AH', 1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,14 +171,16 @@ CREATE TABLE IF NOT EXISTS `charge_rates_amounts` (
   `valid_from_date` date NOT NULL,
   `amount` float NOT NULL,
   `charge_rate_id` int(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `charge_rates_amounts`
 --
 
 INSERT INTO `charge_rates_amounts` (`id`, `valid_from_date`, `amount`, `charge_rate_id`) VALUES
-(3, '2015-11-18', 22342, 1);
+(3, '2015-11-18', 95, 1),
+(4, '2016-01-01', 109, 1),
+(5, '2016-01-01', 159, 2);
 
 -- --------------------------------------------------------
 
@@ -203,102 +213,21 @@ CREATE TABLE IF NOT EXISTS `client` (
   `contact_billing` int(5) DEFAULT NULL,
   `contact_authorized` int(5) DEFAULT NULL,
   `contact_owner` int(5) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99 ;
 
 --
 -- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id`, `name`, `address`, `city`, `state`, `postcode`, `phone1`, `phone2`, `ABN`, `notes`, `defaultBillingRate`, `defaultBillingType`, `accountBillTo`, `FK1`, `FK2`, `FK3`, `FK4`, `FK5`, `labtech`, `last_change`, `sync_status`, `contact_billing`, `contact_authorized`, `contact_owner`) VALUES
-(1, '.Sapient Technology Solutions', 'Suite 3, 1501 Malvern Road', 'Glen Iris', 'Vic', 3146, '03 9824 8042', '', NULL, '', 1, 1, NULL, 1, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:02', 0, NULL, NULL, NULL),
-(2, 'Irwin Stock Feeds', '1 Laurens Street', 'North Melbourne', 'Victoria', 3051, '03 93282681', '', NULL, 'OWA URL: https://red003.mail.apac.microsoftonline.com/owa\r\n\r\nExchange Server: SG1RD3XVS361.red003.local\r\nProxy: red003.mail.apac.microsoftonline.com\r\n	- Connect using SSL only\r\n		- msstd:*.mail.apac.microsoftonline.com\r\n	- on fast networks,\r\n	- on slow networks\r\nNTLM Authentication\r\n\r\nUsername - Admin@irwinstockfeeds.apac.microsoftonline.com\r\nOLD Password - Cczm77051\r\nNEW Password - K@pp@1976\r\nURL - https://admin.microsoftonline.com/login.aspx\r\n\r\n', 1, 1, NULL, 2, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(3, 'Aaron Laboratories', '', '', '', NULL, '(03) 9706 7673', '', NULL, 'payables@aaronlab.com.au', 1, 1, NULL, 3, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(4, 'Mode Design Corp', 'Level 1 / 292 Church Street', 'Richmond', 'Vic', 3121, '03 9428 8807', '', NULL, '', 1, 1, NULL, 4, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(5, 'Jilted Developments Pty Ltd', '10 Sherwood Street Richmond', 'Richmond', '', NULL, '0414339611', '', NULL, '', 1, 1, NULL, 5, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(6, 'Deaf Children Australia', '', '', '', NULL, '', '', NULL, 'cc 4564 8092 0449 2866 \r\n10/16\r\ncsc: 750\r\n\r\nName Zarina Tremellen', 1, 1, NULL, 6, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(7, 'LBA Joinery', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 7, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(8, 'Plexus', '1/149 Northern Rd', 'Heidelberg Height', 'VIC', 3081, '94862500', '', NULL, '1/149 Northern Rd \r\nHeidelberg Heights VIC 3081\r\n', 1, 1, NULL, 8, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(9, 'Edgard Pirrotta', '', '', '', NULL, '03 9419 8099', '', NULL, '', 1, 1, NULL, 9, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(10, 'Hansen Consulting', '', '', '', NULL, '9348 0934', '', NULL, '', 1, 1, NULL, 10, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(11, 'Eastbourne Trading (French Oak Floors)', '03 9533 6206', 'St Kilda', 'VIC', 3182, '03 9533 6206', '', NULL, '', 1, 1, NULL, 11, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(12, 'Ripponlea Primary', '', '', '', NULL, '03 9527 5728', '', NULL, '', 1, 1, NULL, 12, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(13, 'Caulfield Junior College', '', '', '', NULL, '', '', NULL, 'Contact Rachelle Meuse, Cat or Debbie', 1, 1, NULL, 13, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(14, 'Aaron Financial Services', 'Suite 304', 'Melbourne', 'Vic', 3004, '(03) 9867 5596', '(03) 9867 5474', NULL, '', 1, 1, NULL, 14, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(15, 'Bicycle Super Store', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 15, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(16, 'Eureka Tower', '7 Riverside Quay, South Bank', '', '', NULL, '03 9685 0114', '03 9696 7559', NULL, 'Loading dock number: 9685 0116', 1, 1, NULL, 16, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(17, 'Lash Out Lashes', 'Suite 2, 935 station St', 'Box Hill North', 'Vic', NULL, '', '', NULL, '', 1, 1, NULL, 17, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(18, 'Total Aluminium Fabricators Pty Ltd', 'Suite 1A, 391 Settlement Road', 'Thomastown', 'Vicq', 3074, '03 9465 8939', '', NULL, '', 1, 1, NULL, 18, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(19, 'Home Users', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 19, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(20, 'Gerra Pty Ltd', '', '', '', NULL, '', '', NULL, 'ABN: 53 004 855 127', 1, 1, NULL, 20, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(21, 'Max Power Electrical', '17 Haleys Gully Rd,', 'Hurstbridge', 'Vic', NULL, '0439 645 232', '', NULL, '', 1, 1, NULL, 22, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(22, 'Bogong Management Services', '145 Miller St', 'Thornbury', 'Vic', 3071, '03 9416 7422', '', NULL, '', 1, 1, NULL, 23, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(23, 'Focussed Books', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 24, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(24, 'Gascon Systems Pty Ltd', '24 Ford Crescent', 'Thornbury', 'Victoria', 3071, '61-3-9499 4100', '61-3-9499 4111', NULL, 'ABN: 74 716 626 338', 1, 1, NULL, 25, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(25, 'Phillips & Wilkins', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 26, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(26, 'Oscar Hospitality', 'Suite 2, Level 2, 295 Springvale Road', 'Glen Waverley', 'Victoria', 3150, '(03) 9560 1844', '(03) 9885 2648', NULL, '', 1, 1, NULL, 27, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(27, 'Red Alligator', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 28, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(28, 'The Loan Operator', '133 Mitchel St,', 'Northcote', 'vic', NULL, '', '', NULL, '', 1, 1, NULL, 29, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(29, 'Interactive Whiteboards Australia', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 30, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(30, 'Oscar 3CP', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 31, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(31, 'MRM Design PL', '21 Laity Street', 'Richmond', 'vic', 3121, '9421 3332', '', NULL, '', 1, 1, NULL, 32, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(32, 'Mill Park Community House', '68 Mill Park Dr', 'Mill Park', 'VIC', 3082, '(03) 9404 4565', '', NULL, '', 1, 1, NULL, 33, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(33, 'A.L.D. Linen Services', '45 Jesica Rd', 'Campbellfield', '', 3061, '03 9357 7400', '9357 7973', NULL, '', 1, 1, NULL, 34, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(34, 'Victoria Point Towers', '100-120 Harbour Esplanade', '', '', NULL, '0433451174', '', NULL, '', 1, 1, NULL, 35, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(35, 'Eastbourne Trading', 'Rear, 24 Wellington Street', 'St Kilda', 'VIC', 3182, '03 9533 6206', '', NULL, '', 1, 1, NULL, 36, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(36, 'Minemet', 'Suite 6', 'South Yarra', 'Victoria', 3141, '9826 8745', '', NULL, '', 1, 1, NULL, 37, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(37, 'Advice for Living', '10/75 Main Hurstbridge Road', 'Diamond Creek', '', 3089, '03 8370 5307', '03 8692 1083', NULL, '', 1, 1, NULL, 38, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(38, 'Real Estate Real Easy', '', '', '', NULL, '0411 515 505', '', NULL, '', 1, 1, NULL, 39, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:03', 0, NULL, NULL, NULL),
-(39, 'Re-Med', '', '', '', NULL, '(03) 9431 0331', '', NULL, 'Room 1 - (LHS as you walk in) PC = ROOM3', 1, 1, NULL, 40, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(40, 'Integrity Cleaning Services', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 41, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(41, 'Supply Change', '', '', '', NULL, '', '', NULL, 'ABN 18 248 976 458', 1, 1, NULL, 42, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(42, 'Kiara International', '2 Coopers Lane', 'Kensington', 'Vic', NULL, '0432 260 305', '', NULL, 'ABN: 18 930 363 406', 1, 1, NULL, 43, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(43, 'Joel Buncle Video Productions', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 44, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(44, 'Roartastic Shelving', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 45, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(45, 'Veracity Media', 'Suite 6/752 Blackburn Road', 'Clayton', 'Vic', 3178, '03 9544 8884', '', NULL, '', 1, 1, NULL, 46, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(46, 'Jane Sloan', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 47, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(47, 'Celebrate Cleaning', '', '', '', NULL, '0417 964 092', '', NULL, 'ABN - 16178979144', 1, 1, NULL, 48, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(48, 'HR Gurus', '', '', '', NULL, '', '', NULL, '71 138 960 013', 1, 1, NULL, 49, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(49, '81up', '', '', '', NULL, '(03) 9832-0816', '', NULL, '', 1, 1, NULL, 50, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(50, 'David Saunders Plumbing', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 51, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(51, 'Rosanna Chiropractic Health Centre', '40 Waiora Rd', 'Rosanna', 'VIC', 3084, '(03) 9457-5585', '', NULL, '', 1, 1, NULL, 52, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(52, 'More Profit Less Time', '3 / 333 Wantirna Road', 'Wantirna', 'VIC', 3152, '0411 755 153', '', NULL, 'More Profit Less Time \r\n3 / 333 Wantirna Road \r\nWantirna, VIC 3152 \r\nTelephone: 0411 755 153\r\n', 1, 1, NULL, 53, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(53, 'Visual Pro', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 54, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(54, 'Peter Worcester', '1/31 Marne St, South Yarra', '', '', NULL, '0414303322', '', NULL, 'dob 7 april 1954\r\nABN 76100499652', 1, 1, NULL, 55, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(55, 'Photo Direct', '4/109 Whitehorse Road', 'Blackburn', 'Vic', 3130, '98941644', '', NULL, '1300 364 817', 1, 1, NULL, 56, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(56, 'Chapman Plumbing', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 57, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(57, 'Adaptive Security', '1903/594 St Kilda RD', 'Mlebourne', 'Vic', 3004, '', '', NULL, '', 1, 1, NULL, 58, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(58, 'John Mc Sweeney', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 59, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(59, 'BDKG Pty Ltd', '', 'Caulfield North', 'VIc', 3161, '9943 3858', '', NULL, '', 1, 1, NULL, 60, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(60, 'Design Consigned', '', '', '', NULL, '', '', NULL, 'ABN - 85167490608', 1, 1, NULL, 61, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(61, 'Sargeants - Craig', '15 Burwood Hwy', 'Burwood', 'VIC', NULL, '', '', NULL, '', 1, 1, NULL, 62, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(62, 'Motorcycle Events Group Australia', '15-17 Rodeo Drive', 'Dandenong', 'VIC', 3175, '1300 793 423', '', NULL, 'ABN 11077668323', 1, 1, NULL, 63, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(63, 'Synkd', '', '', '', NULL, '', '', NULL, 'ABN 31 925 561 752', 1, 1, NULL, 64, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(64, 'Reverse Skin Clinic', '21 Carters Avenue', 'Toorak', 'Vic', NULL, '9827 1414', '', NULL, 'Reverse Skin Clinic\r\n21 Carters Ave\r\nToorak, 3142\r\n \r\n9827 1414\r\n', 1, 1, NULL, 65, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(65, 'Medsurge Healthcare Pty Ltd', 'Unit 2', 'Mulgrave', 'Victoria', 3205, '1300788261', '', NULL, 'ABN 92 124 728 892\r\n\r\n+61 38414 8245', 1, 1, NULL, 66, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(66, 'Cervo Restaurant', 'The Riverside at Crown', '', '', NULL, '9292 7824', '', NULL, 'ABN : 11085208591', 1, 1, NULL, 67, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(67, 'Aussie Post Caps', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 68, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(68, 'Peter Treby', '10 Kirwana  Grove', 'Montmorency', 'Vic', NULL, '0419 361 428', '', NULL, '', 1, 1, NULL, 69, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(69, 'Richmond Creche and Kindergarten', '10-14 Abinger Street', 'Richmond', 'Victoria', 3121, '03 9428 2663', '', NULL, '', 1, 1, NULL, 70, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(70, 'Angel Faces', '', '', '', NULL, '0418380791', '', NULL, '', 1, 1, NULL, 71, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(71, 'Harley Plumbing', 'Unit 3B, 266 Bolton Street', 'Eltham', 'Victoria', 3095, '9432 4121', '', NULL, 'Office contact no: 9432 4121\r\nABN: 76 117 846 698', 1, 1, NULL, 72, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(72, 'Diamond Valley Appliance Service', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 73, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(73, 'Bicycle Parts Wholesale', '76-80 Micro Circuit', 'Dandenong', 'Vic', 9044, '03 9702 9044', '', NULL, '', 1, 1, NULL, 74, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(74, 'Fulham & Chelsea Building Services', '23 Connolly Ave', 'Coburg', 'Victoria', 3058, '03 9354 5250', '', NULL, '', 1, 1, NULL, 75, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(75, 'Kellie Woodward', '43 Coulthard Cres', 'Doreen', 'VIC', 3754, '9717 0048', '', NULL, 'kellie_woodward@travel-associates.com.au', 1, 1, NULL, 76, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(76, 'Corr Accounting and Tax', '', 'Croydon South', '', 3136, '(03) 9761 4275', '', NULL, 'ABN: 72705120792', 1, 1, NULL, 77, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:04', 0, NULL, NULL, NULL),
-(77, 'SC Finance', 'Level 1', 'Northcote', 'Victoria', 3070, '0407 177 727', '', NULL, '', 1, 1, NULL, 79, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(78, 'Mineutman Press - Epping', '92 Wedge Street', 'Epping', 'Vic', 3076, '03 9401 1955', '', NULL, '', 1, 1, NULL, 80, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(79, 'Trilogi', '3 Clifton Street', 'Prahan', 'Vic', 3181, '0448 255 050', '', NULL, '', 1, 1, NULL, 81, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(80, 'Simply Green', '832 High St', 'Kew East', 'VICTORIA', 3102, '1300 664 323', '', NULL, 'ABN: 60123823914', 1, 1, NULL, 82, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(81, 'Preeti', '', '', '', NULL, '0449744315', '', NULL, '', 1, 1, NULL, 83, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(82, 'Savi Loans Pty Ltd', '', '', '', NULL, '0411 393 049', '', NULL, 'Savi Loans Pty Ltd abn is 89 130 547 401\r\nSole Trader ABN 275 209 26973\r\nMortgage Broker crn 453786 \r\nM:  0411 393 049  F:  03 9459 4569    \r\nE:    nataliesavic@saviloans.com.au\r\nW:  www.saviloans.com.au\r\n\r\nof BLSSA Pty Ltd ACL 391237\r\n', 1, 1, NULL, 84, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(83, 'You Are Good Enough', '', '', '', NULL, '', '', NULL, 'ABN 51435650157', 1, 1, NULL, 86, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(84, 'GDMC', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 87, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(85, 'Paul Broadfoot', 'Suite G6, Corporate One, 84 Hotham Street', 'Preston', 'VICTORIA', 3072, '0400 605 889', '', NULL, '', 1, 1, NULL, 88, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(86, 'Mailing Matters Pty Ltd', '6/22 Carter Way', 'Dandenong South', 'Vic', 3175, '03 8782 0251', '03 8782 0240', NULL, 'ABN: 951 394 84692', 1, 1, NULL, 89, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(87, 'DECC', 'Old Preston Courthouse, 59a Roseberry Ave', 'Preston', '', NULL, '8470 8440', '9261 4807', NULL, '', 1, 1, NULL, 90, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(88, 'Pan Software', 'Level 3, 854 Glenferrie Road, Hawthorn, VIC, 3122', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 91, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL),
-(89, 'St James Apartments', '', 'St Kilda', '', NULL, '0419 239 559', '', NULL, '', 1, 1, NULL, 92, NULL, NULL, NULL, NULL, 1, '2016-01-25 15:02:05', 0, NULL, NULL, NULL);
+(90, 'Oscar Hospitality', 'Suite 2, Level 2, 295 Springvale Road', 'Glen Waverley', 'Victoria', 3150, '(03) 9560 1844', '(03) 9885 2648', NULL, '', 1, 1, NULL, 27, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:35:19', 0, NULL, NULL, NULL),
+(91, 'BDKG Pty Ltd', '', '', '', NULL, '9943 3858', '', NULL, '', 1, 1, NULL, 60, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(92, 'Kelly Woodward', '', '', '', NULL, '9717 0048', '', NULL, 'kellie_woodward@travel-associates.com.au', 1, 1, NULL, 76, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(93, 'Savi Loans Pty Ltd', '', '', '', NULL, '0411 393 049', '', NULL, 'Savi Loans Pty Ltd abn is 89 130 547 401\r\nSole Trader ABN 275 209 26973\r\nMortgage Broker crn 453786 \r\nM:  0411 393 049  F:  03 9459 4569    \r\nE:    nataliesavic@saviloans.com.au\r\nW:  www.saviloans.com.au\r\n\r\nof BLSSA Pty Ltd ACL 391237\r\n', 1, 1, NULL, 84, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(94, 'You Are Good Enough', '', '', '', NULL, '', '', NULL, 'ABN 51435650157', 1, 1, NULL, 86, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(95, 'GDMC', '', '', '', NULL, '', '', NULL, '', 1, 1, NULL, 87, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(96, 'Paul Broadfoot', 'Suite G6, Corporate One, 84 Hotham Street', 'Preston', 'VICTORIA', 3072, '0400 605 889', '', NULL, '', 1, 1, NULL, 88, NULL, NULL, NULL, NULL, 1, '2016-03-06 09:34:24', 0, NULL, NULL, NULL),
+(98, 'test 1', 'dfasdfdfs', 'test', '', NULL, '', '', NULL, '', 1, 1, NULL, 89, NULL, NULL, NULL, NULL, 1, '2016-03-06 13:01:58', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -585,14 +514,14 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
   `lastSync` datetime DEFAULT NULL,
   `LastStatus` int(11) DEFAULT NULL,
   `LastStatusData` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `syncrelationships`
 --
 
 INSERT INTO `syncrelationships` (`index`, `description`, `syncModelName`, `endPoint`, `username`, `password`, `frequenyMin`, `lastSync`, `LastStatus`, `LastStatusData`) VALUES
-(2, 'This sync model is to sync the Clients between labtech and Imp', 'SyncLabtechClient', 'localhost', 'shamus', 'K@pp@1', 15, '2016-02-27 21:30:13', 1, 'fdgdf'),
+(2, 'This sync model is to sync the Clients between labtech and Imp', 'SyncLabtechClient', 'localhost', 'root', '', 15, '2016-03-06 13:03:29', 1, 'fdgdf'),
 (3, '', 'SyncLabtechContact', NULL, NULL, NULL, 15, '2016-02-25 15:42:36', 2, ''),
 (4, '', 'SyncPhoneContacts', NULL, NULL, NULL, 360, '2016-01-25 15:04:41', 1, ''),
 (5, '', 'SyncTicketInfo', NULL, NULL, NULL, 15, '1970-01-01 00:00:00', NULL, '');
@@ -610,7 +539,8 @@ CREATE TABLE IF NOT EXISTS `ticket_info` (
   `charge_rate_id` int(4) NOT NULL,
   `invoice_date` date DEFAULT NULL,
   `invoice_id` int(10) DEFAULT NULL,
-  `agreement_type_id` int(10) NOT NULL
+  `default_billing_account_id` int(10) DEFAULT NULL,
+  `default_charge_rate_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -621,9 +551,12 @@ CREATE TABLE IF NOT EXISTS `ticket_info` (
 
 CREATE TABLE IF NOT EXISTS `timeslip_info` (
 `id` int(11) NOT NULL,
+  `labtech_timeslip_id` int(10) NOT NULL,
+  `labtech_ticket_id` int(10) NOT NULL,
+  `ticket_info_id` int(10) NOT NULL,
   `billed_time` float NOT NULL DEFAULT '0',
   `charge_rate_id` int(10) NOT NULL,
-  `agreement_type_id` int(10) NOT NULL
+  `billing_account_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -760,17 +693,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `charge_rates`
 --
 ALTER TABLE `charge_rates`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `charge_rates_amounts`
 --
 ALTER TABLE `charge_rates_amounts`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=99;
 --
 -- AUTO_INCREMENT for table `client_contact`
 --
@@ -785,7 +718,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 -- AUTO_INCREMENT for table `syncrelationships`
 --
 ALTER TABLE `syncrelationships`
-MODIFY `index` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `index` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `ticket_info`
 --
