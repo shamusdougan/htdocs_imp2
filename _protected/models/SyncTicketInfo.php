@@ -48,7 +48,7 @@ class syncTicketInfo extends syncModelBase
 		
 		
 		
-		$this->progress .= "Fetching any records in labtech that dont't have the coresponding tickinfo object in imp\n";
+		$this->progress .= "Fetching any records in labtech that dont't have the coresponding ticket info object in imp\n";
 		try{
 			
 			$sqlQuery = "Select * From ".$this->databaseTable." A LEFT JOIN Sapient_imp.".ticketInfo::tableName()." B ON A.TicketID = B.labtech_ticket_id WHERE B.labtech_ticket_id IS NULL AND A.StartedDate > '".$this->startingDate."'";
@@ -60,12 +60,29 @@ class syncTicketInfo extends syncModelBase
 			}
 
 		$clientList = Client::getClientList(Client::LABTECH_KEY);
+		
 		foreach($this->remoteRecords as $remoteRecord)
 			{
-			$newTicketInfo = new TicketInfo();
-			$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
-			$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
-			$newTicketInfo->charge_rate_id = $clientList[$remoteRecord['ClientID']]->getDefaultChargeRate($remoteRecord['ComputerID'], )
+				
+				
+			//Check the data is valid
+			if(!array_key_exists($remoteRecord['ClientID'], $clientList))
+				{
+				$this->progress .= "Unable to locate client for ticket ".$remoteRecord['TicketID']."\n";
+				$this->errorCount++;
+				
+				}
+			else{
+				$newTicketInfo = new TicketInfo();
+				$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
+				$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
+				
+				
+				$newTicketInfo->charge_rate_id = $clientList[$remoteRecord['ClientID']]->getDefaultChargeRate($remoteRecord['ComputerID']);
+			
+			}
+				
+				
 			
 			
 			

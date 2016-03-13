@@ -108,7 +108,50 @@ class Client extends \yii\db\ActiveRecord
 	$clientList = Client::find()
 				->All();
 	return ArrayHelper::index($clientList, $indexField);
-	
 	}
+
+
+
+/**
+* Get default Charge Rate - This function depends on 
+* 
+* @return
+*/
+	public function getDefaultChargeRate($computerID, $computerList = false, $locationList = false, $agreementList = false)
+		{
+			
+		//If no Ticket has been assigned to a ticket then that ticket is considered to not be under the agreement
+		if(!$agreementList)
+			{
+			$this->agreement->getProjectRate
+			}
+			
+			
+			
+		/*	
+		//get the computer and work out if its covered (depends on location)
+		var_dump($computerID);
+		if(!$computerList)
+			{
+			$computer = Computers::find()
+							->where(['ComputerID' => $computerID])
+							->One();
+			var_dump($computer);
+			}
+		else{
+			$computer = $computerList[$computerID];
+			}
+		if($computer == null)
+			{
+			die("unable to find computer record for computer ID: ".$computerID);
+			}
+		*/	
+		
+			
+			
+			
+			
+			
+		}
 	
 }
