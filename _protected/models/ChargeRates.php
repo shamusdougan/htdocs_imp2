@@ -106,7 +106,15 @@ class ChargeRates extends \yii\db\ActiveRecord
 			
 		}
 	
-	
+	public function getNotBillableCode()
+		{
+		$chargeRate = ChargeRates::find()->where(['name' => 'Not Billable'])->one();
+		if($chargeRate == null)
+			{
+			die("unable to find not billable code for charge rate in database");		
+			}
+		return $chargeRate->id;
+		}
 	
     
 }

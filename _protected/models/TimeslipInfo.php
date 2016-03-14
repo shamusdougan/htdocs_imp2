@@ -47,4 +47,10 @@ class TimeslipInfo extends \yii\db\ActiveRecord
             
         ];
     }
+    
+    
+    public function getTicketInfo()
+    {
+		 return $this->hasOne(TicketInfo::className(), ['id' => 'ticket_info_id']);
+	}
 }

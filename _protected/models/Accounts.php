@@ -64,7 +64,18 @@ class Accounts extends \yii\db\ActiveRecord
 			}
 		
 		return $accountsArray;
-		
-		
+	}
+	
+	
+	public function getNotBilledAccountID()
+	{
+		$account = Accounts::find()->where(['name' => 'Not Billed'])->one();
+		if($account == null)
+			{
+				
+			die("unable to find not bill account");
+			}
+			
+		return $account->id;
 	}
 }

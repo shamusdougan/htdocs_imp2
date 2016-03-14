@@ -3,6 +3,10 @@ use app\models\TimeslipInfo;
 use app\models\TicketInfo;
 use app\models\Client;
 use app\models\Computers;
+use app\models\SyncRelationships;
+use app\models\Lookup;
+use app\models\ChargeRates;
+use app\models\Accounts;
 
 
 require_once("SyncModelBase.php");
@@ -20,7 +24,6 @@ class syncTimeslipInfo extends syncModelBase
 	var $startingDate = "2014-06-01";
 	
 	var $dbConnection;
-	
 	
 	
 	
@@ -48,14 +51,20 @@ class syncTimeslipInfo extends syncModelBase
 			{
 				$this->progress .= "Error in fetching Foreign Data, Error: ".$e->getMessage();	
 			}
+		$this->progress .= "Found ".count($this->remoteRecords)." Labtech Records without local object created\n";
+		
 
 		$clientList = Client::getClientList(Client::LABTECH_KEY);
+		$timeCategories = array_flip(Lookup::items("TimeCategory"));
+
+		
+		
 		
 		$this->progress .= "Creating Local Data copies of Labtech Timeslips \n";
 		foreach($this->remoteRecords as $remoteRecord)
 			{
 				
-				
+			
 			//Check the data is valid
 			if(!array_key_exists($remoteRecord['ClientID'], $clientList))
 				{
@@ -76,19 +85,49 @@ class syncTimeslipInfo extends syncModelBase
 					$newTimeslipInfo->billed_time_mins = $remoteRecord['Mins'];
 					
 					
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;
+					//process the Timeslip charge rates overide from labtech
+					if($remoteRecord['Category'] == 0 || $timeCategories['Agreement Default'] == $remoteRecord['Category'] )
+						{
+						$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;	
+						$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
+						}
+					elseif($timeCategories['Agreement Project'] == $remoteRecord['Category'])
+						{
+						$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_project_rate_bh_id;
+						$newTimeslipInfo->billing_account_id = $ticketInfo->client->agreement->default_project_account_id;
+						}
+					elseif($timeCategories['Not Billable'] == $remoteRecord['Category'])
+						{
+						$newTimeslipInfo->charge_rate_id = ChargeRates::getNotBillableCode();
+						$newTimeslipInfo->billing_account_id = Accounts::getNotBilledAccountID();
+						}
+					elseif($timeCategories['Agreement Default After Hours'] == $remoteRecord['Category'])
+						{
+						$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_AH_rate_id;
+						$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
+						}
+					elseif($timeCategories['Agreement Project After Hours'] == $remoteRecord['Category'])
+						{
+						$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_prohect_rate_ah_id;
+						$newTimeslipInfo->billing_account_id = $ticketInfo->client->agreement->default_project_account_id;
+						}
+					else{
+						$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;	
+						$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
+						}
+					
 					$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
 					if(!$newTimeslipInfo->save())
 						{
-							$errors = $newTimeslipInfo->getErrors();
-							foreach($errors as $errorType)
+						$errors = $newTimeslipInfo->getErrors();
+						foreach($errors as $errorType)
+							{
+							foreach($errorType as $errorText)
 								{
-								foreach($errorType as $errorText)
-									{
-									$this->progress .= $errorText."\n";
-									}
+								$this->progress .= $errorText."\n";
 								}
-							$this->errorCount++;
+							}
+						$this->errorCount++;
 						}
 					else{
 						$this->localRecordsUpdated++;	
@@ -108,41 +147,16 @@ class syncTimeslipInfo extends syncModelBase
 
 		$this->progress .= $this->localRecordsUpdated." Local Records Updated\n";
 		$this->progress .= $this->errorCount." Errors encounted during Sync\n";
+		if($this->errorCount > 0){
+			$syncRelationship->syncSuccessfull(SyncRelationships::STATUS_WARNING, "Sync completed with some errors");
+			}
+		else{
+			$syncRelationship->syncSuccessfull(SyncRelationships::STATUS_SUCCESS, "Sync completed without any errors");
+			}
 		
 	}
 	
-	/*
-		Function: getRemoteRecordsChangedSince
-		input
-		$dateTime: the given date/time of the last successfuly syncLabtechClient
-		$dbconnection: the connection to the foreign database
-		output:
-		should return an array of records changed since the last sync, the array should be indexed on record id.	*/
-	function  getRemoteRecords($syncRelationship)
-		{
-		try{
-			$modelName = $syncRelationship->impModelName;
-			$sqlQuery = "Select * From ".$syncRelationship->endPointDBTable." A LEFT JOIN Sapient_imp.".ticketInfo::tableName()." B ON A.TicketID = B.labtech_ticket_id WHERE B.labtech_ticket_id IS NULL LIMIT 10";
-			$remoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
-
-			}
-		catch(Exception $e)
-			{
-				return "Error in fetching Foreign Data, Error: ".$e->getMessage();	
-			}
-		return $remoteRecords;	
-		}
-	/**
-	* 
-	* @param undefined $remoteRecords
-	* This function will take the list of remote records and create the required local records. The local record values will be populated via the defaults defined in this section
-	* @return
-	*/
-	function createLocalRecords($remoteRecords)
-	{
-		
-	}
-
+	
 
 }
 

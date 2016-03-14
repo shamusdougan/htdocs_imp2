@@ -23,6 +23,11 @@ class SyncRelationships extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+     
+     const STATUS_SUCCESS = 1;
+     const STATUS_FAILED = 2;
+     const STATUS_WARNING = 3;
+     
     public static function tableName()
     {
         return 'syncrelationships';
@@ -76,5 +81,17 @@ class SyncRelationships extends \yii\db\ActiveRecord
 		}
 		
 	return $this->lastSync;
+	}
+	
+	
+	public function syncSuccessfull($status = SyncRelationships::STATUS_SUCCESS, $message = null)
+	{
+		$this->lastSync = time();
+		$this->LastStatus = $status;
+		$this->LastStatusData = $message;
+		if(!$this->save())
+			{
+			die("Unable to save sync data back to thedatabase");
+			}
 	}
 }
