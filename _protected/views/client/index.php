@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use app\components\actionButtons;
 use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\models\Agreements;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ClientSearch */
@@ -33,8 +35,27 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'phone1',
             // 'phone2',
             // 'ABN',
-            'defaultBillingRate',
-            'defaultBillingType',
+            [
+            'attribute' => 'agreement_id',
+            'label' => 'Agreement',
+            'value' => function($data){
+            	
+            	if(isset($data->agreement->name))
+            		{
+					return $data->agreement->name;		
+					}
+				else{
+					return "No agreement Set";
+					}
+				},
+			'filterType'=>GridView::FILTER_SELECT2,
+    		'filter'=>ArrayHelper::map(Agreements::find()->orderBy('name')->asArray()->all(), 'id', 'name'), 
+    		'filterWidgetOptions'=>[
+        		'pluginOptions'=>['allowClear'=>true],
+    			],
+    		'filterInputOptions'=>['placeholder'=>'All'],
+            
+            ],
             'accountBillTo',
             // 'FK1',
             // 'FK2',

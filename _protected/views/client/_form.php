@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
+use app\models\Agreements;
 
 
 use kartik\widgets\ActiveForm;
@@ -70,8 +71,13 @@ $companyInfo .= Form::widget([
     	'form'=>$form,
     	'columns'=>3,
     	'attributes'=>[
-    		'defaultBillingRate' => ['type' =>FORM::INPUT_TEXT, 'options'=>['placeholder' => 'Billing Rate Dropdown'] ],
-    		'defaultBillingType' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Billing Type Dropdown'] ],
+    		'agreement_id' => 
+    			[
+    			'type' =>FORM::INPUT_DROPDOWN_LIST, 
+    			'items' => Agreements::getDropDownArray(),
+    			
+    			],
+    		
     		'accountBillTo' => ['type' => FORM::INPUT_TEXT, 'options' =>['placeholder' => 'Bill To Company'] ],
     		'notes' => 
     			[

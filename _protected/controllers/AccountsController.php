@@ -3,19 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Agreements;
-use app\models\AgreementsSearch;
-use app\models\Accounts;
-use app\models\ChargeRates;
+use app\models\accounts;
+use app\models\accountsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
- * AgreementController implements the CRUD actions for Agreements model.
+ * AccountsController implements the CRUD actions for accounts model.
  */
-class AgreementController extends Controller
+class AccountsController extends Controller
 {
     public function behaviors()
     {
@@ -30,30 +27,29 @@ class AgreementController extends Controller
     }
 
 
-
 	public function beforeAction($action)
 	{
 	    if (!parent::beforeAction($action)) {
 	        return false;
 	    }
-
-	    $this->view->params['menuItem'] = 'agreements';
+	    
+	    $this->view->params['menuItem'] = 'accounts';
 
 	    return true; // or false to not run the action
 	}
 
 
     /**
-     * Lists all Agreements models.
+     * Lists all accounts models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AgreementsSearch();
+        $searchModel = new accountsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-		$actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/agreement/create"];
-
+		$actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/accounts/create"];
+		
+		
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -62,7 +58,7 @@ class AgreementController extends Controller
     }
 
     /**
-     * Displays a single Agreements model.
+     * Displays a single accounts model.
      * @param integer $id
      * @return mixed
      */
@@ -74,39 +70,36 @@ class AgreementController extends Controller
     }
 
     /**
-     * Creates a new Agreements model.
+     * Creates a new accounts model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Agreements();
-		$actionItems[] = ['label'=>'Save', 'button' => 'save', 'url'=>null, 'submit'=> 'agreement_form', 'confirm' => 'Save Client Information and Exit?'];
-        $actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/client/index', 'confirm' => 'Cancel Changes?'];
-
+        $model = new accounts();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) 
         	{
             return $this->redirect(['index']);
         	}
-       	else{
-       		
-       		
-       		$accountsList = Accounts::getDropDownArray();
-       		$chargeRates = ChargeRates::getDropDownArray();
- 
-       		
-            return $this->render('create', [
-                'model' => $model,
-                'actionItems' => $actionItems,
-                'accountsList' => $accountsList, 
-                'chargeRates' => $chargeRates,
-            ]); 
-        }
+        else 
+        	{
+        	
+        	
+        	
+			$actionItems[] = ['label'=>'Save', 'button' => 'save', 'url'=>null, 'submit'=> 'account_form', 'confirm' => 'Save Client Information and Exit?'];
+	    	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/accounts/index', 'confirm' => 'Cancel Changes?'];
+	        	
+	        	
+	        return $this->render('create', [
+	                'model' => $model,
+	                'actionItems' => $actionItems,
+	            ]);
+        	}
     }
 
     /**
-     * Updates an existing Agreements model.
+     * Updates an existing accounts model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -115,29 +108,25 @@ class AgreementController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-       		}
-        else 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
         	{
-        	$actionItems[] = ['label'=>'Save', 'button' => 'save', 'url'=>null, 'submit'=> 'agreement_form', 'confirm' => 'Save Client Information and Exit?'];
-        	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/client/index', 'confirm' => 'Cancel Changes?'];
-
-        	$accountsList = Accounts::getDropDownArray();
-       		$chargeRates = ChargeRates::getDropDownArray();
+            return $this->redirect(['index']);
+        	}
+        else {
         	
         	
+        	$actionItems[] = ['label'=>'Save', 'button' => 'save', 'url'=>null, 'submit'=> 'account_form', 'confirm' => 'Save Client Information and Exit?'];
+	    	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/accounts/index', 'confirm' => 'Cancel Changes?'];
+	       
             return $this->render('update', [
                 'model' => $model,
-                'actionItems' => $actionItems,
-                'accountsList' => $accountsList, 
-                'chargeRates' => $chargeRates,
+                'actionItems' => $actionItems
             ]);
-        	}
+        }
     }
 
     /**
-     * Deletes an existing Agreements model.
+     * Deletes an existing accounts model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -150,15 +139,15 @@ class AgreementController extends Controller
     }
 
     /**
-     * Finds the Agreements model based on its primary key value.
+     * Finds the accounts model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Agreements the loaded model
+     * @return accounts the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Agreements::findOne($id)) !== null) {
+        if (($model = accounts::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

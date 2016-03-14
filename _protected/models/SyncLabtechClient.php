@@ -16,7 +16,8 @@ class syncLabtechClient extends syncModelBase
 	var $databaseName = "labtech";
 	var $databaseTable = "clients";
 
-	
+	const DEFAULT_AGREEMENT_ID = 3;
+		
 	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
 	var $fieldMapping = [
 		"name" => "Name",
@@ -299,8 +300,7 @@ public function  createLabtechClient($impID)
 	public function createImpClient($remoteID)
 		{
 		$localClientRecord =  new Client();
-		$localClientRecord->defaultBillingType = 1;
-		$localClientRecord->defaultBillingRate = 1;
+		$localClientRecord->agreement_id = Client::DEFAULT_AGREEMENT_ID;
 		$localClientRecord->labtech = 1;
 		$localFK = $this->dataIndex['imp'];
 		$localClientRecord->$localFK = $remoteID;	

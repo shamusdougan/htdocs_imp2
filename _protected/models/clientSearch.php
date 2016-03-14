@@ -18,7 +18,7 @@ class ClientSearch extends Client
     public function rules()
     {
         return [
-            [['id', 'state', 'postcode', 'phone1', 'phone2', 'ABN', 'defaultBillingRate', 'defaultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
+            [['id', 'state', 'postcode', 'phone1', 'phone2', 'ABN', 'agreement_id', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
             [['name', 'address', 'city', 'last_change'], 'safe'],
         ];
     }
@@ -62,8 +62,7 @@ class ClientSearch extends Client
             'phone1' => $this->phone1,
             'phone2' => $this->phone2,
             'ABN' => $this->ABN,
-            'defaultBillingRate' => $this->defaultBillingRate,
-            'defaultBillingType' => $this->defaultBillingType,
+            'agreement_id' => $this->agreement_id,
             'accountBillTo' => $this->accountBillTo,
             'FK1' => $this->FK1,
             'FK2' => $this->FK2,

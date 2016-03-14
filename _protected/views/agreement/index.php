@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use app\components\actionButtons;
+use kartik\builder\Form;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AgreementsSearch */
@@ -27,15 +28,55 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'default_account_id',
-            'default_BH_rate_id',
-            'default_AH_rate_id',
-            // 'default_project_rate_bh_id',
-            // 'default_project_rate_ah_id',
+            [
+            'attribute' => 'defaultAccount.name',
+            'label' => 'Default Account',
+           
+            ],
+            [
+            'attribute' => 'defaultBHRate.name',
+            'label' => 'Default BH Rate',
+             'value' => function($data) 
+            	{
+				return $data->defaultBHRate->abriev." ($".$data->defaultBHRate->getCurrentRate().")";
+				}
+            ],
+           	[
+            'attribute' => 'defaultAHRate.name',
+            'label' => 'Default AH Rate',
+             'value' => function($data) 
+            	{
+				return $data->defaultAHRate->abriev." ($".$data->defaultAHRate->getCurrentRate().")";
+				}
+            ],
+     		[
+            'attribute' => 'defaultProjAccount.name',
+            'label' => 'Default Project Account',
+           
+            ],
+           	[
+            'attribute' => 'defaultProjBHRate.name',
+            'label' => 'Default Project BH Rate',
+             'value' => function($data) 
+            	{
+				return $data->defaultProjBHRate->abriev." ($".$data->defaultProjBHRate->getCurrentRate().")";
+				}
+            ],
+            [
+            'attribute' => 'defaultProjAHRate.name',
+            'label' => 'Default Project AH Rate',
+             'value' => function($data) 
+            	{
+				return $data->defaultProjAHRate->abriev." ($".$data->defaultProjAHRate->getCurrentRate().")";
+				}
+            ],
+          
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+	            'class'=>'kartik\grid\ActionColumn',
+				'template' => '{update} {delete}',
+			],
         ],
     ]); ?>
 

@@ -94,8 +94,15 @@ class ChargeRates extends \yii\db\ActiveRecord
 	}
 	
 	
-	public function listRates()
+	public function getDropDownArray()
 		{
+		$chargeRateArray = [];
+		foreach(ChargeRates::find()->all() as $chargeRateObject)
+			{
+			$chargeRateArray[$chargeRateObject->id] = $chargeRateObject->name." (".$chargeRateObject->getCurrentRate().")";
+			}	
+			
+		return $chargeRateArray;
 			
 		}
 	

@@ -52,8 +52,8 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'defaultBillingRate', 'defaultBillingType'], 'required'],
-            [['postcode', 'defaultBillingRate', 'defaultBillingType', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
+            [['name', 'agreement_id'], 'required'],
+            [['postcode', 'agreement_id', 'accountBillTo', 'FK1', 'FK2', 'FK3', 'FK4', 'FK5', 'sync_status', 'contact_billing', 'contact_authorized', 'contact_owner'], 'integer'],
             [['last_change', 'labtech', 'state'], 'safe'],
             [['name', 'address', 'city'], 'string', 'max' => 500]
         ];
@@ -74,8 +74,7 @@ class Client extends \yii\db\ActiveRecord
             'phone1' => 'Phone1',
             'phone2' => 'Phone2',
             'ABN' => 'Abn',
-            'defaultBillingRate' => 'Default Billing Rate',
-            'defaultBillingType' => 'Default Billing Type',
+            'agreement_id' => 'Agreement',
             'accountBillTo' => 'Account Bill To',
             'FK1' => 'Fk1',
             'FK2' => 'Fk2',
@@ -98,11 +97,18 @@ class Client extends \yii\db\ActiveRecord
 	}
 	
 	
-	  public function getContacts()
+	public function getContacts()
     {
 		 return $this->hasMany(clientContact::className(), ['client_id' => 'id']);
 	}
 
+	
+	public function getAgreement()
+	{
+		return $this->hasOne(Agreements::className(), ['id' => 'agreement_id']);
+	}
+	
+	
 	public function getClientList($indexField = 'id')
 	{
 	$clientList = Client::find()
@@ -120,33 +126,59 @@ class Client extends \yii\db\ActiveRecord
 	public function getDefaultChargeRate($computerID, $computerList = false, $locationList = false, $agreementList = false)
 		{
 			
-		//If no Ticket has been assigned to a ticket then that ticket is considered to not be under the agreement
-		if(!$agreementList)
-			{
-			$this->agreement->getProjectRate
+		//get the agreement covering this machine, get it from the cahced list if not fetch directly
+		if(!$agreementList){
+			$agreement = $this->agreement;
 			}
-			
-			
-			
-		/*	
-		//get the computer and work out if its covered (depends on location)
-		var_dump($computerID);
+		else{
+			$agreement = $agreementList[$this->agreement_id];
+			}
+		
+		
+		
+		
+		if($computerID == 0)
+			{
+			return $agreement->default_project_rate_bh_id;
+			}
+		//else check the computer location, if the location name has (NC) in title then that location is not covered under the agreement
 		if(!$computerList)
 			{
 			$computer = Computers::find()
 							->where(['ComputerID' => $computerID])
 							->One();
-			var_dump($computer);
 			}
 		else{
 			$computer = $computerList[$computerID];
 			}
+			
+		//if the computer is no longer in the labtech database,, it cant be covered under the agreement
 		if($computer == null)
 			{
-			die("unable to find computer record for computer ID: ".$computerID);
+			return $agreement->default_project_rate_bh_id;
 			}
-		*/	
 		
+		//get thelocation object
+		if(!$locationList)
+			{
+			$location = Locations::findOne($computer->LocationID);
+			}
+		else{
+			$lcoation = $locationList[$computer->LocationID];
+			}
+			
+		//if the location cant be found check to see if the location is billable
+		if($location == null)
+			{
+			return $agreement->default_project_rate_bh_id;
+			}
+		elseif($location->isBillable())
+			{
+			return $agreement->default_BH_rate_id;
+			}
+		else{
+			return $agreement->default_project_rate_bh_id;
+			}
 			
 			
 			

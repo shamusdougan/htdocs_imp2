@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use app\components\actionButtons;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Agreements */
@@ -12,10 +13,13 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="agreements-update">
 
+	<?= actionButtons::widget(['items' => $actionItems]) ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
+        'accountsList' => $accountsList,
+        'chargeRates' => $chargeRates,
     ]) ?>
 
 </div>

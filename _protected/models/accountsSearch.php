@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Agreements;
+use app\models\accounts;
 
 /**
- * AgreementsSearch represents the model behind the search form about `app\models\Agreements`.
+ * accountsSearch represents the model behind the search form about `app\models\accounts`.
  */
-class AgreementsSearch extends Agreements
+class accountsSearch extends accounts
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class AgreementsSearch extends Agreements
     public function rules()
     {
         return [
-            [['id', 'default_account_id', 'default_BH_rate_id', 'default_AH_rate_id', 'default_project_account_id', 'default_project_rate_bh_id', 'default_project_rate_ah_id'], 'integer'],
+            [['id', 'billable'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class AgreementsSearch extends Agreements
      */
     public function search($params)
     {
-        $query = Agreements::find();
+        $query = accounts::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,12 +57,7 @@ class AgreementsSearch extends Agreements
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'default_account_id' => $this->default_account_id,
-            'default_BH_rate_id' => $this->default_BH_rate_id,
-            'default_AH_rate_id' => $this->default_AH_rate_id,
-            'default_project_account_id' => $this->default_project_account_id,
-            'default_project_rate_bh_id' => $this->default_project_rate_bh_id,
-            'default_project_rate_ah_id' => $this->default_project_rate_ah_id,
+            'billable' => $this->billable,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
