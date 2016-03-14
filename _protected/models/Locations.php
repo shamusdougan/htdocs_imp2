@@ -133,9 +133,9 @@ class Locations extends \yii\db\ActiveRecord
 		}
 
 
-	public isBillable()
+	public function isCovered()
 		{
-		if(str_pos($this->Name, Locations::BILLALBE_STRING) !== false)
+		if(strpos($this->Name, Locations::BILLALBE_STRING) !== false)
 			{
 			return False;
 			}

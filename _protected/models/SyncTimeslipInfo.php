@@ -1,4 +1,5 @@
 <?php
+use app\models\TimeslipInfo;
 use app\models\TicketInfo;
 use app\models\Client;
 use app\models\Computers;
@@ -6,29 +7,17 @@ use app\models\Computers;
 
 require_once("SyncModelBase.php");
 
-class syncTicketInfo extends syncModelBase
+class syncTimeslipInfo extends syncModelBase
 
 {
 	
-	var $syncType = syncModelBase::DUALSYNC;
 	
-	var $dataIndex = array("imp" => "FK1", "remote" => "ClientID");
-	var $dataLastChangeFields = array("imp" => "last_change", "remote" => "Last_Date");
+	
+	
+	
 	var $databaseName = "labtech";
-	var $databaseTable = "tickets";
+	var $databaseTable = "timeslips";
 	var $startingDate = "2014-06-01";
-	
-	//mapping array are all From->To ("impFieldName" => "RemoteFieldName")
-	var $fieldMapping = [
-		"name" => "Name",
-		"address" => "Address1",
-		"city" => "City",
-		"state" => "State",
-		"postcode" => "Zip",
-		"phone1" => "Phone",
-		"phone2" => "Fax",
-		'notes' => 'Comment'
-		];
 	
 	var $dbConnection;
 	
@@ -38,7 +27,7 @@ class syncTicketInfo extends syncModelBase
 	function executeSync($syncRelationship)
 	{
 		
-		$this->progress = "Attempting Sync client information between IMP (me) and Labtech using ".$syncRelationship->endPoint."\n";
+		$this->progress = "Attempting Sync Timeslip information between IMP (me) and Labtech using ".$syncRelationship->endPoint."\n";
 		$this->dbConnection = $this->connectDatabase($syncRelationship, $this->databaseName, $this->databaseTable);
 		if(is_string($this->dbConnection))
 			{
@@ -52,7 +41,7 @@ class syncTicketInfo extends syncModelBase
 		$this->progress .= "Fetching any records in labtech that dont't have the coresponding ticket info object in imp\n";
 		try{
 			
-			$sqlQuery = "Select * From ".$this->databaseTable." A LEFT JOIN Sapient_imp.".ticketInfo::tableName()." B ON A.TicketID = B.labtech_ticket_id WHERE B.labtech_ticket_id IS NULL AND A.StartedDate > '".$this->startingDate."'";
+			$sqlQuery = "Select * From ".$this->databaseTable." A LEFT JOIN Sapient_imp.".TimeslipInfo::tableName()." B ON A.TimeSlipID = B.labtech_timeslip_id WHERE B.labtech_timeslip_id IS NULL AND A.Date > '".$this->startingDate."'";
 			$this->remoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
 			}
 		catch(Exception $e)
@@ -62,7 +51,7 @@ class syncTicketInfo extends syncModelBase
 
 		$clientList = Client::getClientList(Client::LABTECH_KEY);
 		
-		$this->progress .= "Creating Local Data copies of Labtech Tickets\n";
+		$this->progress .= "Creating Local Data copies of Labtech Timeslips \n";
 		foreach($this->remoteRecords as $remoteRecord)
 			{
 				
@@ -75,31 +64,42 @@ class syncTicketInfo extends syncModelBase
 				
 				}
 			else{
-				$newTicketInfo = new TicketInfo();
-				$newTicketInfo->labtech_ticket_id = $remoteRecord['TicketID'];
-				$newTicketInfo->imp_status = TicketInfo::DEFAULT_STATUS;
-				$newTicketInfo->client_id = $clientList[$remoteRecord['ClientID']]->id;
+				$newTimeslipInfo = new TimeslipInfo();
+				$newTimeslipInfo->labtech_timeslip_id = $remoteRecord['TimeSlipID'];
+				$newTimeslipInfo->labtech_ticket_id = $remoteRecord['TicketID'];
 				
-				$newTicketInfo->default_charge_rate_id = $clientList[$remoteRecord['ClientID']]->getDefaultChargeRate($remoteRecord['ComputerID']);
-				$newTicketInfo->default_billing_account_id = $clientList[$remoteRecord['ClientID']]->agreement->default_account_id;
-				$newTicketInfo->save();
-				if(!$newTicketInfo->save())
+				$ticketInfo =  TicketInfo::getTicketInfo($remoteRecord['TicketID']);
+				if($ticketInfo)
 					{
-						$errors = $newTicketInfo->getErrors();
-						foreach($errors as $errorType)
-							{
-							foreach($errorType as $errorText)
+					$newTimeslipInfo->ticket_info_id = $ticketInfo->id;
+					$newTimeslipInfo->billed_time_hours = $remoteRecord['Hours'];
+					$newTimeslipInfo->billed_time_mins = $remoteRecord['Mins'];
+					
+					
+					$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;
+					$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
+					if(!$newTimeslipInfo->save())
+						{
+							$errors = $newTimeslipInfo->getErrors();
+							foreach($errors as $errorType)
 								{
-								$this->progress .= $errorText."\n";
+								foreach($errorType as $errorText)
+									{
+									$this->progress .= $errorText."\n";
+									}
 								}
-							}
-						$this->errorCount++;
-						
-						
+							$this->errorCount++;
+						}
+					else{
+						$this->localRecordsUpdated++;	
+						}
+					
 					}
 				else{
-					$this->localRecordsUpdated++;
-					}
+					$this->progress .= "Unable to locate Ticket Info for Timeslip\n";
+					$this->errorCount++;
+				}
+
 				
 				
 				}

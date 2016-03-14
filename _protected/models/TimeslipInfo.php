@@ -28,9 +28,9 @@ class TimeslipInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['billed_time'], 'number'],
-            [['charge_rate_id', 'agreement_type_id'], 'required'],
-            [['charge_rate_id', 'agreement_type_id'], 'integer']
+            [['billed_time_hours', 'billed_time_mins'], 'number'],
+            [['charge_rate_id', 'billed_time_hours', 'billed_time_mins'], 'required'],
+            [['charge_rate_id'], 'integer']
         ];
     }
 
@@ -41,9 +41,10 @@ class TimeslipInfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'billed_time' => 'Billed Time',
+            'billed_time_hours' => 'Billed Hours',
+            'billed_time_mins' => 'Billed Mins',
             'charge_rate_id' => 'Charge Rate ID',
-            'agreement_type_id' => 'Agreement Type ID',
+            
         ];
     }
 }

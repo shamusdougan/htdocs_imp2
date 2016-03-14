@@ -126,7 +126,7 @@ class Client extends \yii\db\ActiveRecord
 	public function getDefaultChargeRate($computerID, $computerList = false, $locationList = false, $agreementList = false)
 		{
 			
-		//get the agreement covering this machine, get it from the cahced list if not fetch directly
+		//get the agreement covering this machine, get it from the cached list if not fetch directly
 		if(!$agreementList){
 			$agreement = $this->agreement;
 			}
@@ -134,56 +134,36 @@ class Client extends \yii\db\ActiveRecord
 			$agreement = $agreementList[$this->agreement_id];
 			}
 		
+		//If none of the below criteria are meet then use not covered rate
+		$chargeRate = $agreement->default_project_rate_bh_id;
 		
+		//if the ticket has a computer ID set and the computer can be found in the database then check the computer location
+		//if the computer location has "(NC)" in the name then the machine is not covered under the agreement
+		if($computerID != 0 && ($computer = Computers::getComputer($computerID)) != null)
+			{
+			if(!$locationList)
+				{
+				$location = Locations::findOne($computer->LocationID);
+				}
+			else{
+				$lcoation = $locationList[$computer->LocationID];
+				}
+				
+			//check the computer Location
+			if($location != null && $location->isCovered())
+				{
+				$chargeRate = $agreement->default_BH_rate_id;
+				//echo "Computer: ".$computer->Name." Location: ".$computer->location->Name." ChargeRate: ".$agreement->defaultBHRate->name."<br>";
+				
+				}
+			}
+		//else{
+			//echo "ComputerID: ".$computerID."<br>";
+		//}
 		
-		
-		if($computerID == 0)
-			{
-			return $agreement->default_project_rate_bh_id;
-			}
-		//else check the computer location, if the location name has (NC) in title then that location is not covered under the agreement
-		if(!$computerList)
-			{
-			$computer = Computers::find()
-							->where(['ComputerID' => $computerID])
-							->One();
-			}
-		else{
-			$computer = $computerList[$computerID];
-			}
-			
-		//if the computer is no longer in the labtech database,, it cant be covered under the agreement
-		if($computer == null)
-			{
-			return $agreement->default_project_rate_bh_id;
-			}
-		
-		//get thelocation object
-		if(!$locationList)
-			{
-			$location = Locations::findOne($computer->LocationID);
-			}
-		else{
-			$lcoation = $locationList[$computer->LocationID];
-			}
-			
-		//if the location cant be found check to see if the location is billable
-		if($location == null)
-			{
-			return $agreement->default_project_rate_bh_id;
-			}
-		elseif($location->isBillable())
-			{
-			return $agreement->default_BH_rate_id;
-			}
-		else{
-			return $agreement->default_project_rate_bh_id;
-			}
-			
-			
-			
-			
-			
+		return $chargeRate;
 		}
+	
+	
 	
 }

@@ -225,4 +225,20 @@ class Computers extends \yii\db\ActiveRecord
             'ObjectSid' => 'Object Sid',
         ];
     }
+    
+    
+    
+    public function getComputer($computerID)
+    	{
+			return Computers::find()
+								->where(['ComputerID' => $computerID])
+								->One();
+		}
+		
+		
+	public function getLocation()
+	{
+		return $this->hasOne(Locations::className(), ['LocationID' => 'LocationID']);
+	}
+	
 }
