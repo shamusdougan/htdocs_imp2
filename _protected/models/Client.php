@@ -112,10 +112,22 @@ class Client extends \yii\db\ActiveRecord
 	public function getClientList($indexField = 'id')
 	{
 	$clientList = Client::find()
+				->orderBy('name')
 				->All();
 	return ArrayHelper::index($clientList, $indexField);
 	}
 
+
+
+	public function getClientFromLabtechID($ClientID)
+	{
+		$client = Client::find()->where([Client::LABTECH_KEY => $ClientID])->one();
+		if(!$client)
+			{
+			die("Unable to retrieve Client Object from given Labtech ID: ".$ClientID);
+			}
+		return $client;
+	}
 
 
 /**

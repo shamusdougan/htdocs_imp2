@@ -73,7 +73,7 @@ class LabtechTickets extends \yii\db\ActiveRecord
             'ClientID' => 'Client ID',
             'ProjectID' => 'Project ID',
             'ComputerID' => 'Computer ID',
-            'Status' => 'Status',
+            'Status' => 'Labtech Status',
             'Subject' => 'Subject',
             'Time' => 'Time',
             'Priority' => 'Priority',
@@ -94,4 +94,20 @@ class LabtechTickets extends \yii\db\ActiveRecord
             'MobileDeviceId' => 'Mobile Device ID',
         ];
     }
+    
+    public function getComputer()
+    {
+		 return $this->hasOne(Computers::className(), ['ComputerID' => 'ComputerID']);
+	}
+	
+	public function getStatus()
+	{
+		return $this->hasOne(Ticketstatus::className(), ['TicketStatusID' => 'Status']);
+	}
+    
+    public function getTicketInfo()
+    {
+		return $this->hasOne(TicketInfo::className(), ['labtech_ticket_id' => 'TicketID']);
+	}
+    
 }

@@ -241,4 +241,9 @@ class Computers extends \yii\db\ActiveRecord
 		return $this->hasOne(Locations::className(), ['LocationID' => 'LocationID']);
 	}
 	
+	public function getComputersList()
+	{
+		return Computers::find()->orderBy('Name')->All();
+	}
+	
 }

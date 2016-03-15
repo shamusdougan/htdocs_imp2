@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\lookup;
-use yii\data\ActiveDataProvider;
+use app\models\LabtechTickets;
+use app\models\LabtechTicketsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LookupController implements the CRUD actions for lookup model.
+ * LabtechTicketsController implements the CRUD actions for LabtechTickets model.
  */
-class LookupController extends Controller
+class LabtechTicketsController extends Controller
 {
     public function behaviors()
     {
@@ -26,38 +26,36 @@ class LookupController extends Controller
         ];
     }
 
-
-
 	public function beforeAction($action)
 	{
 	    if (!parent::beforeAction($action)) {
 	        return false;
 	    }
 
-	    $this->view->params['menuItem'] = 'lookup';
+	    $this->view->params['menuItem'] = 'tickets';
 
 	    return true; // or false to not run the action
 	}
 
 
-
     /**
-     * Lists all lookup models.
+     * Lists all LabtechTickets models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => lookup::find(),
-        ]);
+        $searchModel = new LabtechTicketsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      	$dataProvider->setSort(['defaultOrder' => ['TicketID'=>SORT_DESC],]);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single lookup model.
+     * Displays a single LabtechTickets model.
      * @param integer $id
      * @return mixed
      */
@@ -69,16 +67,16 @@ class LookupController extends Controller
     }
 
     /**
-     * Creates a new lookup model.
+     * Creates a new LabtechTickets model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new lookup();
+        $model = new LabtechTickets();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->TicketID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -87,7 +85,7 @@ class LookupController extends Controller
     }
 
     /**
-     * Updates an existing lookup model.
+     * Updates an existing LabtechTickets model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +95,7 @@ class LookupController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->TicketID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -105,20 +103,8 @@ class LookupController extends Controller
         }
     }
 
-
-
-
-  public function actionTest()
-    {
-        $model = "blsa";
-
-       
-            return $this->render('test', [
-                'model' => $model,
-            ]);
-    }
     /**
-     * Deletes an existing lookup model.
+     * Deletes an existing LabtechTickets model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -131,15 +117,15 @@ class LookupController extends Controller
     }
 
     /**
-     * Finds the lookup model based on its primary key value.
+     * Finds the LabtechTickets model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return lookup the loaded model
+     * @return LabtechTickets the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = lookup::findOne($id)) !== null) {
+        if (($model = LabtechTickets::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

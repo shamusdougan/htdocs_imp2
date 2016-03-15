@@ -51,7 +51,8 @@ class ClientController extends Controller
     {
         $searchModel = new ClientSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+        $dataProvider->setSort(['defaultOrder' => ['name'=>SORT_ASC],]);
+       
         $actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/client/create"];
         
 

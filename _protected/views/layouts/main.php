@@ -43,7 +43,10 @@ AppAsset::register($this);
 				'heading' => "IMP 2.0.0 Menu (".$username.")",
 				'items' => [
 					['label' => 'Dashboard', 'icon' => 'home', 'url' => Url::toRoute('/')],
-					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets")],
+					['label' => 'Tickets', 'icon' => 'wrench', 'visible' => Yii::$app->user->can("useTickets"), 'items' =>
+						[
+						['label' => 'Tickets', 'url' => Url::toRoute('/labtech-tickets'), 'active'=>($currentItem == 'tickets')],
+						]],
 					['label' => 'Accounts', 'icon' => 'folder-open', 'visible' => Yii::$app->user->can("useAccounts"), 'items' => [
 						['label' => 'Clients', 'url' => Url::toRoute('/client'), 'active'=>($currentItem == 'client')],
 						['label' => 'Charge Rates', 'url' => Url::toRoute('/charge-rates'), 'active'=>($currentItem == 'charge-rates')],
