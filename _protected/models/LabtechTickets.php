@@ -36,6 +36,9 @@ class LabtechTickets extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    const STATUS_RESOLVED = 4;
+     
+     
     public static function tableName()
     {
         return 'tickets';

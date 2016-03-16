@@ -84,4 +84,7 @@ class LabtechTicketsSearch extends LabtechTickets
 
         return $dataProvider;
     }
-}
+    
+    
+  
+}	

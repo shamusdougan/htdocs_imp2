@@ -71,4 +71,15 @@ class LabtechTimeslips extends \yii\db\ActiveRecord
             'Category' => 'Category',
         ];
     }
+    
+    public function getLabtechTicket()
+    {
+		return $this->hasOne(LabtechTickets::className(), ['TicketID' => 'TicketID']);
+	}
+	
+	public function getTimeslipInfo()
+	{
+		return $this->hasOne(TimeslipInfo::className(), ['labtech_timeslip_id' => 'TimeSlipID']);
+	}
+    
 }

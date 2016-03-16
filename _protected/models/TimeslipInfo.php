@@ -53,4 +53,10 @@ class TimeslipInfo extends \yii\db\ActiveRecord
     {
 		 return $this->hasOne(TicketInfo::className(), ['id' => 'ticket_info_id']);
 	}
+	
+	public function getTimeslip()
+	{
+		return $this->hasOne(LabtechTimeslips::className(), ['TimeSlipID' => 'labtech_timeslip_id']);
+	}
+	
 }
