@@ -82,6 +82,7 @@ class syncTicketInfo extends syncModelBase
 				
 				$newTicketInfo->default_charge_rate_id = $clientList[$remoteRecord['ClientID']]->getDefaultChargeRate($remoteRecord['ComputerID']);
 				$newTicketInfo->default_billing_account_id = $clientList[$remoteRecord['ClientID']]->agreement->default_account_id;
+				$newTicketInfo->labtech_computer_id = $remoteRecord['ComputerID'];
 				$newTicketInfo->save();
 				if(!$newTicketInfo->save())
 					{
@@ -100,10 +101,36 @@ class syncTicketInfo extends syncModelBase
 				else{
 					$this->localRecordsUpdated++;
 					}
-				
-				
 				}
 			}	
+
+
+		$this->progress .= "Checking for any updates to the Computer assigned to the ticket. If the computer as changed sinxe last check the chrge rates will also need tobe checked\n";
+		$ticketInfoList = TicketInfo::getTicketInfoLast(50);
+		foreach($ticketInfoList as $ticketInfo)
+			{
+			
+			//check to see if the ticket actually exists, if it has been deleted then also delete the TicketInfo
+			if(is_string(($update = $ticketInfo->checkTicket())))
+				{
+				$this->progress .= $update;
+				$this->localRecordsUpdated++;
+				break;
+				}
+			
+			//Check to see if the computer assigned to the ticket has changed
+			if(is_string(($update = $ticketInfo->checkComputerID())))
+				{
+				$this->progress .= $update;
+				$this->localRecordsUpdated++;
+				}
+			}
+
+
+
+
+
+
 
 
 		$this->progress .= $this->localRecordsUpdated." Local Records Updated\n";
@@ -114,38 +141,7 @@ class syncTicketInfo extends syncModelBase
 	
 
 	
-	
-	/*
-		Function: getRemoteRecordsChangedSince
-		input
-		$dateTime: the given date/time of the last successfuly syncLabtechClient
-		$dbconnection: the connection to the foreign database
-		output:
-		should return an array of records changed since the last sync, the array should be indexed on record id.	*/
-	function  getRemoteRecords($syncRelationship)
-		{
-		try{
-			$modelName = $syncRelationship->impModelName;
-			$sqlQuery = "Select * From ".$syncRelationship->endPointDBTable." A LEFT JOIN Sapient_imp.".ticketInfo::tableName()." B ON A.TicketID = B.labtech_ticket_id WHERE B.labtech_ticket_id IS NULL LIMIT 10";
-			$remoteRecords = $this->dbConnection->createCommand($sqlQuery)->queryAll();
 
-			}
-		catch(Exception $e)
-			{
-				return "Error in fetching Foreign Data, Error: ".$e->getMessage();	
-			}
-		return $remoteRecords;	
-		}
-	/**
-	* 
-	* @param undefined $remoteRecords
-	* This function will take the list of remote records and create the required local records. The local record values will be populated via the defaults defined in this section
-	* @return
-	*/
-	function createLocalRecords($remoteRecords)
-	{
-		
-	}
 
 
 }

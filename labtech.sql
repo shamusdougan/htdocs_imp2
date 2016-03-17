@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2016 at 04:15 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Generation Time: Mar 17, 2016 at 03:55 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `clients` (
-`ClientID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL DEFAULT '',
   `Firstname` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
@@ -48,7 +48,15 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `Flags` int(11) NOT NULL,
   `GUID` varchar(255) NOT NULL,
   `Permissions` int(11) NOT NULL,
-  `Score` int(11) NOT NULL
+  `Score` int(11) NOT NULL,
+  PRIMARY KEY (`ClientID`),
+  UNIQUE KEY `Name` (`Name`),
+  KEY `Phone` (`Phone`),
+  KEY `Zip` (`Zip`),
+  KEY `GUID` (`GUID`),
+  KEY `ExternalID` (`ExternalID`),
+  KEY `Flags` (`Flags`),
+  KEY `Permissions` (`Permissions`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=99 ;
 
 --
@@ -159,7 +167,7 @@ INSERT INTO `clients` (`ClientID`, `Name`, `Firstname`, `LastName`, `Company`, `
 --
 
 CREATE TABLE IF NOT EXISTS `computers` (
-`ComputerID` int(11) NOT NULL,
+  `ComputerID` int(11) NOT NULL AUTO_INCREMENT,
   `ClientID` int(11) NOT NULL DEFAULT '0',
   `LocationID` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(50) NOT NULL,
@@ -243,7 +251,22 @@ CREATE TABLE IF NOT EXISTS `computers` (
   `IdleTime` int(11) NOT NULL,
   `RunLevel` int(11) NOT NULL,
   `WarrantyEnd` datetime NOT NULL,
-  `ObjectSid` varchar(184) NOT NULL
+  `ObjectSid` varchar(184) NOT NULL,
+  UNIQUE KEY `ComputerID` (`ComputerID`),
+  KEY `ClientID` (`ClientID`),
+  KEY `LocationID` (`LocationID`),
+  KEY `CPUUsage` (`CPUUsage`),
+  KEY `MemoryAvail` (`MemoryAvail`),
+  KEY `flags` (`flags`),
+  KEY `LocalAddress` (`LocalAddress`),
+  KEY `RouterAddress` (`RouterAddress`),
+  KEY `LastContact` (`LastContact`),
+  KEY `Name` (`Name`),
+  KEY `Password` (`Password`),
+  KEY `MAC` (`MAC`),
+  KEY `ServiceVersion` (`ServiceVersion`),
+  KEY `tempfiles` (`tempfiles`),
+  KEY `UserName` (`Username`(255))
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=875 ;
 
 --
@@ -463,7 +486,7 @@ INSERT INTO `computers` (`ComputerID`, `ClientID`, `LocationID`, `Name`, `Domain
 --
 
 CREATE TABLE IF NOT EXISTS `contacts` (
-`ContactID` int(1) NOT NULL,
+  `ContactID` int(1) NOT NULL AUTO_INCREMENT,
   `LocationID` int(11) NOT NULL,
   `ClientID` int(11) NOT NULL,
   `Firstname` varchar(50) NOT NULL,
@@ -492,7 +515,17 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `Emailpassword` varchar(2000) NOT NULL,
   `ImageId` int(11) NOT NULL DEFAULT '0',
   `LoginFailCount` int(11) NOT NULL DEFAULT '0',
-  `LoginLockTime` datetime NOT NULL
+  `LoginLockTime` datetime NOT NULL,
+  UNIQUE KEY `ContactID` (`ContactID`),
+  KEY `ClientID` (`ClientID`),
+  KEY `Zip` (`Zip`),
+  KEY `Phone` (`Phone`),
+  KEY `Cell` (`Cell`),
+  KEY `LocationID` (`LocationID`),
+  KEY `GUID` (`GUID`),
+  KEY `ExternalID` (`ExternalID`),
+  KEY `LastName` (`LastName`),
+  KEY `Firstname` (`Firstname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=164 ;
 
 --
@@ -663,7 +696,7 @@ INSERT INTO `contacts` (`ContactID`, `LocationID`, `ClientID`, `Firstname`, `Las
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-`LocationID` int(11) NOT NULL,
+  `LocationID` int(11) NOT NULL AUTO_INCREMENT,
   `ClientID` int(11) NOT NULL DEFAULT '0',
   `Name` varchar(50) NOT NULL,
   `Address` varchar(50) NOT NULL,
@@ -697,7 +730,12 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `MaintenanceID` int(11) NOT NULL,
   `MaintWindowApplied` datetime NOT NULL,
   `SNMPCommunity` varchar(255) NOT NULL,
-  `DestinationID` int(11) NOT NULL
+  `DestinationID` int(11) NOT NULL,
+  PRIMARY KEY (`LocationID`),
+  KEY `ClientID` (`ClientID`),
+  KEY `ContactID` (`ContactID`),
+  KEY `Name` (`Name`),
+  KEY `ProbeID` (`ProbeID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
 
 --
@@ -798,7 +836,7 @@ INSERT INTO `locations` (`LocationID`, `ClientID`, `Name`, `Address`, `City`, `S
 --
 
 CREATE TABLE IF NOT EXISTS `tickets` (
-`TicketID` int(11) NOT NULL,
+  `TicketID` int(11) NOT NULL AUTO_INCREMENT,
   `ClientID` int(11) NOT NULL DEFAULT '0',
   `ProjectID` int(11) NOT NULL DEFAULT '0',
   `ComputerID` int(11) NOT NULL DEFAULT '0',
@@ -820,7 +858,15 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `GUID` varchar(100) NOT NULL,
   `MonitorId` int(11) NOT NULL,
   `GroupId` int(11) NOT NULL,
-  `MobileDeviceId` int(11) NOT NULL
+  `MobileDeviceId` int(11) NOT NULL,
+  PRIMARY KEY (`TicketID`),
+  KEY `ClientID` (`ClientID`),
+  KEY `ComputerID` (`ComputerID`),
+  KEY `Status` (`Status`),
+  KEY `UserID` (`UserID`),
+  KEY `StartedDate` (`StartedDate`),
+  KEY `Priority` (`Priority`),
+  KEY `ExternalID` (`ExternalID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7068 ;
 
 --
@@ -4711,9 +4757,7 @@ INSERT INTO `tickets` (`TicketID`, `ClientID`, `ProjectID`, `ComputerID`, `Statu
 (7062, 63, 0, 641, 4, 'My computer I think has a virus', 0, 10, 3, '2015-03-03 00:00:00', '2015-03-04 11:41:26', '2015-03-04 11:41:26', '2015-03-04 13:14:36', 'shamus.dougan@sapient-tech.com.au', '', 1, 0, 0, 0, '', 0, 0, 0),
 (7063, 15, 0, 257, 4, 'Install Teamviewer', 0, 10, 3, '2015-03-03 00:00:00', '2015-03-04 14:06:41', '2015-03-04 14:06:41', '2015-03-04 14:43:43', 'shamus.dougan@sapient-tech.com.au', '', 1, 0, 0, 0, '', 0, 0, 0),
 (7064, 3, 0, 17, 2, '60-Day SSL Certificate Renewal Notice', 0, 10, 3, '2015-03-03 14:55:07', '2015-03-04 14:55:07', '2015-03-04 14:55:07', '2015-03-04 16:32:04', 'shamus.dougan@sapient-tech.com.au', '', 1, 0, 0, 0, '', 0, 0, 0),
-(7065, 9, 0, 364, 4, 'Unblock email address', 0, 10, 4, '2015-03-03 00:00:00', '2015-03-04 17:58:33', '2015-03-04 17:58:33', '2015-03-04 18:02:15', 'charles.foletta@sapient-tech.com.au', '', 1, 2, 0, 0, '', 0, 0, 0),
-(7066, 15, 0, 612, 4, 'HQ Client Bicycle Super Store\\ALBURY-BO:1757 - ', 0, 5, 3, '2015-03-04 03:17:20', '2015-03-05 03:17:20', '2015-03-05 03:17:20', '2015-03-05 04:17:44', 'shamus.dougan@sapient-tech.com.au', '', 1, 149, 0, 0, '', 1757, 0, 0),
-(7067, 1, 0, 1, 1, '1 New Patches require Approval/rejection', 0, 5, 0, '2015-03-04 06:01:14', '2015-03-05 06:01:14', '2015-03-05 06:01:14', '2015-03-05 06:01:14', 'monitor@sapient-tech.com.au', '', 1, 6, 0, 0, '', 0, 0, 0);
+(7065, 9, 0, 364, 4, 'Unblock email address', 0, 10, 4, '2015-03-03 00:00:00', '2015-03-04 17:58:33', '2015-03-04 17:58:33', '2015-03-04 18:02:15', 'charles.foletta@sapient-tech.com.au', '', 1, 2, 0, 0, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4723,7 +4767,8 @@ INSERT INTO `tickets` (`TicketID`, `ClientID`, `ProjectID`, `ComputerID`, `Statu
 
 CREATE TABLE IF NOT EXISTS `ticketstatus` (
   `TicketStatusID` int(11) NOT NULL,
-  `TicketStatus` varchar(25) NOT NULL
+  `TicketStatus` varchar(25) NOT NULL,
+  PRIMARY KEY (`TicketStatusID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4745,10 +4790,12 @@ INSERT INTO `ticketstatus` (`TicketStatusID`, `TicketStatus`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `timecategory` (
-`ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   `Extra1` varchar(50) NOT NULL,
-  `Extra2` int(11) NOT NULL
+  `Extra2` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `Name` (`Name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
@@ -4774,7 +4821,7 @@ INSERT INTO `timecategory` (`ID`, `Name`, `Extra1`, `Extra2`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `timeslips` (
-`TimeSlipID` int(11) NOT NULL,
+  `TimeSlipID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` int(11) NOT NULL,
   `ClientID` int(11) NOT NULL DEFAULT '0',
   `ProjectID` int(11) NOT NULL DEFAULT '0',
@@ -4785,7 +4832,15 @@ CREATE TABLE IF NOT EXISTS `timeslips` (
   `Date` datetime NOT NULL,
   `Description` varchar(5000) NOT NULL,
   `Billed` tinyint(4) NOT NULL DEFAULT '0',
-  `Category` int(11) NOT NULL DEFAULT '1'
+  `Category` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`TimeSlipID`),
+  KEY `UserID` (`UserID`),
+  KEY `ClientID` (`ClientID`),
+  KEY `ProjectID` (`ProjectID`),
+  KEY `TicketID` (`TicketID`),
+  KEY `Category` (`Category`),
+  KEY `Date` (`Date`),
+  KEY `Billed` (`Billed`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5185 ;
 
 --
@@ -9988,100 +10043,63 @@ INSERT INTO `timeslips` (`TimeSlipID`, `UserID`, `ClientID`, `ProjectID`, `Ticke
 (5180, 3, 74, 0, 7060, 0, 5, 0, '2015-03-04 10:24:41', 'Shaun called back, provided settings not working after all. Provided him with the ISP outgoing server information. Waiting while he tested and all is working ok.', 0, 1),
 (5181, 8, 27, 0, 7030, 2, 0, 0, '2015-03-04 12:55:07', 'Installed new workstation - config. outlook and printer.\r\nInstalled switch/network cables to connect to network.\r\nSee comments.', 0, 1),
 (5182, 3, 63, 0, 7062, 0, 45, 0, '2015-03-04 13:14:36', 'scanned and removed multiple PUP instllations', 0, 1),
-(5183, 3, 15, 0, 7063, 0, 5, 0, '2015-03-04 14:09:03', 'installed and setup to use the global teamviewer account', 0, 1),
-(5184, 4, 9, 0, 7065, 0, 5, 0, '2015-03-04 17:58:37', 'Showed Kathryn the steps how to remove Brad from the "Blocked Senders List" in the Junk Mail section of Microsoft Outlook 2007.', 0, 1);
+(5183, 3, 15, 0, 7063, 0, 5, 0, '2015-03-04 14:09:03', 'installed and setup to use the global teamviewer account', 0, 1);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Table structure for table `users`
 --
 
---
--- Indexes for table `clients`
---
-ALTER TABLE `clients`
- ADD PRIMARY KEY (`ClientID`), ADD UNIQUE KEY `Name` (`Name`), ADD KEY `Phone` (`Phone`), ADD KEY `Zip` (`Zip`), ADD KEY `GUID` (`GUID`), ADD KEY `ExternalID` (`ExternalID`), ADD KEY `Flags` (`Flags`), ADD KEY `Permissions` (`Permissions`);
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserID` int(4) NOT NULL AUTO_INCREMENT,
+  `ClientID` text NOT NULL,
+  `Name` varchar(15) NOT NULL DEFAULT '',
+  `Password` blob NOT NULL,
+  `Email` varchar(50) NOT NULL DEFAULT '',
+  `Permissions` varchar(1024) NOT NULL,
+  `Flags` int(11) NOT NULL DEFAULT '0',
+  `TicketLevel` int(11) NOT NULL DEFAULT '1',
+  `OpenTickets` int(11) NOT NULL DEFAULT '5',
+  `NewTickets` int(11) NOT NULL DEFAULT '5',
+  `Secondary` text NOT NULL,
+  `MapiProfile` varchar(100) NOT NULL,
+  `CommandLevel` int(11) NOT NULL DEFAULT '3',
+  `Manager` int(11) NOT NULL DEFAULT '0',
+  `LoginReport` int(11) NOT NULL DEFAULT '0',
+  `LogoutReport` int(11) NOT NULL DEFAULT '0',
+  `AuditLevel` int(11) NOT NULL DEFAULT '1',
+  `TicketRouter` int(11) NOT NULL DEFAULT '0',
+  `Last_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Last_User` varchar(30) NOT NULL,
+  `RegionID` int(11) NOT NULL DEFAULT '0',
+  `GroupSecurity` int(11) NOT NULL,
+  `FolderID` int(11) NOT NULL DEFAULT '0',
+  `LimitAddress` varchar(50) NOT NULL,
+  `ImageId` int(11) NOT NULL DEFAULT '0',
+  `LoginFailCount` int(11) NOT NULL DEFAULT '0',
+  `LoginLockTime` datetime NOT NULL,
+  UNIQUE KEY `UserID` (`UserID`),
+  UNIQUE KEY `Name` (`Name`),
+  KEY `Email` (`Email`),
+  KEY `Last_date` (`Last_date`),
+  KEY `FolderID` (`FolderID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Indexes for table `computers`
---
-ALTER TABLE `computers`
- ADD UNIQUE KEY `ComputerID` (`ComputerID`), ADD KEY `ClientID` (`ClientID`), ADD KEY `LocationID` (`LocationID`), ADD KEY `CPUUsage` (`CPUUsage`), ADD KEY `MemoryAvail` (`MemoryAvail`), ADD KEY `flags` (`flags`), ADD KEY `LocalAddress` (`LocalAddress`), ADD KEY `RouterAddress` (`RouterAddress`), ADD KEY `LastContact` (`LastContact`), ADD KEY `Name` (`Name`), ADD KEY `Password` (`Password`), ADD KEY `MAC` (`MAC`), ADD KEY `ServiceVersion` (`ServiceVersion`), ADD KEY `tempfiles` (`tempfiles`), ADD KEY `UserName` (`Username`(255));
-
---
--- Indexes for table `contacts`
---
-ALTER TABLE `contacts`
- ADD UNIQUE KEY `ContactID` (`ContactID`), ADD KEY `ClientID` (`ClientID`), ADD KEY `Zip` (`Zip`), ADD KEY `Phone` (`Phone`), ADD KEY `Cell` (`Cell`), ADD KEY `LocationID` (`LocationID`), ADD KEY `GUID` (`GUID`), ADD KEY `ExternalID` (`ExternalID`), ADD KEY `LastName` (`LastName`), ADD KEY `Firstname` (`Firstname`);
-
---
--- Indexes for table `locations`
---
-ALTER TABLE `locations`
- ADD PRIMARY KEY (`LocationID`), ADD KEY `ClientID` (`ClientID`), ADD KEY `ContactID` (`ContactID`), ADD KEY `Name` (`Name`), ADD KEY `ProbeID` (`ProbeID`);
-
---
--- Indexes for table `tickets`
---
-ALTER TABLE `tickets`
- ADD PRIMARY KEY (`TicketID`), ADD KEY `ClientID` (`ClientID`), ADD KEY `ComputerID` (`ComputerID`), ADD KEY `Status` (`Status`), ADD KEY `UserID` (`UserID`), ADD KEY `StartedDate` (`StartedDate`), ADD KEY `Priority` (`Priority`), ADD KEY `ExternalID` (`ExternalID`);
-
---
--- Indexes for table `ticketstatus`
---
-ALTER TABLE `ticketstatus`
- ADD PRIMARY KEY (`TicketStatusID`);
-
---
--- Indexes for table `timecategory`
---
-ALTER TABLE `timecategory`
- ADD PRIMARY KEY (`ID`), ADD KEY `Name` (`Name`);
-
---
--- Indexes for table `timeslips`
---
-ALTER TABLE `timeslips`
- ADD PRIMARY KEY (`TimeSlipID`), ADD KEY `UserID` (`UserID`), ADD KEY `ClientID` (`ClientID`), ADD KEY `ProjectID` (`ProjectID`), ADD KEY `TicketID` (`TicketID`), ADD KEY `Category` (`Category`), ADD KEY `Date` (`Date`), ADD KEY `Billed` (`Billed`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Dumping data for table `users`
 --
 
---
--- AUTO_INCREMENT for table `clients`
---
-ALTER TABLE `clients`
-MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=99;
---
--- AUTO_INCREMENT for table `computers`
---
-ALTER TABLE `computers`
-MODIFY `ComputerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=875;
---
--- AUTO_INCREMENT for table `contacts`
---
-ALTER TABLE `contacts`
-MODIFY `ContactID` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=164;
---
--- AUTO_INCREMENT for table `locations`
---
-ALTER TABLE `locations`
-MODIFY `LocationID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
---
--- AUTO_INCREMENT for table `tickets`
---
-ALTER TABLE `tickets`
-MODIFY `TicketID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7068;
---
--- AUTO_INCREMENT for table `timecategory`
---
-ALTER TABLE `timecategory`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `timeslips`
---
-ALTER TABLE `timeslips`
-MODIFY `TimeSlipID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5185;
+INSERT INTO `users` (`UserID`, `ClientID`, `Name`, `Password`, `Email`, `Permissions`, `Flags`, `TicketLevel`, `OpenTickets`, `NewTickets`, `Secondary`, `MapiProfile`, `CommandLevel`, `Manager`, `LoginReport`, `LogoutReport`, `AuditLevel`, `TicketRouter`, `Last_date`, `Last_User`, `RegionID`, `GroupSecurity`, `FolderID`, `LimitAddress`, `ImageId`, `LoginFailCount`, `LoginLockTime`) VALUES
+(-1, '', 'root', '', '', '', 0, 1, 5, 5, '', '', 3, 0, 0, 0, 1, 0, '2013-07-24 02:10:44', 'root@localhost', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(1, '3,1,4,9,7,5,6,2,', 'Admin', 0x52b825820b36db249c9850b23adc7af8, 'Me@here.com', '0,', 0, 5, 0, 0, '5,', '', 4, 1, 0, 0, 1, 1, '2015-07-22 04:50:51', 'shamus@192.168.0.52', 0, 0, 0, '', 0, 2, '0000-00-00 00:00:00'),
+(2, '4,9,', 'User', 0x3f1f917c441443578b827da1dd58e0bc, 'Me@here.com', '0,', 0, 1, 0, 0, '5,', 'Disable', 4, 1, 0, 0, 1, 1, '2013-07-24 02:10:44', 'root@localhost', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(3, '1,4,9,5,500,2,', 'shamus', 0x27f31c59b1b45daa356c44000936cdc9, 'shamus.dougan@sapient-tech.com.au', '1,50,34,14,3,58,38,71,68,60,74,15,23,93,13,48,67,57,77,51,6,90,61,73,36,11,9,16,24,75,25,87,20,10,72,19,49,41,30,2,47,5,44,59,76,43,17,7,89,22,66,32,33,37,80,4,53,63,31,27,91,88,69,55,26,56,8,83,40,39,28,65,70,12,45,52,62,84,79,82,92,42,64,29,18,81,46,35,54,86,94,96,98,97,95,', 3, 1, 0, 0, '5,767,1,', 'Default', 4, 0, 0, 0, 5, 0, '2016-03-10 01:36:36', 'shamus@SHAMUS-W7', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(4, '1,4,9,5,500,2,', 'charles', 0x83e276fe72c06aaebf501f80833d24eb, 'charles.foletta@sapient-tech.com.au', '1,34,14,3,58,38,71,68,15,23,13,48,67,57,51,6,61,36,11,9,16,24,60,25,20,10,72,50,19,49,41,30,2,47,5,44,59,43,17,7,22,66,33,37,4,53,63,32,31,27,69,55,26,56,8,40,39,28,65,70,12,45,52,62,42,64,29,18,46,35,54,74,77,73,75,76,80,83,84,79,82,81,', 3, 1, 0, 0, '6,11,9,10,5,767,788,896,821,772,984,929,1025,1016,822,832,820,942,1015,983,945,779,1007,899,814,809,823,833,1006,834,830,813,1026,944,828,943,932,850,769,941,774,936,1005,935,826,780,831,1012,895,928,778,969,1009,894,893,847,1022,971,846,982,808,931,930,848,1011,1023,815,939,968,1008,934,1010,849,827,940,898,970,806,807,801,802,972,974,975,976,977,978,979,980,981,1003,18,20,41,22,25,19,804,805,937,933,938,1024,1,798,916,963,921,883,964,884,885,923,922,965,914,1004,1019,886,887,966,888,889,810,776,864,15,31,17,24,23,817,818,819,795,796,793,869,917,870,871,872,987,873,892,794,874,1018,919,947,925,875,946,876,877,926,927,948,915,986,1020,878,879,880,967,881,988,882,890,', 'Default', 4, 0, 0, 0, 5, 0, '2015-07-22 04:50:51', 'shamus@192.168.0.52', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(5, '0,', 'Monitor Email', 0xe0943c55b885d3783ec980eb427e5b61, 'monitor@sapient-tech.com.au', '0,', 0, 1, 0, 0, '0,', 'Default', 4, 1, 0, 0, 0, 1, '2013-07-24 02:10:44', 'root@localhost', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(6, '3,1,4,9,7,5,6,2,', 'labtechsupport', 0x1e704ca01c5158c14a8d0a04d485d2e8, 'support@sapient-tech.com.au', '3,13,6,9,11,10,2,5,7,4,8,12,1,', 1, 5, 0, 0, '6,11,9,10,5,767,772,820,779,809,814,813,769,774,780,778,808,815,788,806,807,801,802,18,20,41,22,25,19,804,805,1,798,816,799,810,776,15,31,17,24,23,817,818,819,795,796,793,794,', '', 4, 1, 0, 0, 1, 1, '2015-07-22 04:50:51', 'shamus@192.168.0.52', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00'),
+(8, '1,5,500,9,', 'jeremy', 0x96991809b9f319356f932e4e9bc1b3b9, 'jeremy@sapient-tech.com.au', '1,34,14,3,58,38,71,68,60,74,15,23,13,48,67,57,77,51,6,61,73,36,11,9,16,24,75,25,20,10,72,50,19,49,41,30,2,47,5,44,59,76,43,17,7,22,66,33,37,80,4,53,63,32,31,27,69,55,26,56,8,83,40,39,28,65,70,12,45,52,62,84,79,82,42,64,29,18,81,46,35,54,86,', 51, 1, 0, 0, '6,11,9,10,5,767,788,896,821,772,984,929,1025,1016,1006,822,832,820,942,1015,983,945,779,1007,899,814,809,823,833,834,830,813,1026,944,828,943,932,850,769,941,774,936,1005,935,826,780,831,1012,895,928,778,969,1009,894,893,847,1022,971,846,982,808,931,930,848,1011,1023,815,939,968,1008,934,1010,849,827,940,898,970,806,807,801,802,972,974,975,976,977,978,979,980,981,1003,18,20,41,22,25,19,804,805,937,933,938,1024,1,798,916,963,921,883,964,884,885,923,922,965,914,1004,1019,886,887,966,888,889,810,776,864,15,31,17,24,23,817,818,819,795,796,793,869,917,870,871,872,987,873,892,794,874,1018,919,947,925,875,946,876,877,926,927,948,915,986,1020,878,879,880,967,881,988,882,890,', 'Disable', 4, 1, 0, 0, 0, 1, '2015-10-21 21:51:02', 'shamus@SHAMUS-W7', 0, 0, 0, '', 0, 0, '0000-00-00 00:00:00');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

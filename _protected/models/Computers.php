@@ -246,4 +246,22 @@ class Computers extends \yii\db\ActiveRecord
 		return Computers::find()->orderBy('Name')->All();
 	}
 	
+	
+	public function getComputerLocation($computer_id)
+	{
+		if($computer_id == 0 || $computer_id == null)
+			{
+			return 0;
+			}
+		else{
+			$computer = Computers::getComputer($computer_id);
+			if($computer)
+				{
+				return $computer->LocationID;
+				}
+			else{
+				return 0;
+			}
+		}
+	}
 }

@@ -6,8 +6,8 @@ use Codeception\Specify\ConfigBuilder;
 
 trait Specify {
 
-    private $beforeSpecify;
-    private $afterSpecify;
+    private $beforeSpecify = array();
+    private $afterSpecify = array();
 
     /**
      * @var Specify\Config
@@ -42,11 +42,16 @@ trait Specify {
         $throws = $this->getSpecifyExpectedException($params);
         $examples = $this->getSpecifyExamples($params);
 
-        foreach ($examples as $example) {
+        foreach ($examples as $idx => $example) {
+            $this->setName($name.' | '.$specification .' | examples index '. $idx);
             // copy current object properties
             $this->specifyCloneProperties($properties);
 
-            if ($this->beforeSpecify instanceof \Closure) $this->beforeSpecify->__invoke();
+            if (!empty($this->beforeSpecify) && is_array($this->beforeSpecify)) {
+                foreach ($this->beforeSpecify as $closure) {
+                    if ($closure instanceof \Closure) $closure->__invoke();
+                }
+            }
             $this->specifyExecute($test, $throws, $example);
 
             // restore object properties
@@ -54,7 +59,11 @@ trait Specify {
                 if ($this->specifyConfig->propertyIgnored($property)) continue;
                 $this->$property = $val;
             }
-            if ($this->afterSpecify instanceof \Closure) $this->afterSpecify->__invoke();
+            if (!empty($this->afterSpecify) && is_array($this->afterSpecify)) {
+                foreach ($this->afterSpecify as $closure) {
+                    if ($closure instanceof \Closure) $closure->__invoke();
+                }
+            }
         }
 
         // restore test name
@@ -77,30 +86,54 @@ trait Specify {
 
     private function getSpecifyExpectedException($params)
     {
-        $throws = false;
         if (isset($params['throws'])) {
-            $throws = $params['throws'];
+            $throws = (is_array($params['throws'])) ? $params['throws'][0] : $params['throws'];
+
             if (is_object($throws)) {
                 $throws = get_class($throws);
             }
             if ($throws === 'fail') {
                 $throws = 'PHPUnit_Framework_AssertionFailedError';
             }
+
+            $message = (is_array($params['throws']) && isset($params['throws'][1])) ? $params['throws'][1] : false;
+
+            return [$throws, $message];
         }
-        return $throws;
+
+        return false;
     }
 
     private function specifyExecute($test, $throws = false, $examples = array())
     {
+        $message = false;
+
+        if (is_array($throws)) {
+            $message = ($throws[1]) ? strtolower($throws[1]) : false;
+            $throws = $throws[0];
+        }
+
         $result = $this->getTestResultObject();
         try {
             call_user_func_array($test, $examples);
         } catch (\PHPUnit_Framework_AssertionFailedError $e) {
-            if ($throws !== get_class($e)) $result->addFailure(clone($this), $e, $result->time());
+            if ($throws !== get_class($e)){
+                $result->addFailure(clone($this), $e, $result->time());
+            }
+
+            if ($message !==false && $message !== strtolower($e->getMessage())) {
+                $f = new \PHPUnit_Framework_AssertionFailedError("exception message '$message' was expected, but '" . $e->getMessage() . "' was received");
+                $result->addFailure(clone($this), $f, $result->time());
+            }
         } catch (\Exception $e) {
             if ($throws) {
                 if ($throws !== get_class($e)) {
                     $f = new \PHPUnit_Framework_AssertionFailedError("exception '$throws' was expected, but " . get_class($e) . ' was thrown');
+                    $result->addFailure(clone($this), $f, $result->time());
+                }
+
+                if ($message !==false && $message !== strtolower($e->getMessage())) {
+                    $f = new \PHPUnit_Framework_AssertionFailedError("exception message '$message' was expected, but '" . $e->getMessage() . "' was received");
                     $result->addFailure(clone($this), $f, $result->time());
                 }
             } else {
@@ -126,17 +159,17 @@ trait Specify {
 
     function beforeSpecify(\Closure $callable = null)
     {
-        $this->beforeSpecify = $callable->bindTo($this);
+        $this->beforeSpecify[] = $callable->bindTo($this);
     }
 
     function afterSpecify(\Closure $callable = null)
     {
-        $this->afterSpecify = $callable->bindTo($this);
+        $this->afterSpecify[] = $callable->bindTo($this);
     }
 
     function cleanSpecify()
     {
-        $this->beforeSpecify = $this->afterSpecify = null;
+        $this->beforeSpecify = $this->afterSpecify = array();
     }
 
     /**

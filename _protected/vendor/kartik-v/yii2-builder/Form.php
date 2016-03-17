@@ -2,8 +2,8 @@
 /**
  * @package   yii2-builder
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version   1.6.0
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @version   1.6.1
  */
 
 namespace kartik\builder;
@@ -12,6 +12,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use \Closure;
 use kartik\form\ActiveForm;
 
 /**
@@ -38,7 +39,7 @@ use kartik\form\ActiveForm;
  *
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class Form extends BaseForm
 {
@@ -51,10 +52,28 @@ class Form extends BaseForm
     // bootstrap maximum grid width
     const GRID_WIDTH = 12;
 
+    // Form events
+    const EVENT_BEFORE_PARSE_INPUT = "eBeforeParseInput";
+    const EVENT_AFTER_PARSE_INPUT = "eAfterParseInput";
+    const EVENT_BEFORE_RENDER_SUB_ATTR = "eBeforeRenderSubAttr";
+    const EVENT_AFTER_RENDER_SUB_ATTR = "eAfterRenderSubAttr";
+
     /**
      * @var yii\db\ActiveRecord | yii\base\Model the model used for the form
      */
     public $model;
+    
+    /**
+     * @var string, content to display before the generated form fields.
+     * This is not HTML encoded.
+     */
+    public $contentBefore = '';
+    
+    /**
+     * @var string, content to display after the generated form fields.
+     * This is not HTML encoded.
+     */
+    public $contentAfter = '';
 
     /**
      * @var integer, the number of columns in which to split the fields horizontally. If not set, defaults to 1 column.
@@ -109,10 +128,10 @@ class Form extends BaseForm
         parent::init();
         $this->checkFormConfig();
         if (empty($this->columnSize)) {
-            $this->columnSize = empty($this->form->formConfig['deviceSize']) ? 
-                self::SIZE_SMALL : 
+            $this->columnSize = empty($this->form->formConfig['deviceSize']) ?
+                self::SIZE_SMALL :
                 $this->form->formConfig['deviceSize'];
-        }        
+        }
         if (isset($this->form->type)) {
             $this->_orientation = $this->form->type;
         }
@@ -151,7 +170,9 @@ class Form extends BaseForm
      */
     public function run()
     {
+        echo $this->contentBefore;
         echo $this->renderFieldSet();
+        echo $this->contentAfter;
         echo Html::endTag($this->_tag);
         parent::run();
     }
@@ -193,9 +214,13 @@ class Form extends BaseForm
                 Html::addCssClass($colOptions, 'col-' . $this->columnSize . '-' . $colWidth);
                 $content .= "\t" . $this->beginTag('div', $colOptions, $skip) . "\n";
                 if (!empty($settings['attributes'])) {
+                    $this->raise(self::EVENT_BEFORE_RENDER_SUB_ATTR, $attribute, $index, ['settings' => &$settings]);
                     $content .= $this->renderSubAttributes($attribute, $settings, $index);
+                    $this->raise(self::EVENT_AFTER_RENDER_SUB_ATTR, $attribute, $index, ['content' => &$content]);
                 } else {
+                    $this->raise(self::EVENT_BEFORE_PARSE_INPUT, $attribute, $index, ['settings' => &$settings]);
                     $content .= "\t\t" . $this->parseInput($attribute, $settings, $index) . "\n";
+                    $this->raise(self::EVENT_AFTER_PARSE_INPUT, $attribute, $index, ['content' => &$content]);
                 }
                 $content .= "\t" . $this->endTag('div', $skip) . "\n";
                 $index++;
@@ -222,8 +247,8 @@ class Form extends BaseForm
         }
         if ($this->_orientation !== ActiveForm::TYPE_HORIZONTAL) {
             return '<div class="kv-nested-attribute-block">' . "\n" .
-                Html::label($label, null, $labelOptions) . "\n" .
-                $content . "\n" .
+            Html::label($label, null, $labelOptions) . "\n" .
+            $content . "\n" .
             '</div>';
         }
         if (isset($this->form->formConfig['labelSpan'])) {
@@ -253,7 +278,6 @@ class Form extends BaseForm
     {
         $subIndex = 0;
         $defaultSubColOptions = ArrayHelper::getValue($settings, 'subColumnOptions', $this->columnOptions);
-        $labelOptions = ArrayHelper::getValue($settings, 'labelOptions', []);
         $content = '';
         $content .= "\t" . $this->beginTag('div', $this->rowOptions) . "\n";
         $attrCount = count($settings['attributes']);
@@ -271,6 +295,7 @@ class Form extends BaseForm
             }
             Html::addCssClass($subColOptions, 'col-' . $this->columnSize . '-' . $subColWidth);
             $subSettings['columnOptions'] = $subColOptions;
+            $subSettings['fieldConfig']['skipFormLayout'] = true;
             $content .= "\t\t" . $this->beginTag('div', $subColOptions) . "\n";
             $content .= "\t\t\t" . $this->parseInput($subAttr, $subSettings, $index * 10 + $subIndex) . "\n";
             $subIndex++;
@@ -281,11 +306,11 @@ class Form extends BaseForm
     }
 
     /**
-     * Parses input for `INPUT_RAW` type
+     * Parses the input markup based on type
      *
      * @param string $attribute the model attribute
-     * @param string $settings the column settings
-     * @param int    $index the row index
+     * @param string $settings  the column settings
+     * @param int    $index     the row index
      *
      * @return \kartik\form\ActiveField|mixed
      * @throws InvalidConfigException
@@ -293,20 +318,49 @@ class Form extends BaseForm
     protected function parseInput($attribute, $settings, $index)
     {
         $type = ArrayHelper::getValue($settings, 'type', self::INPUT_TEXT);
-        if ($type === self::INPUT_RAW) {
-            if ($this->hasModel()) {
-                return ($settings['value'] instanceof \Closure) ?
-                    call_user_func($settings['value'], $this->model, $index, $this) :
-                    $settings['value'];
+        if ($this->staticOnly === true) {
+            if (isset($this->form)) {
+                $this->form->staticOnly = true;
             } else {
-                return ($settings['value'] instanceof \Closure) ?
-                    call_user_func($settings['value'], $this->formName, $index, $this) :
-                    $settings['value'];
+                $settings['type'] = self::INPUT_STATIC;
+            }
+            if ($type !== self::INPUT_HIDDEN_STATIC) {
+                $type = self::INPUT_STATIC;
+            }
+        }
+        if (($type === self::INPUT_STATIC || $type === self::INPUT_HIDDEN_STATIC) && isset($settings['staticValue'])) {
+            $val = $settings['staticValue'];
+            if ($val instanceof Closure) {
+                $val = call_user_func($val, $this->hasModel() ? $this->model : $this->formName, $index, $this);
+            }
+            if ($this->hasModel()) {
+                $settings['fieldConfig']['staticValue'] = $val;
+            } else {
+                $settings['value'] = $val;
             }
         } else {
-            return $this->hasModel() ?
+            $val = ArrayHelper::getValue($settings, 'value', null);
+        }
+        $val = ArrayHelper::getValue($settings, 'value', null);
+        if ($type === self::INPUT_RAW) {
+            if ($this->hasModel()) {
+                return $val instanceof Closure ? call_user_func($val, $this->model, $index, $this) : $val;
+            } else {
+                return $val instanceof Closure ? call_user_func($val, $this->formName, $index, $this) : $val;
+            }
+        } else {
+            $hidden = '';
+            if ($type === self::INPUT_HIDDEN_STATIC) {
+                $settings['type'] = self::INPUT_STATIC;
+                $options = ArrayHelper::getValue($settings, 'options', []);
+                $hidden = $this->hasModel() ? Html::activeHiddenInput($this->model, $attribute, $options) :
+                    Html::hiddenInput("{$this->formName}[{$attribute}]", $val, $options);
+                $settings['options'] = ArrayHelper::getValue($settings, 'hiddenStaticOptions', []);
+            }
+            $out = $this->hasModel() ?
                 static::renderActiveInput($this->form, $this->model, $attribute, $settings) :
                 static::renderInput("{$this->formName}[{$attribute}]", $settings);
+            return $out . $hidden;
         }
     }
 
@@ -334,5 +388,21 @@ class Form extends BaseForm
             return Html::endTag($tag) . "\n";
         }
         return '';
+    }
+
+    /**
+     * Triggers an ActiveForm event
+     *
+     * @param string $event
+     * @param string $attribute
+     * @param string $index
+     * @param array  $data
+     */
+    protected function raise($event = '', $attribute = '', $index = '', $data = [])
+    {
+        $this->trigger(
+            $event,
+            new ActiveFormEvent(['attribute' => $attribute, 'index' => $index, 'eventData' => $data])
+        );
     }
 }

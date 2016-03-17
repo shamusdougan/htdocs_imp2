@@ -15,10 +15,14 @@ class TimeslipInfoSearch extends TimeslipInfo
     /**
      * @inheritdoc
      */
+    public $client_id;
+    
+     
     public function rules()
     {
         return [
             [['id', 'labtech_timeslip_id', 'labtech_ticket_id', 'ticket_info_id', 'billed_time_hours', 'billed_time_mins', 'charge_rate_id', 'billing_account_id'], 'integer'],
+            [['client_id'], 'safe'],
         ];
     }
 
@@ -72,13 +76,17 @@ class TimeslipInfoSearch extends TimeslipInfo
     
       public function reviewSearch($params)
     {
-        $query = TimeslipInfo::find();
+        $query = TimeslipInfo::find()
+        				->where(["imp_status" => TimeslipInfo::IMPSTATUS_WIP])
+        				->joinWith('ticketInfo', 'labtechTicket')
+        				->orderBy('client_id, labtech_ticket_id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         $this->load($params);
+        
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -86,16 +94,18 @@ class TimeslipInfoSearch extends TimeslipInfo
             return $dataProvider;
         }
 
+		$dataProvider->sort = false;
         $query->andFilterWhere([
             'id' => $this->id,
             'labtech_timeslip_id' => $this->labtech_timeslip_id,
-            'labtech_ticket_id' => $this->labtech_ticket_id,
             'ticket_info_id' => $this->ticket_info_id,
             'billed_time_hours' => $this->billed_time_hours,
             'billed_time_mins' => $this->billed_time_mins,
             'charge_rate_id' => $this->charge_rate_id,
             'billing_account_id' => $this->billing_account_id,
-        ]);
+        	])
+        
+			->andFilterWhere(['like', 'ticket_info.client_id', $this->client_id]);
 
         return $dataProvider;
     }

@@ -1,3 +1,26 @@
+version 1.6.1
+=============
+**Date:** 17-Jun-2015
+
+- (enh #52): Ability to render the entire form in static mode.
+- (enh #55): Composite keys handling for tabular forms.
+- Code formatting fixes and JS Lint changes.
+- (bug #56): Fix INPUT_STATIC to work better with `TabularForm`.
+- (enh #57): New property `staticOnly` for `Form` and `TabularForm`.
+- (enh #58): New `staticValue` property as part of attributes configuration
+- (enh #61): Fix array format attribute naming for non ActiveDataProvider.
+- (enh #66): New input type `INPUT_HIDDEN_STATIC`
+- (enh #67): New `ActiveFormEvent` class.
+- (enh #68): Enhancements to Form sub attributes layout and styles.
+- (enh #69): Enhance code methods and code format including PHP doc.
+- (enh #70): Better default `actionColumn` settings.
+- (enh #74): New `gridClass` property to allow using widget extending `kartik\grid\GridView`.
+- (enh #77): Enhancements for horizontal form styles.
+- (enh #81): Allow attribute settings properties to be setup as Closure in `TabularForm::attributes`.
+- (enh #82): Add content before and after in Form builder.
+- (enh #83): More correct Closure input parse for Form widget.
+- (enh #87): Set composer version dependencies.
+
 version 1.6.0
 =============
 **Date:** 28-Jan-2015

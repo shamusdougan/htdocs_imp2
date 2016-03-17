@@ -1,6 +1,12 @@
 yii2-builder
 ============
 
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-builder/v/stable)](https://packagist.org/packages/kartik-v/yii2-builder)
+[![License](https://poser.pugx.org/kartik-v/yii2-builder/license)](https://packagist.org/packages/kartik-v/yii2-builder)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-builder/downloads)](https://packagist.org/packages/kartik-v/yii2-builder)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-builder/d/monthly)](https://packagist.org/packages/kartik-v/yii2-builder)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-builder/d/daily)](https://packagist.org/packages/kartik-v/yii2-builder)
+
 A form builder extension that allows you to build both single view and multi-view/tabular forms for Yii Framework 2.0. The extension contains these widgets:
 
 - Form
@@ -12,7 +18,7 @@ A form builder extension that allows you to build both single view and multi-vie
 [composer.json](https://github.com/kartik-v/yii2-builder/blob/master/composer.json) for this extension's requirements and dependencies. 
 
 ## Latest Release
-The latest version of the module is v1.6.0. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-builder/blob/master/CHANGE.md) for details.
+The latest version of the module is v1.6.1. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-builder/blob/master/CHANGE.md) for details.
 
 ## Form
 
@@ -28,7 +34,6 @@ The Form Builder widget allows you to build a form through a configuration array
 - Configure your own hints to display below each active field attribute.
 - Various Bootstrap 3.x styling features are available by default. However, one can easily customize and theme it to one's liking using any CSS framework.
 - Supports and renders HTML input types (uses [`kartik\widgets\ActiveField`](http://demos.krajee.com/widget-details/active-field)) including input widgets and more:
-    - `INPUT_HIDDEN` or `hiddenInput`
     - `INPUT_TEXT` or `textInput`
     - `INPUT_TEXTAREA` or `textarea`
     - `INPUT_PASSWORD` or `passwordInput`
@@ -39,10 +44,12 @@ The Form Builder widget allows you to build a form through a configuration array
     - `INPUT_CHECKBOX_LIST` or `checkboxList`
     - `INPUT_RADIO_LIST` or `radioList`
     - `INPUT_MULTISELECT` or `multiselect`
-    - `INPUT_STATIC` or `staticInput`
     - `INPUT_FILE` or `fileInput`
     - `INPUT_HTML5` or `input`
     - `INPUT_WIDGET` or `widget`
+    - `INPUT_HIDDEN` or `hiddenInput`
+    - `INPUT_STATIC` or `staticInput`
+    - `INPUT_HIDDEN_STATIC` or `hiddenStaticInput`
     - `INPUT_RAW` or `raw` (any free text or html markup)
 
 Refer the [documentation](http://demos.krajee.com/builder-details/form) for more details.
@@ -113,13 +120,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-$ php composer.phar require kartik-v/yii2-builder "dev-master"
+$ php composer.phar require kartik-v/yii2-builder "@dev"
 ```
 
 or add
 
 ```
-"kartik-v/yii2-builder": "dev-master"
+"kartik-v/yii2-builder": "@dev"
 ```
 
 to the ```require``` section of your `composer.json` file.

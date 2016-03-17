@@ -3,8 +3,8 @@
 /**
  * @package   yii2-builder
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version   1.6.0
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @version   1.6.1
  */
 
 namespace kartik\builder;
@@ -13,7 +13,7 @@ namespace kartik\builder;
  * Asset bundle for \kartik\widgets\Form
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @since  1.0
  */
 class FormAsset extends \kartik\base\AssetBundle
 {

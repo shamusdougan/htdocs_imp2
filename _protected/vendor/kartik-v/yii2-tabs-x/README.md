@@ -1,7 +1,8 @@
 yii2-tabs-x
 =================
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-tabs-x/v/stable)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
+[![Stable Version](https://poser.pugx.org/kartik-v/yii2-tabs-x/v/stable)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
+[![Untable Version](https://poser.pugx.org/kartik-v/yii2-tabs-x/v/unstable)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
 [![License](https://poser.pugx.org/kartik-v/yii2-tabs-x/license)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
 [![Total Downloads](https://poser.pugx.org/kartik-v/yii2-tabs-x/downloads)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-tabs-x/d/monthly)](https://packagist.org/packages/kartik-v/yii2-tabs-x)
@@ -32,13 +33,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-$ php composer.phar require kartik-v/yii2-tabs-x "dev-master"
+$ php composer.phar require kartik-v/yii2-tabs-x "@dev"
 ```
 
 or add
 
 ```
-"kartik-v/yii2-tabs-x": "dev-master"
+"kartik-v/yii2-tabs-x": "@dev"
 ```
 
 to the ```require``` section of your `composer.json` file.
@@ -79,6 +80,22 @@ echo TabsX::widget([
             ],
         ],
     ],
+]);
+```
+## Sticky Tabs
+
+You can provides pushState (back and forward button support) to Bootstrap tabs. You can enable or disable sticky tabs behaviour by setting `enableStickyTabs` property. This will use the [jquery.stickytabs plugin](https://github.com/timabell/jquery-stickytabs) to enable the sticky tabs push state behavior. If you want to change the sticky tabs plugin settings you can set the `stickyTabsOptions` property.
+
+```php
+echo TabsX::widget([
+    'enableStickyTabs' => true,
+    'stickyTabsOptions' => [
+        'selectorAttribute' => 'data-target',
+        'backToTop' => true,
+    ],
+    'items' => [
+    // ... items here
+    ]
 ]);
 ```
 

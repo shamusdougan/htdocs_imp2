@@ -45,10 +45,14 @@ class TimeslipInfoController extends Controller
 	public function actionReview()
 	 {
 	 	
-	 	 $this->view->params['menuItem'] = 'timeslip-review';
+	 	$this->view->params['menuItem'] = 'timeslip-review';
         $searchModel = new TimeslipInfoSearch();
         $dataProvider = $searchModel->reviewSearch(Yii::$app->request->queryParams);
-
+		$dataProvider->setPagination(false);
+		 
+		
+		
+		
         return $this->render('review', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

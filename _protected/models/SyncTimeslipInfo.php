@@ -98,7 +98,7 @@ class syncTimeslipInfo extends syncModelBase
 					$ticketInfo->client_id = $client->id;
 					$ticketInfo->default_charge_rate_id = $client->getDefaultChargeRate($ticket->ComputerID);
 					$ticketInfo->default_billing_account_id = $client->agreement->default_account_id;
-					$ticketInfo->save();
+					$ticketInfo->labtech_computer_id = $ticket->ComputerID;
 					if(!$ticketInfo->save())
 						{
 							$errors = $ticketInfo->getErrors();
@@ -110,50 +110,29 @@ class syncTimeslipInfo extends syncModelBase
 									}
 								}
 							$this->errorCount++;
-							
+							$this->progress .= "errors found in creating ticketInfo processing stopping\n";
+							return;
 							
 						}
 					else{
 						$this->progress .= "New Ticket Info Object Created\n";
 						}
 					}
+					
+				
 				$newTimeslipInfo->ticket_info_id = $ticketInfo->id;
 				$newTimeslipInfo->billed_time_hours = $remoteRecord['Hours'];
 				$newTimeslipInfo->billed_time_mins = $remoteRecord['Mins'];
+				$newTimeslipInfo->labtech_category = $remoteRecord['Category'];
+				$newTimeslipInfo->labtech_hours = $remoteRecord['Hours'];
+				$newTimeslipInfo->labtech_mins = $remoteRecord['Mins'];
 					
 					
 				//process the Timeslip charge rates overide from labtech
-				if($remoteRecord['Category'] == 0 || $timeCategories['Agreement Default'] == $remoteRecord['Category'] )
-					{
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;	
-					$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
-					}
-				elseif($timeCategories['Agreement Project'] == $remoteRecord['Category'])
-					{
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_project_rate_bh_id;
-					$newTimeslipInfo->billing_account_id = $ticketInfo->client->agreement->default_project_account_id;
-					}
-				elseif($timeCategories['Not Billable'] == $remoteRecord['Category'])
-					{
-					$newTimeslipInfo->charge_rate_id = ChargeRates::getNotBillableCode();
-					$newTimeslipInfo->billing_account_id = Accounts::getNotBilledAccountID();
-					}
-				elseif($timeCategories['Agreement Default After Hours'] == $remoteRecord['Category'])
-					{
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_AH_rate_id;
-					$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
-					}
-				elseif($timeCategories['Agreement Project After Hours'] == $remoteRecord['Category'])
-					{
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->client->agreement->default_prohect_rate_ah_id;
-					$newTimeslipInfo->billing_account_id = $ticketInfo->client->agreement->default_project_account_id;
-					}
-				else{
-					$newTimeslipInfo->charge_rate_id = $ticketInfo->default_charge_rate_id;	
-					$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
-					}
+				$newTimeslipInfo->assignBillingDetails($remoteRecord['Category'], $timeCategories, $ticketInfo);
+		
 				
-				$newTimeslipInfo->billing_account_id = $ticketInfo->default_billing_account_id;
+				
 				if(!$newTimeslipInfo->save())
 					{
 					$errors = $newTimeslipInfo->getErrors();
@@ -176,6 +155,33 @@ class syncTimeslipInfo extends syncModelBase
 				
 				}
 			}	
+
+
+		//check for any change in the local timeslipInfo changes compared to the Labtech version_compared
+		$this->progress .= "Check for any changes in the timeslips since last check\n";
+		$timeslipInfoList = TimeslipInfo::getTimeslipInfoLast(50);
+		foreach($timeslipInfoList as $timeslipInfo)
+			{
+				
+				
+			if(is_string(($update = $timeslipInfo->checkTimeslip())))
+				{
+				$this->progress .= $update;
+				$this->localRecordsUpdated++;
+				break;
+				}
+			
+			//Check to see if the computer assigned to the ticket has changed
+			if(is_string(($update = $timeslipInfo->checkDetails())))
+				{
+				$this->progress .= $update;
+				$this->localRecordsUpdated++;
+				}
+			}
+				
+	
+
+
 
 
 		$this->progress .= $this->localRecordsUpdated." Local Records Updated\n";

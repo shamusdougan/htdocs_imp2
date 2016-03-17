@@ -3,8 +3,8 @@
 /**
  * @package   yii2-builder
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version   1.6.0
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @version   1.6.1
  */
 
 namespace kartik\builder;
@@ -27,7 +27,9 @@ class BaseForm extends \yii\bootstrap\Widget
     use FormTrait;
 
     // form inputs
+    const INPUT_STATIC = 'staticInput';
     const INPUT_HIDDEN = 'hiddenInput';
+    const INPUT_HIDDEN_STATIC = 'hiddenStaticInput';
     const INPUT_TEXT = 'textInput';
     const INPUT_TEXTAREA = 'textarea';
     const INPUT_PASSWORD = 'passwordInput';
@@ -38,7 +40,6 @@ class BaseForm extends \yii\bootstrap\Widget
     const INPUT_CHECKBOX_LIST = 'checkboxList';
     const INPUT_RADIO_LIST = 'radioList';
     const INPUT_MULTISELECT = 'multiselect';
-    const INPUT_STATIC = 'staticInput';
     const INPUT_FILE = 'fileInput';
     const INPUT_HTML5 = 'input';
     const INPUT_WIDGET = 'widget';
@@ -48,7 +49,6 @@ class BaseForm extends \yii\bootstrap\Widget
      * @var array the allowed valid list of input types
      */
     protected static $_validInputs = [
-        self::INPUT_HIDDEN,
         self::INPUT_TEXT,
         self::INPUT_TEXTAREA,
         self::INPUT_PASSWORD,
@@ -60,6 +60,8 @@ class BaseForm extends \yii\bootstrap\Widget
         self::INPUT_RADIO_LIST,
         self::INPUT_MULTISELECT,
         self::INPUT_STATIC,
+        self::INPUT_HIDDEN,
+        self::INPUT_HIDDEN_STATIC,
         self::INPUT_FILE,
         self::INPUT_HTML5,
         self::INPUT_WIDGET,
@@ -84,22 +86,31 @@ class BaseForm extends \yii\bootstrap\Widget
      * - `attribute_settings`: array, the settings for the attribute, where you can set the following:
      *    - 'type': string, the input type for the attribute. Should be one of the INPUT_ constants.
      *       Defaults to `INPUT_TEXT`.
-     *    - 'attributes': array, the nested group of sub attributes that will be grouped together, this 
+     *    - 'attributes': array, the nested group of sub attributes that will be grouped together, this
      *      configuration will be similar to attributes. The label property will be auto set to `false`
      *      for each sub attribute.
-     *    - 'value': string|Closure, the value to be displayed if the `type` is set to `INPUT_RAW`. This will display
-     *       the raw text from value field if it is a string. If this is a Closure, your anonymous function call should
-     *       be of the type: `function ($model, $key, $index, $widget) { }, where $model is the current model, $key is
-     *       the key associated with the data model $index is the zero based index of the dataProvider, and $widget
-     *       is the current widget instance.`
-     *    - 'format': string|array, applicable only for INPUT_STATIC type (and only in tabular forms). This 
-     *      controls which format should the value of each data model be displayed as (e.g. `"raw"`, `"text"`, 
+     *    - 'value': string|Closure, the value to be displayed if the `type` is set to `INPUT_RAW` or `INPUT_STATIC`.
+     *       This will display the raw text from value field if it is a string. If this is a Closure, your anonymous
+     *       function call should be of the type: `function ($model, $key, $index, $widget) { }, where $model is the
+     *       current model, $key is the key associated with the data model $index is the zero based index of the
+     *       dataProvider, and $widget is the current widget instance.`
+     *    - 'staticValue': string|Closure, the value to be displayed for INPUT_STATIC. If not set, the value will be
+     *      automatically generated from the `value` setting above OR from the value of the model attribute. If this
+     *      is a Closure, your anonymous function call should be of the type:
+     *      `function ($model, $key, $index, $widget) { }, where $model is the current model, $key is the key
+     *       associated with the data model $index is the zero based index of the dataProvider, and
+     *       $widget is the current widget instance.`
+     *    - 'format': string|array, applicable only for `INPUT_STATIC` type (and only in tabular forms). This
+     *      controls which format should the value of each data model be displayed as (e.g. `"raw"`, `"text"`,
      *      `"html"`, `['date', 'php:Y-m-d']`). Supported formats are determined by [Yii::$app->formatter].
      *      Default format is "raw".
+     *    - 'hiddenStaticOptions': array, HTML attributes for the static control container and applicable only
+     *      for `INPUT_HIDDEN_STATIC` type.
      *    - 'label': string, (optional) the custom attribute label. If this is not set, the model attribute label
      *      will be automatically used. If you set it to false, the `label` will be entirely hidden.
-     *    - 'labelSpan': int, the grid span width of the label container, which is especially useful for horizontal forms.
-     *      If not set this will be derived automatically from the `formConfig['labelSpan']` property of `$form` (ActiveForm).
+     *    - 'labelSpan': int, the grid span width of the label container, which is especially useful for horizontal
+     *     forms. If not set this will be derived automatically from the `formConfig['labelSpan']` property of `$form`
+     *     (ActiveForm).
      *    - 'labelOptions': array, (optional) the HTML attributes for the label. Will be applied only when NOT using
      *      with active form and only if label is set.
      *    - 'prepend': string, (optional) any markup to prepend before the input. For ActiveForm fields, this content
@@ -134,6 +145,10 @@ class BaseForm extends \yii\bootstrap\Widget
      */
     public $attributeDefaults = [];
 
+    /**
+     * @var bool whether all inputs in the form are to be static only
+     */
+    public $staticOnly = false;
 
     /**
      * Initializes the widget
@@ -227,11 +242,15 @@ class BaseForm extends \yii\bootstrap\Widget
         $label = ArrayHelper::getValue($settings, 'label', null);
         $hint = ArrayHelper::getValue($settings, 'hint', null);
         $field = $form->field($model, $attribute, $fieldConfig);
-        if ($type === self::INPUT_TEXT || $type === self::INPUT_PASSWORD || 
-            $type === self::INPUT_TEXTAREA || $type === self::INPUT_FILE || 
+        if ($type === self::INPUT_TEXT || $type === self::INPUT_PASSWORD ||
+            $type === self::INPUT_TEXTAREA || $type === self::INPUT_FILE ||
             $type === self::INPUT_HIDDEN || $type === self::INPUT_STATIC
         ) {
             return static::getInput($field->$type($options), $label, $hint);
+        } elseif ($type === self::INPUT_HIDDEN_STATIC) {
+            $staticOptions = ArrayHelper::getValue($settings, 'hiddenStaticOptions', []);
+            return static::getInput($field->staticInput($staticOptions), $label, $hint) .
+            static::getInput($field->hiddenInput($options));
         }
         if ($type === self::INPUT_DROPDOWN_LIST || $type === self::INPUT_LIST_BOX || $type === self::INPUT_CHECKBOX_LIST ||
             $type === self::INPUT_RADIO_LIST || $type === self::INPUT_MULTISELECT
@@ -292,17 +311,25 @@ class BaseForm extends \yii\bootstrap\Widget
             $id = empty($options['id']) ? $id : $options['id'];
             $options['id'] = $id;
         }
-        if ($type === self::INPUT_STATIC) {
-            Html::addCssClass($options, 'form-control-static');
-            return Html::tag('p', $value, $options);
+        if ($type === self::INPUT_STATIC || $type === self::INPUT_HIDDEN_STATIC) {
+            $opts = $options;
+            if ($type === self::INPUT_HIDDEN_STATIC) {
+                $opts = ArrayHelper::getValue($settings, 'hiddenStaticOptions', []);
+            }
+            Html::addCssClass($opts, 'form-control-static');
+            $out = Html::tag('p', $value, $opts);
+            if ($type === self::INPUT_HIDDEN_STATIC) {
+                return $out . Html::hiddenInput($attribute, $value, $opts);
+            }
+            return $out;
         }
         Html::addCssClass($options, 'form-control');
-        if ($type === self::INPUT_TEXT || $type === self::INPUT_PASSWORD || 
-            $type === self::INPUT_TEXTAREA || $type === self::INPUT_FILE || 
-            $type === self::INPUT_HIDDEN
+        if ($type === self::INPUT_TEXT || $type === self::INPUT_PASSWORD || $type === self::INPUT_TEXTAREA ||
+            $type === self::INPUT_FILE || $type === self::INPUT_HIDDEN
         ) {
             return Html::$type($attribute, $value, $options);
         }
+
         if ($type === self::INPUT_DROPDOWN_LIST || $type === self::INPUT_LIST_BOX || $type === self::INPUT_CHECKBOX_LIST ||
             $type === self::INPUT_RADIO_LIST || $type === self::INPUT_MULTISELECT
         ) {
@@ -332,7 +359,7 @@ class BaseForm extends \yii\bootstrap\Widget
             return $widgetClass::widget($options);
         }
         if ($type === self::INPUT_RAW) {
-            return ArrayHelper::getValue($settings, 'value', '');
+            $value = ArrayHelper::getValue($settings, 'value', '');
         }
     }
 
