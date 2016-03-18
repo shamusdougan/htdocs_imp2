@@ -102,8 +102,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'attribute'=>'billed_time_hours',
 		    'editableOptions'=>[
 		        'header'=>'Hours',
-		        'inputType'=>\kartik\editable\Editable::INPUT_SPIN,
-		        'options'=>['pluginOptions'=>['min'=>0, 'max'=>5]]
+		        'inputType'=>'textInput',
+		        //'options'=>['pluginOptions'=>['min'=>0, 'max'=>5]]
 		    	],
 		    'hAlign'=>'right',
 		    'vAlign'=>'middle',
