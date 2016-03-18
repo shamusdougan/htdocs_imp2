@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2016 at 03:56 PM
+-- Generation Time: Mar 18, 2016 at 08:42 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -111,6 +111,9 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('Technician', 5, NULL),
+('Technician', 13, NULL),
+('Technician', 14, NULL),
+('Technician', 15, NULL),
 ('theCreator', 2, 1426969380);
 
 -- --------------------------------------------------------
@@ -687,7 +690,7 @@ CREATE TABLE IF NOT EXISTS `syncrelationships` (
   `LastStatus` int(11) DEFAULT NULL,
   `LastStatusData` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `syncrelationships`
@@ -698,7 +701,8 @@ INSERT INTO `syncrelationships` (`index`, `description`, `syncModelName`, `endPo
 (3, '', 'SyncLabtechContact', NULL, NULL, NULL, 15, '2016-02-25 15:42:36', 2, ''),
 (4, '', 'SyncPhoneContacts', NULL, NULL, NULL, 360, '2016-01-25 15:04:41', 1, ''),
 (5, 'This Function will sync the ticket details between Labtech and imp', 'SyncTicketInfo', 'localhost', 'root', '', 15, '1970-01-01 00:00:00', NULL, ''),
-(6, 'This function will sync the timeslip information between labtech and imp', 'SyncTimeslipInfo', 'localhost', 'root', '', 15, '0000-00-00 00:00:00', 1, 'Sync completed without any errors');
+(6, 'This function will sync the timeslip information between labtech and imp', 'SyncTimeslipInfo', 'localhost', 'root', '', 15, '0000-00-00 00:00:00', 1, 'Sync completed without any errors'),
+(7, 'Sync Labtech Users, this function will create a new user in imp from labtech but not he other way round, it will also only sync the usersname and email address.', 'SyncLabtechUsers', 'localhost', 'root', '', 15, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2577,16 +2581,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `account_activation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
+  `firstname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `surname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `labtech_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_key`, `password_reset_token`, `account_activation_token`, `created_at`, `updated_at`) VALUES
-(2, 'stsadmin', 'shamus.dougan@sapient-tech.com.au', '$2y$13$EvP1mu/iRq6xqIp4oKaAoOgBaCnJUImEFdXwH39NK7CvKOiosvHtK', 10, 'BqH0sfhID-iGM37FxP_AUG8JV-ndRJFs', NULL, NULL, 1426969380, 1426969380),
-(5, 'shamus', 'test@test.com', '$2y$13$a0JVb.KGIEintCd4Jo89zuSsG0gPXOGr8AaoTAFiCLYUkechkT9/a', 10, 'IUTHnAzXzyW5YOof6D-OwievOpQWP9nQ', NULL, NULL, 1427250473, 1427253473);
+INSERT INTO `user` (`id`, `username`, `email`, `password_hash`, `status`, `auth_key`, `password_reset_token`, `account_activation_token`, `created_at`, `updated_at`, `firstname`, `surname`, `labtech_id`) VALUES
+(2, 'stsadmin', 'stsadmin@sapient-tech.com.au', '$2y$13$EvP1mu/iRq6xqIp4oKaAoOgBaCnJUImEFdXwH39NK7CvKOiosvHtK', 10, 'BqH0sfhID-iGM37FxP_AUG8JV-ndRJFs', NULL, NULL, 1426969380, 1426969380, '', '', 0),
+(5, 'shamus', 'shamus.dougan@sapient-tech.com.au', '$2y$13$a0JVb.KGIEintCd4Jo89zuSsG0gPXOGr8AaoTAFiCLYUkechkT9/a', 10, 'IUTHnAzXzyW5YOof6D-OwievOpQWP9nQ', NULL, NULL, 1427250473, 1427253473, 'Shamus', 'Dougan', 3),
+(13, 'charles', 'charles.foletta@sapient-tech.com.au', '', 10, '', NULL, NULL, 1458257284, 1458257284, 'charles', '', 4),
+(14, 'jeremy', 'jeremy@sapient-tech.com.au', '', 10, '', NULL, NULL, 1458257284, 1458257284, 'jeremy', '', 8),
+(15, 'System', 'Me@here.com', '', 10, '', NULL, NULL, 1458259434, 1458259459, 'Admin', '', 1);
 
 --
 -- Constraints for dumped tables
