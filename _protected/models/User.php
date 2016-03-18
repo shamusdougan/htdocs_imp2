@@ -19,6 +19,8 @@ class User extends UserIdentity
     const STATUS_NOT_ACTIVE = 1;
     const STATUS_ACTIVE = 10;
 
+
+	
     public $password;
 
     /**
@@ -35,7 +37,7 @@ class User extends UserIdentity
     {
         return [
             [['username', 'email'], 'filter', 'filter' => 'trim'],
-            [['username', 'email', 'status'], 'required'],
+            [['username', 'email', 'status', 'firstname'], 'required'],
             ['email', 'email'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -136,6 +138,12 @@ class User extends UserIdentity
     {
         return static::findOne(['username' => $username]);
     }  
+    
+    
+    public static function findByLabtechID($labtechID)
+    {
+		return static::findOne(['labtech_id' => $labtechID]);
+	}
     
     /**
      * Finds user by email.

@@ -6,6 +6,7 @@ use app\models\Client;
 use app\models\Computers;
 use app\models\Ticketstatus;
 use app\models\Lookup;
+use app\models\User;
 use yii\helpers\ArrayHelper;
 
 
@@ -48,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        		'pluginOptions'=>['allowClear'=>true],
 	    			],
     			'filterInputOptions'=>['placeholder'=>'All'],
-    			'width' => '20%',
+    			'width' => '15%',
 	    	],
 	    	[
 		    	'attribute' => 'labtech_ticket_id',
@@ -69,6 +70,18 @@ $this->params['breadcrumbs'][] = $this->title;
 	    	
 	    	[
 	    	'attribute' => 'timeslip.UserID',
+	    	'value' => function ($data)
+	    		{
+	    		$user = User::findByLabtechID($data->timeslip->UserID);
+	    		if(isset($user))
+	    			{
+					return $user->firstname;
+					}
+				else{
+					return "Unknown";
+					}
+				
+				},
 	    	'width' => '5%',
 	    	],
 	    	
@@ -76,21 +89,44 @@ $this->params['breadcrumbs'][] = $this->title;
 	    	
 	    	[
 	    	'attribute' => 'timeslip.Description',
-	    	'width' => '30%',
+	    	'value' => function ($data)
+	    		{
+				return "(".$data->timeslip->Hours.":".$data->timeslip->Mins.") ".$data->timeslip->Description;
+				},
+	    	'width' => '35%',
 	    	],
+
+
+			[
+			'class'=>'kartik\grid\EditableColumn',
+		    'attribute'=>'billed_time_hours',
+		    'editableOptions'=>[
+		        'header'=>'Hours',
+		        'inputType'=>\kartik\editable\Editable::INPUT_SPIN,
+		        'options'=>['pluginOptions'=>['min'=>0, 'max'=>5]]
+		    	],
+		    'hAlign'=>'right',
+		    'vAlign'=>'middle',
+		    'width'=>'10%',
+		    'format'=>['decimal', 2],
+	
+	    	],
+//	    	[
+//	    	'attribute' => 'billed_time_hours',
+//	    	'width' => '5%',
+//	    	'filter' => false,
+//	    	],
 	    	
 	    	
 	    	[
-	    	'attribute' => 'timeslip.Hours',
+	    	'attribute' => 'billed_time_mins',
 	    	'width' => '5%',
-	    	],
-	    	
-	    	
-	    	[
-	    	'attribute' => 'timeslip.Mins',
-	    	'width' => '5%',
+	    	'filter' => false,
 	        ],
-	        
+	        [
+        	'class' => '\kartik\grid\CheckboxColumn',
+        	'width' => '5%',
+    		],
 	        ],
 	        
 	        ]);?>

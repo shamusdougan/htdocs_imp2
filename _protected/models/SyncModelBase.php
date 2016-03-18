@@ -470,7 +470,16 @@ public function getLastSync($syncRelationship)
 
 
 
-
+	public function displaySaveErrors($errorArray)
+		{
+		foreach($errorArray as $errorType)
+			{
+			foreach($errorType as $errorText)
+				{
+				$this->progress .= $errorText."\n";
+				}
+			}
+		}
 
 
 

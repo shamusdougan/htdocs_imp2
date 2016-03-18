@@ -51,7 +51,16 @@ class TimeslipInfoController extends Controller
 		$dataProvider->setPagination(false);
 		 
 		
-		
+		 if (Yii::$app->request->post('hasEditable')) {
+		 	
+		 	$timeslipID = Yii::$app->request->post('editableKey');
+		 	$model = timeslipInfo::findOne($timeslipID);
+		 	
+		 	
+		 	
+		 	
+		 	
+		 	}
 		
         return $this->render('review', [
             'searchModel' => $searchModel,
