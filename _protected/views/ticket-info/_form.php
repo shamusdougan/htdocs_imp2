@@ -102,14 +102,22 @@ use kartik\grid\GridView;
         
         'export' => false,
         'columns' => [
+        	'timeslipDate',
         	[
-        	'attribute' => 'timeslip.UserID',
-        	'value' => function($data)
-        		{
-				return $data->getTechName();
-				},
-        	
+        	'label' => 'Tech',
+        	'attribute' => 'TechName',
         	],
+        	'description',
+        	[
+        	'attribute'=>'timeslipTimeString',
+        	'label' =>"Time",
+        	],
+        	[
+        	'attribute'=>'billedTimeString',
+        	'label' =>"Billed",
+        	],
+        	'chargeRate.name:TEXT:Charge Rate',
+        	'billedAccount.name:TEXT:Account',
         	]
         ]); ?>
     

@@ -72,6 +72,18 @@ class TimeslipInfo extends \yii\db\ActiveRecord
 		return $this->hasOne(LabtechTickets::className(), ['TicketID' => 'labtech_ticket_id']);
 	}
 	
+	
+	public function getChargeRate()
+	{
+		return $this->hasOne(ChargeRates::className(), ['id' => 'charge_rate_id']);
+	}
+	
+	public function getBilledAccount()
+	{
+		return $this->hasOne(Accounts::className(), ['id' => 'billing_account_id']);
+	}
+	
+	
 	public function getTimeslipInfoLast($ocurrances)
 	{
 		return TimeslipInfo::find()->orderby('id DESC')->limit($ocurrances)->all();
@@ -181,5 +193,24 @@ class TimeslipInfo extends \yii\db\ActiveRecord
 			}
 	}
 	
+	public function getTimeslipDate()
+	{
+		return date("d M Y", strtotime($this->timeslip->Date));
+	}	
+	
+	public function getDescription()
+	{
+		return $this->timeslip->Description;
+	}
+	
+	public function getTimeslipTimeString()
+	{
+		return $this->timeslip->Hours.":".str_pad($this->timeslip->Mins, 2, STR_PAD_LEFT);
+	}
+	
+	public function getBilledTimeString()
+	{
+		return $this->billed_time_hours.":".str_pad($this->billed_time_mins,2 ,STR_PAD_LEFT);
+	}
 	
 }

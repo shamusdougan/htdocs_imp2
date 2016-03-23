@@ -83,6 +83,11 @@ $this->params['breadcrumbs'][] = $this->title;
 	    	],
 	    	[
 		    	'attribute' => 'labtech_ticket_id',
+		    	'value' => function($data){
+					return Html::a($data->labtech_ticket_id,['ticket-info/update', 'id'=>$data->ticket_info_id]);
+					
+					},
+				'format'=> 'raw',
 		    	'label' => 'Ticket',
 		    	'width' => '5%',
 		    	'group'=>true,
