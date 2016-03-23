@@ -70,20 +70,54 @@ class TicketInfo extends \yii\db\ActiveRecord
 		return $this->hasOne(LabtechTickets::className(), ['TicketID' => 'labtech_ticket_id']);
 	}
     
-    public function getTicketInfo($labtech_ticket_id)
-    {
-	return TicketInfo::find()->where(['labtech_ticket_id' => $labtech_ticket_id])->one();
-	}
-	
+   
 	public function getClient()
     {
 		 return $this->hasOne(Client::className(), ['id' => 'client_id']);
 	}
 	
+		
+	public function getTimeslipsInfos()
+	{
+		return $this->hasMany(TimeslipInfo::className(), ["ticket_info_id" => "id"]);
+	}
+	
+	
+	 public function getTicketInfo($labtech_ticket_id)
+    {
+	return TicketInfo::find()->where(['labtech_ticket_id' => $labtech_ticket_id])->one();
+	}
+	
+	public function getComputer()
+	{
+		 return $this->hasOne(Computers::className(), ['ComputerID' => 'labtech_computer_id']);
+	}
+	
+	
 	public function getTicketInfoLast($ocurrances)
 	{
 		return TicketInfo::find()->orderby('id DESC')->limit($ocurrances)->all();
 	}
+	
+	
+	public function getSubject()
+	{
+		return $this->ticket->Subject;
+	}
+	
+	public function getClientName()
+	{
+		return $this->client->name;
+	}
+	
+	public function getComputerName()
+	{
+		if(isset($this->computer))
+			{
+			return $this->computer->Name;
+			}
+	}
+	
 	
 	/**
 	* This function will check that the cimputerID for the ticket hasn't changed since the last wupdate. If it has changed then we need to update the billing information
@@ -119,10 +153,20 @@ class TicketInfo extends \yii\db\ActiveRecord
 			$this->delete();
 			return "Ticket ID: ".$this->labtech_ticket_id." Appears to have been removed or combined removing the Ticket Info from Imp\n";
 			}
-	
-		
 	}
 
+
+	public function isInvoiced()
+	{
+		if(isset($this->invoice_id))
+			{
+				return true;
+			}
+		return false;
+	}
+
+
+	
 	
 }
 

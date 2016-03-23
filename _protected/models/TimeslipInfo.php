@@ -169,6 +169,17 @@ class TimeslipInfo extends \yii\db\ActiveRecord
 	}
 	
 	
+	public function getTechName()
+	{
+		$user = User::findByLabtechID($this->timeslip->UserID);
+		if(isset($user))
+			{
+			return $user->firstname;
+			}
+		else{
+			return "Unknown";
+			}
+	}
 	
 	
 }

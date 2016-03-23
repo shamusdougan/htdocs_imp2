@@ -92,6 +92,20 @@ $this->params['breadcrumbs'][] = $this->title;
 	    	
 	    	[
 	    	'attribute' => 'labtechTicket.Subject',
+	    	'format' => 'raw',
+	    	'value' => function ($data){
+				//return $data->labtechTicket->Subject;
+				
+				$returnString = $data->labtechTicket->Subject."<br>";
+				return $returnString.Html::a('Materials','#', 
+                	[
+                    'class' => 'materials-view-link',
+                    'title' => 'Materials',
+					]);
+			
+				
+					
+			},
 	    	'group'=>true,
 		    'subGroupOf'=>0,
 		    'width' => '20%',

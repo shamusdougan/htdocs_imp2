@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\TimeslipInfo;
-use app\models\TimeslipInfoSearch;
-use app\models\TicketInfo;
+use app\models\Purchases;
+use app\models\PurchasesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TimeslipInfoController implements the CRUD actions for TimeslipInfo model.
+ * PurchasesController implements the CRUD actions for Purchases model.
  */
-class TimeslipInfoController extends Controller
+class PurchasesController extends Controller
 {
     public function behaviors()
     {
@@ -27,52 +26,38 @@ class TimeslipInfoController extends Controller
         ];
     }
 
+	public function beforeAction($action)
+	{
+	    if (!parent::beforeAction($action)) {
+	        return false;
+	    }
+
+	    $this->view->params['menuItem'] = 'purchases';
+
+	    return true; // or false to not run the action
+	}
+
+
     /**
-     * Lists all TimeslipInfo models.
+     * Lists all Purchases models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TimeslipInfoSearch();
+        $searchModel = new PurchasesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+		$actionItems[] = ['label'=>'New', 'button' => 'new', 'url'=>"/purchases/create"];
+		
+		
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'actionItems' => $actionItems,
         ]);
     }
-
-
-	public function actionReview()
-	 {
-	 	
-	 	$this->view->params['menuItem'] = 'timeslip-review';
-        $searchModel = new TimeslipInfoSearch();
-        $dataProvider = $searchModel->reviewSearch(Yii::$app->request->queryParams);
-		//$dataProvider->setPagination(false);
-		 
-		
-		 if (Yii::$app->request->post('hasEditable')) {
-		 	
-		 	$timeslipID = Yii::$app->request->post('editableKey');
-		 	$model = timeslipInfo::findOne($timeslipID);
-		 	
-		 	
-		 	
-		 	
-		 	
-		 	}
-		
-        return $this->render('review', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-
 
     /**
-     * Displays a single TimeslipInfo model.
+     * Displays a single Purchases model.
      * @param integer $id
      * @return mixed
      */
@@ -84,13 +69,13 @@ class TimeslipInfoController extends Controller
     }
 
     /**
-     * Creates a new TimeslipInfo model.
+     * Creates a new Purchases model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TimeslipInfo();
+        $model = new Purchases();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -102,7 +87,7 @@ class TimeslipInfoController extends Controller
     }
 
     /**
-     * Updates an existing TimeslipInfo model.
+     * Updates an existing Purchases model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -121,7 +106,7 @@ class TimeslipInfoController extends Controller
     }
 
     /**
-     * Deletes an existing TimeslipInfo model.
+     * Deletes an existing Purchases model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -134,31 +119,18 @@ class TimeslipInfoController extends Controller
     }
 
     /**
-     * Finds the TimeslipInfo model based on its primary key value.
+     * Finds the Purchases model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TimeslipInfo the loaded model
+     * @return Purchases the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TimeslipInfo::findOne($id)) !== null) {
+        if (($model = Purchases::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-    
-    
-   public function actionModalMaterialsView($id)
-	{
-		 $timeslip = TimeslipInfo::findOne($id);
-		
-		
-         return $this->renderAjax('_modalMaterialView', [
-                'ticket' => $ticket,
-            ]);
-        
-	}
 }
