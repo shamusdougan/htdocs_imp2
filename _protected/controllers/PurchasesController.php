@@ -73,15 +73,20 @@ class PurchasesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($ticket_info_id)
     {
         $model = new Purchases();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+		$actionItems[] = ['label'=>'Save & Exit', 'button' => 'save', 'url'=>null, 'submit'=> 'purchase-update-form', 'confirm' => 'Save Purchase and Exit?'];
+    	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/ticket-info/update?id='.$ticket_info_id, 'confirm' => 'Cancel Purchase?'];
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
+        	{
+            return $this->redirect(['ticket-info/update', 'id' => $ticket_info_id]);
+        	}
+        else {
             return $this->render('create', [
+            	'ticket_info_id' => $ticket_info_id,
                 'model' => $model,
+                'actionItems' => $actionItems,
             ]);
         }
     }

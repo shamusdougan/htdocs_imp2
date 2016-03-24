@@ -83,6 +83,14 @@ class TicketInfo extends \yii\db\ActiveRecord
 	}
 	
 	
+	public function getPurchases()
+	{
+		return $this->hasMany(Purchases::className(), ["ticket_info_id" => "id"]);
+	}
+	
+	
+	
+	
 	 public function getTicketInfo($labtech_ticket_id)
     {
 	return TicketInfo::find()->where(['labtech_ticket_id' => $labtech_ticket_id])->one();

@@ -99,7 +99,11 @@ use kartik\grid\GridView;
     
      <?= GridView::widget([
         'dataProvider' => new yii\data\ActiveDataProvider(['query' => $model->getTimeslipsInfos()]),
-        
+		'panel'=>[
+			'type'=>GridView::TYPE_PRIMARY,
+        	'heading'=>"Timeslips",
+    		],
+    	'toolbar' => false,
         'export' => false,
         'columns' => [
         	'timeslipDate',
@@ -121,5 +125,28 @@ use kartik\grid\GridView;
         	]
         ]); ?>
     
+    
+      <? 
+      
+      if(count($model->purchases) > 0)
+      {
+		echo GridView::widget([
+        'dataProvider' => new yii\data\ActiveDataProvider(['query' => $model->getPurchases()]),
+		'panel'=>[
+			'type'=>GridView::TYPE_PRIMARY,
+        	'heading'=>"Materials",
+    		],
+    	'toolbar' => false,
+        'export' => false,
+        'columns' => [
+        	'description:TEXT:Materials',
+        	'qty:TEXT:Quantity',
+        	'purchase_exGST:TEXT:Purchase ExGST',
+        	'sell_exGST',
+        	'purchase_order_id',
+        	]
+        ]);
+	  }
+      ?>
 
 </div>

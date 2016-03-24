@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
+use kartik\builder\Form;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchases */
@@ -10,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 <div class="purchases-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['type'=>ActiveForm::TYPE_VERTICAL, 'id' => 'purchase-update-form']);     ?>
 
     <?= $form->field($model, 'qty')->textInput() ?>
 

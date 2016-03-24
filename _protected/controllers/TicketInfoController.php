@@ -96,6 +96,7 @@ class TicketInfoController extends Controller
         $model = $this->findModel($id);
 		$actionItems[] = ['label'=>'Save & Exit', 'button' => 'save', 'url'=>null, 'submit'=> 'ticket-info-update-form', 'confirm' => 'Save Ticket Information and Exit?'];
     	$actionItems[] = ['label'=>'Cancel', 'button' => 'cancel', 'url'=>'/labtech-tickets/index', 'confirm' => 'Cancel Changes?'];
+    	$actionItems[] = ['label'=>'Add Hardware', 'button' => 'new', 'url'=>'/purchases/create?ticket_info_id='.$model->id];
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) 
         	{
