@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2016 at 08:42 PM
+-- Generation Time: Apr 09, 2016 at 03:03 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -671,6 +671,47 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m141022_115823_create_user_table', 1426969071),
 ('m141022_115912_create_rbac_tables', 1426969073),
 ('m150104_153617_create_article_table', 1426969073);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchases`
+--
+
+CREATE TABLE IF NOT EXISTS `purchases` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `qty` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `purchase_exGST` float NOT NULL,
+  `sell_exGST` float NOT NULL,
+  `supplier_id` int(50) NOT NULL,
+  `purchase_order_id` int(50) DEFAULT NULL,
+  `ticket_info_id` int(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE IF NOT EXISTS `suppliers` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `description` varchar(300) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `city` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `name`, `description`, `active`, `address`, `city`) VALUES
+(2, 'Budget PC', 'Supplies, laptops and other PC related Equipment', 1, 'Unit 111, Axxess Business Park, 45 Gilby Rd', 'Mt Waverley');
 
 -- --------------------------------------------------------
 
@@ -1848,7 +1889,7 @@ INSERT INTO `ticket_info` (`id`, `labtech_ticket_id`, `client_id`, `imp_status`,
 (5619, 7062, 158, 1, NULL, NULL, 6, 3, 641),
 (5620, 7063, 113, 1, NULL, NULL, 2, 5, 257),
 (5621, 7064, 101, 1, NULL, NULL, 6, 3, 17),
-(5622, 7065, 107, 1, NULL, NULL, 6, 3, 364),
+(5622, 7065, 107, 1, NULL, 1, 6, 3, 364),
 (5625, 5794, 152, 1, NULL, NULL, 6, 3, 0),
 (5626, 5799, 119, 1, NULL, NULL, 6, 3, 0),
 (5627, 5789, 128, 1, NULL, NULL, 6, 3, 0);
