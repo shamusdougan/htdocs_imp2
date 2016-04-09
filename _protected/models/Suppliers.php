@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use yii\helpers\ArrayHelper;
 
 use Yii;
 
@@ -52,4 +53,14 @@ class Suppliers extends \yii\db\ActiveRecord
             'city' => 'City/Suburb',
         ];
     }
+    
+    
+    
+    
+
+	public function getSupplierListArray()
+	{
+		$supplierList = Suppliers::find()->orderBy("name ASC")->all();
+		return ArrayHelper::map($supplierList, 'id', 'name') ;
+	}
 }

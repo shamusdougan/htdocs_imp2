@@ -146,4 +146,24 @@ class SuppliersController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    
+    
+    public function actionAjaxAddSupplier()
+    {
+		$model = new Suppliers();
+		
+		$post = Yii::$app->request->post(); 
+		if ($model->load($post) && $model->save()) 
+			{
+			return "saved Contact";
+			}
+
+		else{
+			$model->active = true;
+			return $this->renderAjax('_add', ['model' => $model]);	
+			}
+	}
+    
+    
 }

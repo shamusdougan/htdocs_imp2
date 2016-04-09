@@ -47,12 +47,13 @@ class Purchases extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'qty' => 'Qty',
-            'description' => 'Description',
-            'purchase_exGST' => 'Purchase Ex Gst',
-            'sell_exGST' => 'Sell Ex Gst',
+            'description' => 'Item Description',
+            'purchase_exGST' => 'Purchase Price ExGst',
+            'sell_exGST' => 'Sell Price ExGst',
             'supplier_id' => 'Supplier ID',
             'purchase_order_id' => 'Purchase Order ID',
             'ticket_info_id' => 'Ticket Info ID',
+            'notes' => 'Notes'
         ];
     }
 }

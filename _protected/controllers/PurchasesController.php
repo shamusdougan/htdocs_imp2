@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Purchases;
 use app\models\PurchasesSearch;
+use app\models\Suppliers;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -83,10 +84,15 @@ class PurchasesController extends Controller
             return $this->redirect(['ticket-info/update', 'id' => $ticket_info_id]);
         	}
         else {
+        	
+        	
+        	$supplierList = Suppliers::getSupplierListArray();
+        	
             return $this->render('create', [
             	'ticket_info_id' => $ticket_info_id,
                 'model' => $model,
                 'actionItems' => $actionItems,
+                'supplierList' => $supplierList,
             ]);
         }
     }

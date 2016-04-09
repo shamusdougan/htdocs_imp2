@@ -20,7 +20,7 @@ class PurchasesSearch extends Purchases
         return [
             [['id', 'supplier_id', 'purchase_order_id', 'ticket_info_id'], 'integer'],
             [['qty', 'purchase_exGST', 'sell_exGST'], 'number'],
-            [['description'], 'safe'],
+            [['description', 'notes'], 'safe'],
         ];
     }
 
