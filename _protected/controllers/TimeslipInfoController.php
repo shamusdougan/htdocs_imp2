@@ -9,6 +9,7 @@ use app\models\TicketInfo;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * TimeslipInfoController implements the CRUD actions for TimeslipInfo model.
@@ -56,11 +57,21 @@ class TimeslipInfoController extends Controller
 		 	
 		 	$timeslipID = Yii::$app->request->post('editableKey');
 		 	$model = timeslipInfo::findOne($timeslipID);
+		 	$out = Json::encode(['output'=>'', 'message'=>'']);
+		 	
+		 	$attributeName = key($_POST['TimeslipInfo'][0]);
+		 	$value = $_POST['TimeslipInfo'][0][$attributeName];
+		 	$model->$attributeName = $value;
+		 	
+		 	if(!$model->save())
+		 		{
+				echo Json::encode(['output'=>'', 'message'=>'Error Saving Value']);
+				return;
+				}
 		 	
 		 	
-		 	
-		 	
-		 	
+		 	echo $out;
+		 	return;
 		 	}
 		
         return $this->render('review', [

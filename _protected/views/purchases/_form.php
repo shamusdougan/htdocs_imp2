@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\builder\Form;
 use yii\bootstrap\Modal;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchases */
@@ -62,7 +63,7 @@ use yii\bootstrap\Modal;
     		]
     	]); ?>
     
-    
+    	
     	<?= Form::widget([
 	    	'model'=>$model,
 	    	'form'=>$form,
@@ -82,7 +83,7 @@ use yii\bootstrap\Modal;
 		   			],			
 		   		],
 	   		]); ?>
-    
+
     
  	<?= $form->field($model, 'ticket_info_id', ['template' => '{input}'])->hiddenInput()->label(false);	?>
     
@@ -181,7 +182,7 @@ $this->registerJs(
 	          		{
 	          		$('#activity-modal').modal('hide');
 	          		
-	          		//reload the select2 object here;
+	          		
 					}
 			  });	
 	     return false;
