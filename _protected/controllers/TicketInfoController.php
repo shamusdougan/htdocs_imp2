@@ -111,6 +111,28 @@ class TicketInfoController extends Controller
             ]);
         }
     }
+    
+    
+    /**
+	* 
+	* Function UpdateTimeslips
+	* Description: this function will go through and update the chargerate and billing account on the timeslip 
+	* 
+	* @return
+	*/
+    public function actionUpdateTimeslips($id)
+    {
+		$model = $this->findModel($id);
+		foreach($model->timeslipsInfos as $timeslipInfo)
+			{
+			$timeslipInfo->charge_rate_id = $model->default_charge_rate_id;
+			$timeslipInfo->billing_account_id = $model-> default_billing_account_id;
+			$timeslipInfo->save();
+			}
+		
+		
+		
+	}
 
     /**
      * Deletes an existing TicketInfo model.

@@ -213,4 +213,79 @@ class TimeslipInfo extends \yii\db\ActiveRecord
 		return $this->billed_time_hours.":".str_pad($this->billed_time_mins,2 ,STR_PAD_LEFT);
 	}
 	
+	
+	/**
+	* function isDefaultValues
+	* description: this will check to see if the timeslip settings have been changed from the default values
+	* 
+	* @return
+	*/
+	public function isDefaultValues()
+	{
+		
+		//echo $this->ticketInfo->client->agreement->default_account_id." -> ".$this->billing_account_id."<br>";
+		if($this->ticketInfo->client->agreement->default_account_id != $this->billing_account_id)
+			{
+			return false;
+			}
+	
+		//echo $this->ticketInfo->client->agreement->default_BH_rate_id." -> ".$this->charge_rate_id."<br>";
+		if($this->ticketInfo->client->agreement->default_BH_rate_id != $this->charge_rate_id)
+			{
+			return false;
+			}
+		
+		$timeArray = array('hours' => $this->labtech_hours, 'mins' => $this->labtech_mins);
+		$hoursArray = $this->roundTime15Inc($timeArray);
+		if($hoursArray['hours'] != $this->billed_time_hours || $hoursArray['mins'] != $this->billed_time_mins)
+			{
+			return false;
+			}
+		
+		
+		
+			
+		return true;
+	}
+	
+	
+	
+	
+	public function roundTime15Inc($workedTimeArray)
+		{
+		if(!is_array($workedTimeArray))
+			{
+			die("Invalid time array given to rountTime15Inc");
+			}
+		elseif(!array_key_exists("hours", $workedTimeArray) || !array_key_exists("mins", $workedTimeArray))
+			{
+			die("invalid array structure given to roundTime15Inc");
+			}
+			
+		$billedTimeArray = $workedTimeArray;
+		if($workedTimeArray['mins'] == 0)
+			{
+			$workedTimeArray['mins'] = 0;
+			}
+		elseif($workedTimeArray['mins'] <= 15)
+			{
+			$billedTimeArray["mins"] = 15;
+			}
+		elseif($workedTimeArray['mins'] <= 30)
+			{
+			$billedTimeArray["mins"] = 30;
+			}
+		elseif($workedTimeArray['mins'] <= 45)
+			{
+			$billedTimeArray["mins"] = 45;
+			}
+		else
+			{
+			$billedTimeArray["hours"] += 1;				
+			$billedTimeArray["mins"] = 0;	
+			}
+			
+		return $billedTimeArray;
+		}
+	
 }

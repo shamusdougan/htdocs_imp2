@@ -121,8 +121,10 @@ class syncTimeslipInfo extends syncModelBase
 					
 				
 				$newTimeslipInfo->ticket_info_id = $ticketInfo->id;
-				$newTimeslipInfo->billed_time_hours = $remoteRecord['Hours'];
-				$newTimeslipInfo->billed_time_mins = $remoteRecord['Mins'];
+				
+				$billedTimeArray = $this->roundTime15Inc(array("hours" => $remoteRecord['Hours'], "mins" => $remoteRecord['Mins'] ));
+				$newTimeslipInfo->billed_time_hours = $billedTimeArray['hours'];
+				$newTimeslipInfo->billed_time_mins = $billedTimeArray['mins'];
 				$newTimeslipInfo->labtech_category = $remoteRecord['Category'];
 				$newTimeslipInfo->labtech_hours = $remoteRecord['Hours'];
 				$newTimeslipInfo->labtech_mins = $remoteRecord['Mins'];
@@ -195,9 +197,15 @@ class syncTimeslipInfo extends syncModelBase
 		
 	}
 	
+
+
+	
 	
 
 }
+
+
+
 
 
 ?>

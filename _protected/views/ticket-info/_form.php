@@ -103,8 +103,21 @@ use kartik\grid\GridView;
 			'type'=>GridView::TYPE_PRIMARY,
         	'heading'=>"Timeslips",
     		],
-    	'toolbar' => false,
+    	'toolbar'=> 
+			[
+				['content'=>
+					Html::button('<i class="glyphicon glyphicon-arrow-down"></i>', ['type'=>'button', 'title'=>'Update Timeslip Details', 'id' => 'update_timeslip_grid', 'class'=>'btn btn-success']).
+					Html::button('<i class="glyphicon glyphicon-repeat"></i>', ['type'=>'button', 'title'=>'Refresh', 'id' => 'refresh_timeslip_grid', 'class'=>'btn btn-success'])
+					],
+			],
         'export' => false,
+        'pjax'=>true, 
+		'pjaxSettings' =>
+			[
+			'neverTimeout'=>true,
+			'options' =>['id' => 'timeslip-grid'],
+			
+			],
         'columns' => [
         	'timeslipDate',
         	[
@@ -150,3 +163,32 @@ use kartik\grid\GridView;
       ?>
 
 </div>
+
+
+<?
+ $this->registerJs(
+    "$(document).on('click', \"#refresh_timeslip_grid\", function() 
+    	{
+    	$.pjax.reload({container:\"#timeslip-grid\"});
+		});
+	
+	$(document).on('click', \"#update_timeslip_grid\", function() 	
+		{
+		$.ajax({
+			url: '/ticket-info/update-timeslips?id=".$model->id."',
+			type: 'post',
+			success: function (response) 
+				{
+          		$.pjax.reload({container:\"#timeslip-grid\"});
+          		
+				}
+		  	});	
+		  	
+		  	
+		  	
+		});
+
+	"
+   );	
+ 
+?>

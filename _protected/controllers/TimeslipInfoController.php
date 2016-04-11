@@ -59,8 +59,9 @@ class TimeslipInfoController extends Controller
 		 	$model = timeslipInfo::findOne($timeslipID);
 		 	$out = Json::encode(['output'=>'', 'message'=>'']);
 		 	
-		 	$attributeName = key($_POST['TimeslipInfo'][0]);
-		 	$value = $_POST['TimeslipInfo'][0][$attributeName];
+		 	$row = key($_POST['TimeslipInfo']);
+		 	$attributeName = key($_POST['TimeslipInfo'][$row]);
+		 	$value = $_POST['TimeslipInfo'][$row][$attributeName];
 		 	$model->$attributeName = $value;
 		 	
 		 	if(!$model->save())

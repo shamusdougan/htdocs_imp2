@@ -57,6 +57,18 @@ $this->params['breadcrumbs'][] = $this->title;
 	    'striped'=>true,
 	    'hover'=>true,
 	    'export'=>false,
+	    'rowOptions' => function ($model, $index, $widget, $grid)
+	    	{
+			if(!$model->isDefaultValues())
+				{
+				return ['class' => "warning"];				
+				}
+			
+
+            
+            
+        	},
+
 	    'panel'=>
 	    	[
 	    	'type'=>'primary', 
@@ -133,7 +145,21 @@ $this->params['breadcrumbs'][] = $this->title;
 				},
 	    	'width' => '5%',
 	    	],
+	    	[
+	    	'attribute' => 'charge_rate_id',
+	    	'label' => 'Rate',
+	    	'filter' => false,
+	    	'value' => function ($data)
+	    		{
+	    		$returnValue= "";
+	    		if($data->isDefaultValues())
+	    		{
+					$returnValue = "D ";
+				}
+				return $returnValue.$data->chargeRate->abriev;
+				}
 	    	
+	    	],
 	    	
 	    	
 	    	[
@@ -158,26 +184,17 @@ $this->params['breadcrumbs'][] = $this->title;
 			'class'=>'kartik\grid\EditableColumn',
 		    'attribute'=>'billed_time_hours',
 		    'editableOptions'=>[
+		    	'placement' => 'left',
 		        'header'=>'Edit Billed Hours',
 		        'inputType'=>\kartik\editable\Editable::INPUT_SPIN,
-		        'options'=>['pluginOptions'=>['min'=>0, 'max'=>10]],
+		        'options'=>['pluginOptions'=>['min'=>0, 'max'=>12]],
 		    	],
 		    'hAlign'=>'right',
 		    'vAlign'=>'top',
 		    'width'=>'5%',
-		    'format'=>['decimal', 0],
 		    'filter' => false,
 	
-	    	],
-//	    	[
-//	    	'attribute' => 'billed_time_hours',
-//	    	'width' => '5%',
-//	    	'filter' => false,
-//	    	],
-	    	
-	    	
-	    
-	        
+	    	],    
 	        [
 			'class'=>'kartik\grid\EditableColumn',
 		    'attribute'=>'billed_time_mins',
@@ -190,7 +207,6 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'hAlign'=>'right',
 		    'vAlign'=>'top',
 		    'width'=>'5%',
-		    'format'=>['decimal', 0],
 		    'filter' => false,
 	
 	    	],
@@ -198,6 +214,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	        [
         	'class' => '\kartik\grid\CheckboxColumn',
         	'width' => '5%',
+        	'header' => '<span title="This will prevent the timeslip info appearing on the Client Invoice">Write Off</span>',
     		],
 	        ],
 	        
